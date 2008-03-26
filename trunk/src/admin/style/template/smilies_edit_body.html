@@ -1,0 +1,49 @@
+<div align="center">
+	<h3>Smilies bearbeiten</h3>
+	<p>Hier kannst du Smilies bearbeiten.</p>
+</div>
+
+<!-- BEGIN edit_smilies -->
+<form action="smilies.php?mode=edit" method="post">
+	<table border="0" cellpadding="3" cellspacing="1" align="center" width="30%" class="headline">
+		<tr>
+			<th class="thHead" colspan="2">
+				<b>Smilie bearbeiten</b>
+			</th>
+		</tr>
+		<tr>
+			<td class="row1" valign="top">
+				<center><b>Name:</b></center>
+			</td>
+			<td class="row1" valign="top">
+				<input type="text" name="smilies_name" value="{edit_smilies.NAME}" style="width: 250px;" />
+			</td>
+		</tr>
+		<tr>
+			<td class="row1" valign="top">
+				<center><b>Code:</b></center>
+			</td>
+			<td class="row1" valign="top">
+				<input type="text" name="smilies_code" value="{edit_smilies.CODE}" style="width: 250px;" />
+			</td>
+		</tr>
+		<tr>
+			<td class="row1" valign="top">
+				<center><b>Grafik:</b></center>
+			</td>
+			<td class="row1" valign="top">
+				<input type="text" name="smilies_url" value="{edit_smilies.URL}" style="width: 250px;" />
+			</td>
+		</tr>
+		<tr>
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+				&nbsp;
+			</td>
+			<td class="row2" valign="top" style="vertical-align: middle;">
+				<input type="hidden" value="{edit_smilies.ID}" name="smilies_id" />
+				<input type="submit" value="Smilie speichern" name="submit" />
+			</td>
+		</tr>
+	</table>
+</form><br /><br />
+<!-- END edit_smilies -->

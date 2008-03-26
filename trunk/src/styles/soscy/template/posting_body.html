@@ -1,0 +1,143 @@
+<!-- BEGIN valdiate_error -->
+<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+	<tr>
+		<th class="thHead">
+				<b>{ERROR_TITLE}</b>
+		</th>
+	</tr>
+	<tr>
+		<td class="row1" valign="top">
+			<!--<div align="center">
+				<b>{ERROR_TITLE}</b><br /><br />
+			</div>-->
+			<div align="center">
+				<br />{ERROR_MESSAGE}<br /><br />
+			</div>
+		</td>
+	  </tr>
+</table><br /><br />
+<!-- END valdiate_error -->
+
+<form name="qGuestbook" action="{U_POSTING}?mode=insert" method="post">
+	<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+		<tr>
+			<th class="thHead" colspan="2">
+				<b>Neuen Eintrag schreiben</b>
+			</th>
+		</tr>
+	<tr>
+		<td class="row1" valign="top" colspan="2">
+			<span class="gensmall" style="text-align: left;">
+				<a href="./index.php">Zurück zum Gästebuch</a>
+			</span>
+		</td>
+	</tr>
+		<tr>
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+				<b>Name:</b>
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
+				<input type="text" name="name" value="{NAME}" maxlength="255" size="40" />
+			</td>
+		</tr>
+		<tr>
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+				<b>E-Mail:</b>
+			</td>
+			<td class="row2" valign="top" style="vertical-align: middle;">
+				<input type="text" name="email" value="{EMAIL}" maxlength="255" size="40"  />
+			</td>
+		</tr>
+		<tr>
+			<td class="row1" valign="top" width="22%" height="28" style="vertical-align: middle;">
+				<b>E-Mail verstecken:</b>
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
+				<input type="checkbox" name="hide_email" value="1" {HIDE_EMAIL} /> Meine E-Mail Adresse verstecken
+			</td>
+		</tr>
+		<!-- BEGIN icq_enabled -->
+		<tr>
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+				<b>ICQ-Nummer:</b>
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
+				<input type="text" name="icq" value="{ICQ}" maxlength="255" size="40" />
+			</td>
+		</tr>
+		<!-- END icq_enabled -->
+		<!-- BEGIN www_enabled -->
+		<tr>
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+				<b>Homepage:</b>
+			</td>
+			<td class="row2" valign="top" style="vertical-align: middle;">
+				<input type="text" name="www" value="{WWW}" maxlength="255" size="40"  />
+			</td>
+		</tr>
+		<!-- END www_enabled -->
+		<!-- BEGIN switch_dissabled -->
+		<tr>
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+				<b>Benotung:</b>
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
+				<select  style="width:400px;">
+				<!-- BEGIN votes -->
+					<option value="{votes.ID}">(Vote {votes.ID}) {votes.NAME}</option>
+				<!-- END votes -->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+				<b>BBCodes</b>
+			</td>
+			<td class="row2" valign="top" style="vertical-align: middle;">
+				<input type="button" value="Fett" onClick="insert('[b]', '[/b]')" />
+				<input type="button" value="Unterstrichen" onClick="insert('[u]', '[/u]')" />
+				<input type="button" value="Kursiv" onClick="insert('[k]', '[/k]')" />
+			</td>
+		</tr>
+		<!-- END switch_dissabled -->
+		<tr>
+			<td class="row2" valign="top" width="22%">
+				<b>Nachricht:</b><br /><br />
+					<ul type="square">
+						<!--
+							<li style="list-style-type: none;"><u>Optionen</u></li>
+						-->
+						<li><a href="popup.php?mode=smilies" onclick="window.open('popup.php?mode=smilies', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>Smilies</b></a>: {SMILIES_STATUS}</li>
+						<li><a href="popup.php?mode=bbcodes" onclick="window.open('popup.php?mode=bbcodes', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>BBCodes</b></a>: {BBCODES_STATUS}</li>
+						<li><b>HTML</b>: {HTML_STATUS}</li>
+					</ul>
+			<br />
+			</td>
+			<td class="row2" valign="top" height="100%">
+				<textarea name="textarea" rows="10" cols="60">{TEXTAREA}</textarea>
+			</td>
+		</tr>
+<!-- BEGIN switch_capatcha -->
+   <tr>
+	<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+		<div align="center">
+		  <img src="includes/capatcha/image.php" alt="Capatcha">
+		</div>
+	</td>
+	<td class="row1" valign="top" style="vertical-align: middle;">
+	 <input type="text" name="code" value="" style="width:50px">
+	 Bitte tragen Sie hier den Code aus der Grafik links ein.
+	</td>
+   </tr>
+<!-- END switch_capatcha -->
+		<tr>
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+				&nbsp;
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
+				<!-- <input type="submit" value="Vorschau" name="preview" /> -->
+				<input type="submit" value="In das Gästebuch eintragen" name="submit" />
+			</td>
+		</tr>
+	</table>
+</form>

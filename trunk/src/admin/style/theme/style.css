@@ -1,0 +1,308 @@
+/**
+  SoScy qGuestbook Style
+  @ported: from phpMyGuestbook
+  @version: qGuestbook 1.0.0
+*/
+
+/* Allgemeine Konfiguration */
+body
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background-color: #F8F8F8;
+}
+
+/* alle Links, die nicht anderweitig festgelegt wurden */
+a
+{
+	color: #043698;
+	text-decoration: none;
+}
+a:hover
+{
+	color: #A00000;
+	text-decoration: underline;
+}
+
+/* Text für Hinweise, etc. */
+.gensmall {
+ 	font-size: 10px;
+	color: #000000;
+	/* background-color:#000000; */
+}
+a.gensmall
+{
+	color: #043698;
+	text-decoration: none;
+}
+a.gensmall:visited {
+	color: #003090;
+	text-decoration: none;
+}
+a.gensmall:active {
+	color: #FF0000;
+	text-decoration: underline;
+}
+a.gensmall:hover {
+	color: #A00000;
+	text-decoration: underline;
+}
+
+/* Quote & Code blocks */
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+/*
+Der Schrott hier wird nicht gebraucht...
+
+/*input,textarea, select {
+    color : #000000;
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size : 11px;
+    font-weight : normal;
+}
+
+input.post, textarea.post, select {
+    background-color : #E9EEF7;
+}
+*/
+
+/*
+  Die Definition für den Copyright Hinweis im Footer
+  Bitte möglichst lesbar lassen ;)
+*/
+.copyright
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #444444;
+	font-size: 11px;
+	letter-spacing: -1px;
+}
+a.copyright {
+	color: #333333;
+	text-decoration: none;
+}
+a.copyright:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+
+/* Tabellen und ihre Besonderheiten */
+TD {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+TH, TD.th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #7E98CB;
+	height: 25px;
+	font-size: 11px;
+	font-weight: bold;
+color: #FFFF00;
+}
+TD.row1 {
+background-color: #F8F8F8;
+	/*vertical-align: middle;*/
+
+}
+TD.row2 {
+background-color: #F0F0F0;
+	/*vertical-align: middle;*/
+}
+
+/* Fr den Tabellen Tag, allgemeine Tabllen Einstellungen */
+.headline {
+	background-color:#04369B;
+	border: 2px #021A4A solid;
+	/*vertical-align: middle;*/
+}
+
+.mainline
+{
+	border: 2px #021A4A solid;
+
+}
+
+/* Die Überschriften Zeile fr Tabellen */
+TH.thHead {
+	font-weight: bold;
+	font-size: 12px;
+	height: 25px;
+	background-image: url('images/cell1l.jpg');
+
+}
+
+/* Der Seitentitel */
+h1 {
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 120%;
+	color : #000000;
+}
+
+/* In der Beitragsansicht, wenn die Beiträge auf mehrere Seiten verteilt werden,
+ * werden die Links mit dieser Klasse formatiert */
+.nav {
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+}
+a.nav {
+	text-decoration: none;
+	color: #043698;
+}
+a.nav:visited {
+	text-decoration: none; color: #003090;
+}
+a.nav:active {
+	text-decoration: underline; color: #FF0000;
+}
+a.nav:hover {
+	text-decoration: underline;
+	color: #A00000;
+}
+
+/* Fr die Links Titel <> Neuen Eintrag schreiben ...
+   Wurde in Version Alpha 1 benutzt, kann weq eigentlich
+*/
+.nav_bar
+{
+    font-weight:bold;
+}
+a.nav_bar
+{
+    color: #043698;
+	text-decoration: none;
+}
+a.nav_bar:hover
+{
+    color: #A00000;
+	text-decoration: underline;
+}
+
+/* Fr Kommentare in der Beitragsansicht */
+.comment
+{
+	font-size: 10px;
+	text-decoration: none;
+	color: #001030;
+}
+
+/* Form elements */
+input,textarea, select
+{
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+}
+
+/* The text input fields background colour */
+input.post, textarea.post, select
+{
+	background-color : #FFFFFF;
+}
+
+input {
+	text-indent : 2px;
+ }
+
+/* The buttons used for bbCode styling in message post */
+input.button
+{
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption
+{
+	background-color : #FAFAFA;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption
+{
+	background-color : #FAFAFA;
+	font-weight : normal;
+}
+
+/* Grafiken haben bei uns keinen Rand :P */
+.image
+{
+	border: 0px none #000000;
+}
+
+input
+{
+	color: #000000;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+}
+
+select {
+	background-color: #ffffff;
+	color: #000000;
+	border: 1px solid #000000;
+	width: 100px;
+}
+
+textarea
+{
+	color: #000000;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+}
+
+/*
+Schrott, der ebenfalls nich gebraucht wird ^ ^
+/*label {
+	display:block;
+	font-weight:bold;
+	margin:5px 0;
+}
+input, select, textarea {
+	padding:2px;
+	border: 1px solid #000000;
+	font: normal 1em Verdana, sans-serif;
+	color: #000;
+	background: #fff;
+}
+textarea {
+	padding:2px;
+	font-family: Verdana, sans-serif;
+	border: 1px solid #000000;
+	display:block;
+	color: #000;
+}
+input.button {
+	margin: 0;
+	font: bolder 12px Arial, Sans-serif;
+	border: 1px solid #000000;
+	padding: 2px 3px;
+	background: #FFF;
+	color: #88ac0b;
+}
+
+input.text {
+	background: #EFEBE7;
+}
+input.button {
+	background: #CCC;
+	border: 1px solid #000000;
+	width: 70px; height: 21px;
+}
+*/

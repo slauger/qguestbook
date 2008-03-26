@@ -1,0 +1,27 @@
+# mod_rewrite for short urls
+# @version: 0.2.1
+# @author:  Simon Lauger <admin@simlau.net>
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+
+#RewriteRule /index.html /index.php?p=%s
+#RewriteRule /view-guestbook.html$ /index.php?
+#RewriteRule /view-guestbook-%s.html$ /index.php?p=%s
+#RewriteRule /posting.html$ /posting.php
+#RewriteRule /posting-submit.html$ /posting.php?mode=post
+#RewriteRule /view-popup-%s.html /popup.php?mode=%s
+
+# Spam-Bots werden ausgeschlossen...
+RewriteCond %{HTTP_USER_AGENT} ^.*Whacker.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailCollector [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*FileHound.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*TurnitinBot.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*JoBo.*$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*adressendeutschland.*$
+RewriteRule ^.* - [F]
+
+</IfModule>

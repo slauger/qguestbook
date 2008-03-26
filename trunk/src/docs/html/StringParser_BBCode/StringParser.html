@@ -1,0 +1,1330 @@
+<html>
+<head>
+<title>Docs For Class StringParser</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">StringParser_BBCode</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                                                            
+                              		  [ <a href="../classtrees_StringParser_BBCode.html" class="menu">class tree: StringParser_BBCode</a> ]
+		  [ <a href="../elementindex_StringParser_BBCode.html" class="menu">index: StringParser_BBCode</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+      <b>Packages:</b><br />
+              <a href="../li_qGuestbook.html">qGuestbook</a><br />
+              <a href="../li_htmlMimmeMail5.html">htmlMimmeMail5</a><br />
+              <a href="../li_StringParser_BBCode.html">StringParser_BBCode</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../StringParser_BBCode/_includes---bbcode---bbcode.php.html">		bbcode.php
+		</a><br>
+			<a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html">		stringparser.class.php
+		</a><br>
+			<a href="../StringParser_BBCode/_includes---bbcode---stringparser_bbcode.class.php.html">		stringparser_bbcode.class.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../StringParser_BBCode/StringParser.html">StringParser</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_BBCode.html">StringParser_BBCode</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_BBCode_Node_Element.html">StringParser_BBCode_Node_Element</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_BBCode_Node_Paragraph.html">StringParser_BBCode_Node_Paragraph</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_Node.html">StringParser_Node</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_Node_Root.html">StringParser_Node_Root</a><br />
+	    		<a href="../StringParser_BBCode/StringParser_Node_Text.html">StringParser_Node_Text</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: StringParser</h1>
+Source Location: /includes/bbcode/stringparser.class.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">Generic string parser class</div><br /><br />
+
+
+
+
+
+
+        
+</td>
+
+<td valign="top">
+<h3><a href="#class_vars">Variables</a></h3>
+<ul>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$strict">$strict</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_charactersAllowed">$_charactersAllowed</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_charactersSearch">$_charactersSearch</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_cpos">$_cpos</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_length">$_length</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_parserMode">$_parserMode</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_parsing">$_parsing</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_postfilters">$_postfilters</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_prefilters">$_prefilters</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_recentlyReparsed">$_recentlyReparsed</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_root">$_root</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_stack">$_stack</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_status">$_status</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#var$_text">$_text</a></li>
+  </ul>
+</td>
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../StringParser_BBCode/StringParser.html#methodStringParser">StringParser</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#methodaddFilter">addFilter</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#methodclearFilters">clearFilters</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#methodparse">parse</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_appendText">_appendText</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_appendToLastTextChild">_appendToLastTextChild</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_applyPostfilters">_applyPostfilters</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_applyPrefilters">_applyPrefilters</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_closeRemainingBlocks">_closeRemainingBlocks</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_handleStatus">_handleStatus</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_loop">_loop</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_modifyTree">_modifyTree</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_outputTree">_outputTree</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_parserInit">_parserInit</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_popNode">_popNode</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_pushNode">_pushNode</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_reparseAfterCurrentBlock">_reparseAfterCurrentBlock</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_searchLoop">_searchLoop</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_setStatus">_setStatus</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_strDetect">_strDetect</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_strpos">_strpos</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_topNode">_topNode</a></li>
+    <li><a href="../StringParser_BBCode/StringParser.html#method_topNodeVar">_topNodeVar</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+<td valign="top">
+<h3>Child classes:</h3>
+<div class="tags">
+<dl>
+<dt><a href="../StringParser_BBCode/StringParser_BBCode.html">StringParser_BBCode</a></dt>
+	<dd>BB code string parser class</dd>
+</dl>
+</div>
+</td>
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 66]<br />
+Generic string parser class<br /><br /><p>This is an abstract class for any type of string parser.</p><br /></div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+<hr />
+<a name="class_vars"></a>
+<h3>Class Variables</h3>
+<div class="tags">
+	<a name="var$strict"></a>
+	<p></p>
+	<h4>$strict = <span class="value">&nbsp;false</span></h4>
+	<p>[line 142]</p>
+  Strict mode<br /><br /><p>Whether to stop parsing if a parse error occurs.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_charactersAllowed"></a>
+	<p></p>
+	<h4>$_charactersAllowed = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 167]</p>
+  Characters currently allowed<br /><br /><p>Note that this will only be evaluated in loop mode; in search mode  this would ruin every performance increase. Note that only single  characters are permitted here, no strings. Please also note that in  loop mode, StringParser::_charactersSearch  is evaluated before this variable.</p><p>If in strict mode, parsing is stopped if a character that is not  allowed is encountered. If not in strict mode, the character is  simply ignored.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_charactersSearch"></a>
+	<p></p>
+	<h4>$_charactersSearch = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 149]</p>
+  Characters or strings to look for<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_cpos"></a>
+	<p></p>
+	<h4>$_cpos = <span class="value">&nbsp;-1</span></h4>
+	<p>[line 107]</p>
+  Current position in raw text<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_length"></a>
+	<p></p>
+	<h4>$_length = <span class="value">&nbsp;-1</span></h4>
+	<p>[line 121]</p>
+  Length of the text<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_parserMode"></a>
+	<p></p>
+	<h4>$_parserMode = <span class="value">&nbsp;STRINGPARSER_MODE_SEARCH</span></h4>
+	<p>[line 86]</p>
+  String parser mode<br /><br /><p>There are two possible modes: searchmode and loop mode. In loop mode  every single character is looked at in a loop and it is then decided  what action to take. This is the most straight-forward approach to  string parsing but due to the nature of PHP as a scripting language,  it can also cost performance. In search mode the class posseses a  list of relevant characters for parsing and uses the  <a href="http://www.php.net/strpos">strpos</a> function to search for the next  relevant character. The search mode will be faster than the loop mode  in most circumstances but it is also more difficult to implement.  The subclass that does the string parsing itself will define which  mode it will implement.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_MODE_SEARCH">STRINGPARSER_MODE_SEARCH</a>, <a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_MODE_LOOP">STRINGPARSER_MODE_LOOP</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>int</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_parsing"></a>
+	<p></p>
+	<h4>$_parsing = <span class="value">&nbsp;false</span></h4>
+	<p>[line 132]</p>
+  Flag if this object is already parsing a text<br /><br /><p>This flag is to prevent recursive calls to the parse() function that  would cause very nasty things.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_postfilters"></a>
+	<p></p>
+	<h4>$_postfilters = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 188]</p>
+  Postfilters<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_prefilters"></a>
+	<p></p>
+	<h4>$_prefilters = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 181]</p>
+  Prefilters<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_recentlyReparsed"></a>
+	<p></p>
+	<h4>$_recentlyReparsed = <span class="value">&nbsp;false</span></h4>
+	<p>[line 195]</p>
+  Recently reparsed?<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>bool</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_root"></a>
+	<p></p>
+	<h4>$_root = <span class="value">&nbsp;null</span></h4>
+	<p>[line 114]</p>
+  Root node<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>mixed</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_stack"></a>
+	<p></p>
+	<h4>$_stack = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 100]</p>
+  Parse stack<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_status"></a>
+	<p></p>
+	<h4>$_status = <span class="value">&nbsp;0</span></h4>
+	<p>[line 174]</p>
+  Current parser status<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>int</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_text"></a>
+	<p></p>
+	<h4>$_text = <span class="value">&nbsp;''</span></h4>
+	<p>[line 93]</p>
+  Raw text<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+</div><br />
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="methodStringParser"></a>
+	<h3>constructor StringParser <span class="smalllinenumber">[line 202]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>StringParser StringParser(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Constructor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddFilter"></a>
+	<h3>method addFilter <span class="smalllinenumber">[line 214]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool addFilter(
+int
+$type, mixed
+$callback)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Add a filter<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_FILTER_PRE">STRINGPARSER_FILTER_PRE</a>, <a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_FILTER_POST">STRINGPARSER_FILTER_POST</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$type</b>&nbsp;&nbsp;</td>
+        <td>The type of the filter</td>
+      </tr>
+          <tr>
+        <td class="type">mixed&nbsp;&nbsp;</td>
+        <td><b>$callback</b>&nbsp;&nbsp;</td>
+        <td>The callback to call</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodclearFilters"></a>
+	<h3>method clearFilters <span class="smalllinenumber">[line 242]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool clearFilters(
+[int
+$type = 0])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Remove all filters<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_FILTER_PRE">STRINGPARSER_FILTER_PRE</a>, <a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html#defineSTRINGPARSER_FILTER_POST">STRINGPARSER_FILTER_POST</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$type</b>&nbsp;&nbsp;</td>
+        <td>The type of the filter or 0 for all</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodparse"></a>
+	<h3>method parse <span class="smalllinenumber">[line 270]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>mixed parse(
+string
+$text)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		This function parses the text<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Either the root object of the tree if no output method                is defined, the tree reoutput to e.g. a string or false                if an internal error occured, such as a parse error if                in strict mode or the object is already parsing a text.</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$text</b>&nbsp;&nbsp;</td>
+        <td>The text to parse</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_appendText"></a>
+	<h3>method _appendText <span class="smalllinenumber">[line 665]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _appendText(
+string
+$text)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method Append text depending on current status<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>On success, the function returns true, else false</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_appendText">StringParser_BBCode::_appendText()</a></dt>
+		<dd>Abstract method Append text depending on current status</dd>
+	</dl>
+	</p>
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$text</b>&nbsp;&nbsp;</td>
+        <td>The text to append</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_appendToLastTextChild"></a>
+	<h3>method _appendToLastTextChild <span class="smalllinenumber">[line 679]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _appendToLastTextChild(
+string
+$text)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Append text to last text child of current top parser stack node<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>On success, the function returns true, else false</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$text</b>&nbsp;&nbsp;</td>
+        <td>The text to append</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_applyPostfilters"></a>
+	<h3>method _applyPostfilters <span class="smalllinenumber">[line 396]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _applyPostfilters(
+
+$text)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Apply postfilters<br /><br /><p>It is possible to specify postfilters for the parser to do some  manipulating of the string afterwards.</p><br /><br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$text</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_applyPrefilters"></a>
+	<h3>method _applyPrefilters <span class="smalllinenumber">[line 378]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _applyPrefilters(
+
+$text)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Apply prefilters<br /><br /><p>It is possible to specify prefilters for the parser to do some  manipulating of the string beforehand.</p><br /><br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$text</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_closeRemainingBlocks"></a>
+	<h3>method _closeRemainingBlocks <span class="smalllinenumber">[line 477]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _closeRemainingBlocks(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Close remaining blocks<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_closeRemainingBlocks">StringParser_BBCode::_closeRemainingBlocks()</a></dt>
+		<dd>Abstract method: Close remaining blocks</dd>
+	</dl>
+	</p>
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_handleStatus"></a>
+	<h3>method _handleStatus <span class="smalllinenumber">[line 524]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _handleStatus(
+int
+$status, string
+$needle)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Handle status<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_handleStatus">StringParser_BBCode::_handleStatus()</a></dt>
+		<dd>Handle status</dd>
+	</dl>
+	</p>
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$status</b>&nbsp;&nbsp;</td>
+        <td>The current status</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$needle</b>&nbsp;&nbsp;</td>
+        <td>The needle that was found</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_loop"></a>
+	<h3>method _loop <span class="smalllinenumber">[line 603]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _loop(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Loop mode loop<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_modifyTree"></a>
+	<h3>method _modifyTree <span class="smalllinenumber">[line 413]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _modifyTree(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Manipulate the tree<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_modifyTree">StringParser_BBCode::_modifyTree()</a></dt>
+		<dd>Abstract method: Manipulate the tree</dd>
+	</dl>
+	</p>
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_outputTree"></a>
+	<h3>method _outputTree <span class="smalllinenumber">[line 422]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _outputTree(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Output tree<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_outputTree">StringParser_BBCode::_outputTree()</a></dt>
+		<dd>Abstract method: Output tree</dd>
+	</dl>
+	</p>
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_parserInit"></a>
+	<h3>method _parserInit <span class="smalllinenumber">[line 499]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _parserInit(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Initialize the parser<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_popNode"></a>
+	<h3>method _popNode <span class="smalllinenumber">[line 764]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _popNode(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Removes a node from the current parse stack<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>True on success, else false.</td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../StringParser_BBCode/StringParser_Node.html">StringParser_Node</a>, StringParser::_stack</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_pushNode"></a>
+	<h3>method _pushNode <span class="smalllinenumber">[line 747]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _pushNode(
+
+&$node, object
+$node)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Adds a node to the current parse stack<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>True on success, else false.</td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../StringParser_BBCode/StringParser_Node.html">StringParser_Node</a>, StringParser::_stack</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">object&nbsp;&nbsp;</td>
+        <td><b>$node</b>&nbsp;&nbsp;</td>
+        <td>The node that is to be added</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>&$node</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_reparseAfterCurrentBlock"></a>
+	<h3>method _reparseAfterCurrentBlock <span class="smalllinenumber">[line 436]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _reparseAfterCurrentBlock(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Restart parsing after current block<br /><br /><p>To achieve this the current top stack object is removed from the  tree. Then the current item</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_reparseAfterCurrentBlock">StringParser_BBCode::_reparseAfterCurrentBlock()</a></dt>
+		<dd>Restart parsing after current block</dd>
+	</dl>
+	</p>
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_searchLoop"></a>
+	<h3>method _searchLoop <span class="smalllinenumber">[line 535]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool _searchLoop(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Search mode loop<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_setStatus"></a>
+	<h3>method _setStatus <span class="smalllinenumber">[line 507]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _setStatus(
+
+$status)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abstract method: Set a specific status<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../StringParser_BBCode/StringParser_BBCode.html#method_setStatus">StringParser_BBCode::_setStatus()</a></dt>
+		<dd>Set a specific status</dd>
+	</dl>
+	</p>
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$status</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_strDetect"></a>
+	<h3>method _strDetect <span class="smalllinenumber">[line 728]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>mixed _strDetect(
+array
+$needles, int
+$offset)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Detects a string at the current position<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>The string that was detected or the needle</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$needles</b>&nbsp;&nbsp;</td>
+        <td>The strings that are to be detected</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$offset</b>&nbsp;&nbsp;</td>
+        <td>The current offset</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_strpos"></a>
+	<h3>method _strpos <span class="smalllinenumber">[line 703]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array _strpos(
+array
+$needles, int
+$offset)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Searches StringParser::_text for every needle that is<br /><br /><p>specified by using the <a href="http://www.php.net/strpos">strpos</a> function. It  returns an associative array with the key <ol><li><div class="src-line"><span class="src-str">'needle'</span></div></li>
+</ol>  pointing at the string that was found first and the key  <ol><li><div class="src-line"><span class="src-str">'offset'</span></div></li>
+</ol> pointing at the offset at which the string was  found first. If no needle was found, the <ol><li><div class="src-line"><span class="src-str">'needle'</span></div></li>
+</ol>  element is <ol><li><div class="src-line"><span class="src-id">false</span></div></li>
+</ol> and the <ol><li><div class="src-line"><span class="src-str">'offset'</span></div></li>
+</ol> element  is <ol><li><div class="src-line">-<span class="src-num">1</span></div></li>
+</ol>.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>StringParser::_text</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$needles</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$offset</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_topNode"></a>
+	<h3>method _topNode <span class="smalllinenumber">[line 776]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>mixed _topNode(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Execute a method on the top element<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_topNodeVar"></a>
+	<h3>method _topNodeVar <span class="smalllinenumber">[line 796]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>mixed _topNodeVar(
+
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Get a variable of the top element<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Tue, 25 Mar 2008 21:06:51 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

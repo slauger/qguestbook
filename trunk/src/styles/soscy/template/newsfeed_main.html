@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="{ENCODING}"?>
+<rss version="2.0">
+	<channel>
+		<generator>{GENERATOR}</generator>
+		<title>{TITLE}</title>
+		<link>{LINK}</link>
+		<description>{DESCRIPTION}</description>
+		<language>{LANGUAGE}</language>
+		<copyright>{COPYRIGHT}</copyright>
+		<!-- BEGIN switch_newsfeed -->
+		<item>
+			<title>{switch_newsfeed.ITEM_TITLE}</title>
+			<pubDate>{switch_newsfeed.ITEM_DATE}</pubDate>
+			<link>{switch_newsfeed.ITEM_LINK}</link>
+			<guid>{switch_newsfeed.ITEM_GUID}</guid>
+			<comments>{switch_newsfeed.ITEM_COMMENTS}</comments>
+			<description><![CDATA[{switch_newsfeed.ITEM_DESCRIPTION}]]></description>
+		</item>
+		<!-- END switch_newsfeed -->
+	</channel>
+</rss>
