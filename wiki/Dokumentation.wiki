@@ -45,10 +45,10 @@ Also, was zeichnet qGuestbook nochmal aus?
   * Beitragsmoderation
   * Benuterrangsystem (User, Mod, Admin usw.)
 
-2. Welche Anforderungen stellt qGuestbook?
-- Einen Webserver mit PHP5
-- Eine SQL-Datenbank (MySQL/SQLite/PostgreSQL)
-- Circa. 3 MB freier Speicherplatz
+== 2. Welche Anforderungen stellt qGuestbook? ==
+  * Einen Webserver mit PHP5
+  * Eine SQL-Datenbank (MySQL/SQLite/PostgreSQL)
+  * Circa. 3 MB freier Speicherplatz
 
 == 3. Meine Datenbank/PHP Version wird nicht unterstützt! Was nun? ==
 Nun, dann schreibe doch selbst eine Klasse für deine Datenbank.
