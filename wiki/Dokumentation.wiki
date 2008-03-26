@@ -1,5 +1,4 @@
 #summary Dokumentation für qGuestbook
-#labels Featured
 
 ---------------------------------------------------------------
 = Kurz Dokumentation über qGuestbook =
