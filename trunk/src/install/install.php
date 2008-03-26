@@ -42,6 +42,7 @@ error_reporting(E_ALL);
 $support = array();
 
 // Brauchen wir die Zusatzfunktionen für PHP4?
+// Backports für file_put_contents() etc
 if (substr(phpversion(), 0, 1) == 4)
 {
 	$support['php4'] = true;
