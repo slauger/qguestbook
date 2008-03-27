@@ -112,7 +112,6 @@ Class qLanguage // extends qLanguageAbstract
 		}
 
 		$this->import_unserialized($language_file);
-		$this->export_unserialized();
 	}
 
 	/**
@@ -177,7 +176,15 @@ Class qLanguage // extends qLanguageAbstract
 		include_once $filename;
 		$this->language_pack = $lang;
 	}
-
+	
+	/**
+	* Alias for export_unserialized()
+	*/
+	public function export_language()
+	{
+		$this->export_unserialized();
+	}
+	
 	/**
 	 * Macht das serialisierte Sprachpaket global verfügbar.
 	 *
@@ -187,18 +194,34 @@ Class qLanguage // extends qLanguageAbstract
 	{
 		global $lang, $config_table;
 		global $root_dir, $encode;
-
+		
 		if (!is_array($lang))
 		{
 			$lang = array();
 		}
-
+		
+		// Müssen wir das Sprachpaket behandeln?
 		if ($encode->get_encoding() != $lang['CHARSET'])
 		{
 			foreach ($this->language_pack as $key => $value)
 			{
 				$lang[$key] = $encode->encode_string($value);
 			}
+		}
+	}
+	
+	/**
+	 * Lädt ein E-Mail Template
+	 */
+	public function load_template($template) {
+		global $config_table, $root_dir;
+		if (isset($config_table['language']) && !empty($config_table['language'])) {
+			$template_path = $root_dir . 'includes/language/' . $config_table['language'] . '/email/';
+			if (!$return = @file_get_contents($template_path . $template))
+			{
+				return false;
+			}
+			return $return;
 		}
 	}
 

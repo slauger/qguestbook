@@ -33,29 +33,13 @@
 /**
  * @ignore
  */
-if (!defined('GUESTBOOK'))
-{
+if (!defined('GUESTBOOK')) {
 	die('Hacking attempt');
 	exit;
 }
 
-if (empty($lang) || !is_array($lang))
-{
+if (empty($lang) || !is_array($lang)) {
 	$lang = array();
-}
-
-function email_template($template)
-{
-	global $config_table, $root_dir;
-	if (isset($config_table['language']) && !empty($config_table['language']))
-	{
-		$template_path = $root_dir . 'includes/language/' . $config_table['language'] . '/email/';
-		if (!$return = @file_get_contents($template_path . $template))
-		{
-			return false;
-		}
-		return $return;
-	}
 }
 
 $lang = array_merge($lang, array(
@@ -68,6 +52,7 @@ $lang = array_merge($lang, array(
 	'VIEWS' => 'Aufrufe',
 	'POST' => 'Eintrag',
 	'PAGE' => 'Seite',
+	'PAGES' => 'Seiten',
 	'POSTED' => 'Verfasst am %1s',
 	'MESSAGE' => 'Nachricht',
 	'AUTHOR' => 'Autor',
@@ -82,7 +67,11 @@ $lang = array_merge($lang, array(
 
 	'ERROR' => 'Fehler',
 	'ERROR_MAIN' => 'Bei der Verarbeitung traten folgende Fehler auf.',
-
+	
+	'GUESTBOOK_ENTRY' => 'Vorhandene Gästebucheinträge',
+	'GUESTBOOK_EMPTY' => 'Es befinden sich zurzeit keine Eintraege im Gästebuch oder es wurden noch keine von den Moderatoren freigeschaltet.<br /><br />Um selbst einen neuen Eintrag zu verfassen, klicke bitte %1shier%2s.<br /><br />Ansonsten besuche uns einfach in kürze wieder, vielen Dank.',
+	'SHOW_FROM_TO' => '%s Einträge, %s bis %s, von gesamt %s Einträgen werden angezeigt.',
+	
 	'LOGIN_ERROR_USERNAME' => 'Du hast einen fehlerhaften Benutzernamen angegeben. Bitte prüfe deinen Benutzernamen und versuche es erneut.',
 
 	'PAGE_OF' => 'Seite <strong>%1$d</strong> von <strong>%2$d</strong>',
@@ -97,9 +86,14 @@ $lang = array_merge($lang, array(
 
 	'ERROR_BANNED_IP' => 'Deine IP Adresse wurde vom Administrator gesperrt.',
 	'ERROR_BANNED_USER' => 'Der gewählte Benutzername wurde vom Administrator gesperrt oder ist bereits belegt.',
-
-
 ));
+
+/**
+* AB HIER FOLGT DAS ALTE SYSTEM.
+* DIESES IST NUR NOCH FÜR DIE RÜCKWÄRTSKOMPATIBILITÄT VORHANDEN.
+* BITTE NICHT MEHR VERWENDEN! NUR NOCH GROSSBUCHSTABEN VERWENDEN!
+* ALTERNATIV: EIN WORKAROUND MIT STRTOUPPER();
+*/
 
 /**
   * Informationen für die HTML Ausgabe

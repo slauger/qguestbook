@@ -114,11 +114,10 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Content-Type: text/html");
 
-// Kodierungsklasse starten
-$encode = new qEncode('utf-8', $config_table['charset']);
-
-// Den Sprachparser starten
+// Den Sprach und Kodierungsklassen starten
 $language = new qLanguage();
+$encode = new qEncode($lang['CHARSET'], $config_table['charset']);
+$language->export_language();
 
 //
 // Das neue Templatesystem.

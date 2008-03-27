@@ -25,7 +25,7 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    0.2.4
+* @version    CVS: $Id:$
 * @link       http://www.simlau.net/
 */
 
@@ -36,7 +36,7 @@ define('GUESTBOOK', true);
 $root_dir = './';
 include_once $root_dir . 'includes/common.php';
 
-page_header('Vorhandene Gästebucheinträge');
+page_header($lang['GUESTBOOK_ENTRY']);
 
 // Sind überhaupt Einträge vorhanden?
 $sql = 'SELECT COUNT(`posts_id`)
@@ -48,7 +48,7 @@ $max = $db->sql_result($result, 0);
 
 // Aktive Einträge da?
 if (!$max || $max == 0) {
-	message_die($lang['guestbook_error_desc'], sprintf($lang['guestbook_empty'], '<a href="' . PAGE_POSTING . '">', '</a>'));
+	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 }
 
 // Ein tolles Workaround!
@@ -96,7 +96,7 @@ $result = $db->sql_query($sql);
 
 // Zur Sicherheit überprüfen wir nochmals...
 if (!$posts = $db->sql_numrows($result)) {
-	message_die($lang['guestbook_error_desc'], sprintf($lang['guestbook_empty'], '<a href="' . PAGE_POSTING . '">', '</a>'));
+	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 }
 
 // Navigation und Designmumpitz
@@ -111,15 +111,15 @@ $template->set_filenames(array(
 
 $template->assign_vars(array(
 	'LIMIT' => $limit,
-	'L_AUTHOR' => $lang['author'],
-	'L_POST' => $lang['message'],
-	'L_POSTED' => $lang['posted'],
+	'L_AUTHOR' => $lang['AUTHOR'],
+	'L_POST' => $lang['MESSAGE'],
+	'L_POSTED' => $lang['POSTED'],
 	'L_NEW_POST' => $lang['WRITE_NEW'],
-	'L_SITES' => $lang['pages'],
-	'L_VIEW_POSTS' => $lang['posts_view_all'],
+	'L_SITES' => $lang['PAGES'],
+	'L_VIEW_POSTS' => $lang['GUESTBOOK_ENTRY'],
 	'POSTS_GUESTBOOK' => sprintf($lang['POSTS_COUNT'], $max),
-
-	'POSTS_STATISTIC' => sprintf("%s Einträge, %s bis %s, von gesamt %s Einträgen werden angezeigt.", $posts, $start + 1, $post_limit + 1, $max),
+	'POSTS_STATISTIC' => sprintf($lang['SHOW_FROM_TO'], $posts, $start + 1, $post_limit + 1, $max),
+	
 	'U_PAGE_LAST' => PAGE_INDEX . "?start={$page_last}&amp;limit={$limit}&amp;postorder={$postorder}",
 	'U_PAGE_NEXT' => PAGE_INDEX . "?start={$page_next}&amp;limit={$limit}&amp;postorder={$postorder}",
 
@@ -158,6 +158,7 @@ while ($row = $db->sql_fetchrow($result)) {
 	}
 }
 
+// Yay, it's done!
 $template->pparse('index');
 
 page_footer();
