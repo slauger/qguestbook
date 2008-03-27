@@ -110,6 +110,7 @@ $template->set_filenames(array(
 	'index' => 'index_body.html',
 ));
 
+// Wichtige Variablen
 $template->assign_vars(array(
 	'LIMIT' => $limit,
 	'L_AUTHOR' => $lang['AUTHOR'],
