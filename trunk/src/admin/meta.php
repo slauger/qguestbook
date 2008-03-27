@@ -53,20 +53,23 @@ switch ($mode)
 		$name = (isset($_POST['name'])) ? $_POST['name'] : '';
 		$content = (isset($_POST['content'])) ? $_POST['content'] : '';
 
-		if (empty($name) || empty($content))
-		{
-			message_die('bla', 'foo');
+		if (empty($name) || empty($content)) {
+			message_die($lang['GUESTBOOK_ERROR'], 'foo');
+		}
+		
+		if (isset($_POST['delete'])) {
+			$sql = 'DELETE FROM ' . META_TABLE . '
+				WHERE meta_name = ' . $db->sql_escape($name);
+			$db->sql_query($sql);
+			message_die('yay', 'done');
 		}
 
-		if (!empty($update))
-		{
+		if (!empty($update)) {
 			$sql = 'UPDATE ' . META_TABLE . '
 					SET meta_content = ' . $db->sql_escape($_POST['content']) . '
 					WHERE meta_name = ' . $db->sql_escape($_POST['name']) . '
 				LIMIT 1';
-		}
-		else
-		{
+		} else {
 			$sql = 'INSERT INTO ' . META_TABLE . '
 					(meta_name , meta_content)
 				VALUES (' . $db->sql_escape($name) . ', ' . $db->sql_escape($content) . ');';
@@ -110,8 +113,7 @@ switch ($mode)
 			FROM ' . META_TABLE;
 		$result = $db->sql_query($sql);
 
-		while ($row = $db->sql_fetchrow($result))
-		{
+		while ($row = $db->sql_fetchrow($result)) {
 			$template->assign_block_vars('list.meta_tags', array(
 				'NAME' => decode_html($row['meta_name']),
 				'CONTENT' => decode_html($row['meta_content']),

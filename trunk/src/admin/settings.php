@@ -113,8 +113,8 @@ $enable_rss_no = (!$config_table['newsfeed']) ?  "checked=\"checked\"" : "";
 $debug_info_yes = ($config_table['debug_info']) ?  "checked=\"checked\"" : "";
 $debug_info_no = (!$config_table['debug_info']) ?  "checked=\"checked\"" : "";
 
-$postorder_asc = ($config->get['postorder'] == 'asc') ?  "checked=\"checked\"" : "";
-$postorder_desc = ($config->get['postorder'] == 'desc') ?  "checked=\"checked\"" : "";
+$postorder_asc = ($config->get('postorder') == 'asc') ?  "checked=\"checked\"" : "";
+$postorder_desc = ($config->get('postorder') == 'desc') ?  "checked=\"checked\"" : "";
 
 /**
   * Sprachpakete auslesen
@@ -123,11 +123,14 @@ $language_packs = read_directory($root_dir . 'includes/language/');
 
 foreach ($language_packs['dir'] as $value)
 {
-	$template->assign_block_vars('language', array(
-		'LANGUAGE' => $value,
-		'LANGUAGE_DESC' => parse_language($value),
-		'SELECTED' => ($config_table['language'] == $value) ? " selected=\"selected\"" : "",
-	));
+	if (substr($value, 0, 1) != '.')
+	{
+		$template->assign_block_vars('language', array(
+			'LANGUAGE' => $value,
+			'LANGUAGE_DESC' => parse_language($value),
+			'SELECTED' => ($config->get('language') == $value) ? " selected=\"selected\"" : "",
+		));
+	}
 }
 
 /**
