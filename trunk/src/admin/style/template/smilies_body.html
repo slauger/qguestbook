@@ -1,0 +1,134 @@
+<div align="center">
+	<h3>Smilie Verwaltung</h3>
+	<p>Hier kannst du die installierten Smilies einsehen und bearbeiten.</p>
+</div>
+
+<form action="smilies.php?mode=export" method="post">
+
+<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+	<tr>
+		<th class="thHead" height="25" colspan="5">
+			<b>Smilies Verwaltung</b>
+		</th>
+	</tr>
+	<tr>
+		<td class="row1" valign="top" colspan="5">
+			<span class="gensmall">Hier können sie die Smilies des Gästebuches verwalten.</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="row2" valign="top" align="center">
+			<b>ID</b>
+		</td>
+		<td class="row2" valign="top" align="center">
+			<b>Code</b>
+		</td>
+		<td class="row2" valign="top" align="center">
+			<b>URL</b>
+		</td>
+		<td class="row2" valign="top" align="center">
+			<b>Name</b>
+		</td>
+		<td class="row2" valign="top" align="center">
+			<b>Bearbeiten</b>
+		</td>
+	</tr>
+<!-- BEGIN smilies -->
+	<tr>
+		<td class="row1" valign="top">
+			<div align="center">
+				{smilies.ID}
+			</div>
+		</td>
+		<td class="row1" valign="top">
+			<div align="center">
+				{smilies.CODE}
+			</div>
+		</td>
+		<td class="row1" valign="top">
+			<div align="center">
+				<img src="{smilies.URL}" alt="{smilies.NAME}" />
+			</div>
+		</td>
+		<td class="row1" valign="top">
+			<div align="center">
+				{smilies.NAME}
+			</div>
+		</td>
+		<td class="row1" valign="top">
+			<div align="center">
+				<a href="smilies.php?mode=edit&smilies={smilies.ID}">Bearbeiten</a>
+			</div>
+		</td>
+	</tr>
+<!-- END smilies -->
+</table>
+
+<br /><br  />
+
+<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+	<tr>
+		<th class="thHead" colspan="2">
+			<b>Smilies Paket exportieren</b>
+		</th>
+	</tr>
+	<tr>
+		<td class="row1" valign="top" colspan="2">
+			<span class="gensmall">Hier kannst du ein Smilie Paket exportieren.</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<b>Dateiname:</b>
+		</td>
+		<td class="row2" valign="top" style="vertical-align: middle;">
+			<input type="text" name="file" value="smilies_pack.pak" maxlength="255" size="40" /><br />
+			<span class="gensmall">Dateiname unter dem das exportiere Paket gespeichert wird.</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<b>Exportieren:</b>
+		</td>
+		<td class="row2" valign="top" style="vertical-align: middle;">
+			<input type="submit" name="submit" value="Exportieren" />
+		</td>
+	</tr>
+</table>
+
+<br /><br />
+
+<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+	<tr>
+		<th class="thHead" colspan="2">
+			<b>Smilies Paket importieren</b>
+		</th>
+	</tr>
+	<tr>
+		<td class="row1" valign="top" colspan="2">
+			<span class="gensmall">Hier kannst du ein Smilie Paket importieren.</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<b>Dateiname:</b>
+		</td>
+		<td class="row2" valign="top" style="vertical-align: middle;">
+			<select name="file" size="1">
+			<!-- BEGIN smilie_packs -->
+				<option value="{smilie_packs.FILENAME}">{smilie_packs.FILENAME}</option>
+			<!-- END smilie_packs -->
+			</select><br />
+			<span class="gensmall">Dateiname unter dem das exportiere Paket gespeichert wird.</span>
+		</td>
+	</tr>
+	<tr>
+		<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<b>Importieren:</b>
+		</td>
+		<td class="row2" valign="top" style="vertical-align: middle;">
+			<input type="submit" name="submit" value="Importieren" />
+		</td>
+	</tr>
+</table>
+</form>

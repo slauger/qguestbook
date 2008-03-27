@@ -1,0 +1,34 @@
+<div align="center">
+	<h3>Eintrag kommentieren</h3>
+	<p>Hier kannst du einen Kommentar zu dem gewählten Eintrag abgeben. Es wurden bereits {COMMENTS_EXIST} Kommentare zu diesem Beitrag hinzugefuegt.</p>
+</div>
+
+<!-- BEGIN comments -->
+<center>Kommentar von {comments.COMMENT_USER}: {comments.COMMENT_TEXT}<br /><br /></center>
+<!-- END comments -->
+
+<form action="{U_AMIN_MODERATE}?mode=comment" method="post">
+	<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+		<tr>
+			<th class="thHead" colspan="2">
+				<b>Neuen Kommentar schreiben</b>
+			</th>
+		</tr>
+		<tr>
+			<td class="row1" valign="top">
+				<b>Nachricht:</b></td>
+			<td class="row1" valign="top">
+				<textarea name="textarea" style="width: 400px; " rows="7" cols="25"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+				&nbsp;
+			</td>
+			<td class="row2" valign="top" style="vertical-align: middle;">
+				<input type="hidden" value="{POST_ID}" name="post_id" />
+				<input type="submit" value="Kommentieren" name="submit" />
+			</td>
+		</tr>
+	</table>
+</form>
