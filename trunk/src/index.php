@@ -29,9 +29,6 @@
 * @link       http://www.simlau.net/
 */
 
-/**
- * @ignore
- */
 define('GUESTBOOK', true);
 $root_dir = './';
 include_once $root_dir . 'includes/common.php';

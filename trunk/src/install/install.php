@@ -37,6 +37,76 @@ $qgb_version = '0.2.4';
 require_once $root_dir . 'includes/config/config.php';
 require_once $root_dir . 'includes/database/db_select.php';
 
+// Danach bitte die folgende Zeile löschen
+trigger_error('please edit the install.php before install qgb!', E_USER_WARNING);
+
+// GRUNDKONFIGURATION
+$config = array(
+	'default_lang' => '1',
+	'active' => '1',
+	'description' => 'Das OpenSource Gästebuch',
+	'sitename' => 'qGuestbook',
+	'page_title' => 'Gästebuch',
+	'debug_info' => '1',
+	'show_warnings' => '1',
+	'disable_msg' => 'Das Gästebuch wurde vom Administrator gesperrt!',
+	'submit_msg' => 'Vielen Dank für deinen Eintrag in unserem Gästebuch!',
+	'enable_icq' => '1',
+	'enable_www' => '1',
+	'version' => 'SVN Subversion',
+	'smilies_path' => 'images/smiles/',
+	'posts_site' => '5',
+	'admin_link' => '1',
+	'gzip' => '0',
+	'moderated' => '0',
+	'default_style' => '1',
+	'postorder' => 'desc',
+	'default_dateformat' => 'd.m.Y, H:i',
+	'allow_mark_post' => '1',
+	'charset' => 'UTF-8',
+	'startdate' => '1178009196',
+	'max_lenght' => '55',
+	'success_email_text' => 'Hallo %1s!
+				Vielen Dank fÃ¼r deinen Eintrag in unser GÃ¤stebuch.
+				Schau doch einfach noch mal auf unserer Homepage vorbei. ;)
+				
+				Wichtig: Deine IP Adresse wurde aus SicherheitsgrÃ¼nden gespeichert. Sie ist vom Administrator jederzeit einsehbar.',
+	'email_admin' => 'qGuestbook <admin@example.com',
+	'email_mode' => '1',
+	'smtp_server' => 'smtp.example.com',
+	'smtp_port' => '25',
+	'smtp_helo' => 'Hello, nice to meet you.',
+	'smtp_auth' => 'SMTP',
+	'smtp_user' => '',
+	'smtp_pass' => '',
+	'email_html' => '0',
+	'script_path' => '/qBook/',
+	'success_email' => '0',
+	'success_email_admin' => '0',
+	'success_email_admin_text' => 'Hallo lieber Moderator!
+					
+					Der Benutzer %1s hat sich soeben in dein GÃ¤stebuch eingetragen.
+					
+					Er hat folgendes geschrieben:
+					
+					---
+					%2s
+					---
+					
+					Dein GÃ¤stebuch kannst du unter der folgenden Adresse erreichen: %3s',
+	'sendmail' => '/usr/sbin/sendmail -ti',
+	'success_email_admin_all' => '0',
+	'bbcode' => '1',
+	'smilies' => '1',
+	'rss_limit' => '10',
+	'language' => 'de',
+	'password_length' => '4',
+	'newsfeed' => '1',
+	'https' => '0',
+	'censor_words' => '1',
+	'limit_images' => '3',
+);
+
 error_reporting(E_ALL);
 
 $support = array();
@@ -84,8 +154,7 @@ if (!isset($support[$dbtype]) && empty($support[$dbtype]))
 // Dump vorhanden?
 if (!is_file("dbms/$dbtype/install.sql"))
 {
-	die('<b>FATAL ERROR:</b> SQL-Dump not found!');
-	exit;
+	trigger_error('sql dump not found!', E_USER_ERROR);
 }
 
 echo "<h2>qGuestbook Installation</h2>";
@@ -100,9 +169,9 @@ echo "</ul>";
 
 echo "<h3>Grundkonfiguration</h3>";
 echo "<form action=\"install.php\" method=\"post\">";
-echo "<b>Administrator:<br /><input type=\"text\" name=\"username\" /><br /><br />";
-echo "<b>Passwort:<br /><input type=\"text\" name=\"password\" /><br /><br />";
-echo "<b>E-Mail Adresse:<br /><input type=\"text\" name=\"email\" /><br /><br />";
+//echo "<b>Administrator:<br /><input type=\"text\" name=\"username\" /><br /><br />";
+//echo "<b>Passwort:<br /><input type=\"text\" name=\"password\" /><br /><br />";
+//echo "<b>E-Mail Adresse:<br /><input type=\"text\" name=\"email\" /><br /><br />";
 echo "<b><input type=\"submit\" name=\"install\" value=\"Installieren\" /><br />";
 echo "</form>";
 
@@ -111,9 +180,9 @@ if (isset($_POST['install']))
 	echo "<h3>Installiere</h3>";	
 
 	// Config Update...
-	$config_table = array(
+	/*$config_table = array(
 		'enable_capatcha' => (isset($support['gd'])) ? 1 : 0,
-	);
+	);*/
 
 	$db = new $database_class($dbhost, $dbuser, $dbpasswd, $dbname);
 	
@@ -125,20 +194,28 @@ if (isset($_POST['install']))
 	{
 		if (trim($sql) != "")
 		{
-			if (false) //!$db->sql_query($sql))
+			if (!$db->sql_query($sql))
 			{
 				$error = $db->sql_error();
 				$result[] = htmlspecialchars($sql)."<br /><font style=\"color: red;\"><b>+++ Fehlgeschlagen (".$error['name'].")</b></font><br />";
 			}
 			else
 			{
-					$result[] = htmlspecialchars($sql)."<br /><br /><font style=\"color: green;\"><b>+++ Erfolgreich</b></font>";
+				$result[] = htmlspecialchars($sql)."<br /><br /><font style=\"color: green;\"><b>+++ Erfolgreich</b></font>";
 			}
 		}
 	}
 
 	echo "<h2>Installiere...</h2>";
 	echo implode('<br /><br />', $result);
+	
+	echo "<h2>Update Konfiguration...</h2>";
+	foreach ($config as $key => $value)
+	{
+		// $config->update($key, $value);
+	}
+	
+	echo "fertig!";
 }
 
 ?>

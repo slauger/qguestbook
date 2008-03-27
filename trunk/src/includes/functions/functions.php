@@ -80,15 +80,6 @@ function user_color($userlevel)
 	}
 }
 
-function is_negative($int)
-{
-	if ($int <= 0)
-	{
-		return true;
-	}
-	return false;
-}
-
 function site_microtime_calc($begin, $end)
 {
 	$microtime = round($end - $begin, 3);
@@ -107,29 +98,12 @@ function decode_ip($int_ip)
 	return hexdec($hexipbang[0]). '.' . hexdec($hexipbang[1]) . '.' . hexdec($hexipbang[2]) . '.' . hexdec($hexipbang[3]);
 }
 
-function assign_mutli_vars($array, $prefix = '')
-{
-	global $template;
-	foreach ($array as $key => $value)
-	{
-		if (is_array($value))
-		{
-			assign_multi_vars($value, $key);
-		}
-		else
-		{
-			$template->assign_var(strtoupper($prefix) . '_' . strtoupper($key), $value);
-		}
-	}
-}
-
 function message_die($title, $message)
 {
 	global $root_dir, $template, $db;
 	global $microtime, $config_table, $lang;
 
-	if (!defined('HEADER_INC'))
-	{
+	if (!defined('HEADER_INC')) {
 		include_once $root_dir . 'includes/header.php';
 	}
 
@@ -137,16 +111,14 @@ function message_die($title, $message)
 		'error'=> 'error_body.html'
 	));
 
-	if (defined('ADMIN_PAGE'))
-	{
+	if (defined('ADMIN_PAGE')) {
 		$template->assign_block_vars('page_info_on', array());
 		$template->assign_vars(array(
 			'L_PAGE_TITLE' => $title,
 			'L_PAGE_DESC' => 'Bitte beachte die Nachricht in der untenstehenden Box.',
 		));
 	}
-	else
-	{
+	else {
 		$template->assign_block_vars('page_info_off', array());
 	}
 
@@ -163,10 +135,9 @@ function message_die($title, $message)
 // Wird nicht mehr benutzt!
 function generate_link($mode, $param = array())
 {
-	switch ($mode)
-	{
+	switch ($mode) {
 		case 'return_login':
-
+		
 		break;
 		case 'return_guestbook':
 			#sprintf($lang['click_return_guestbook'], '<a>', '</a>');
@@ -183,18 +154,6 @@ function generate_link($mode, $param = array())
 	return false;
 }
 
-// schlechter code;
-// für abwärts kompatibilität
-function js_back()
-{
-	return generate_link('go_back', array('title' => 'Zurueck', 'text' => 'Zurueck'));
-}
-
-function make_link($title, $url)
-{
-	return sprintf("<a title=\"%s\" href=\"%s\">%s</a>", $title, $url, $title);
-}
-
 function format_date($timestamp = '')
 {
 	global $config_table;
@@ -203,29 +162,17 @@ function format_date($timestamp = '')
 	return $formated;
 }
 
-// Workaround
+// Dummer Funktionsname in 0.2.0
 function encode_html($string)
 {
 	return decode_html($string);
 }
 
+// Dummer Funktionsname in 0.2.0 II
 function decode_html($string)
 {
 	global $encode;
-	// kleiner Fehler im Funktionsnamen...
-	// zur Klasse weiterleiten...
-	// return htmlentities($string, ENT_QUOTES, $config_table['charset']);
 	return $encode->encode_html($string);
-}
-
-
-function get_lang($string)
-{
-	if (isset($lang[$string]))
-	{
-		return decode_html($lang[$string]);
-	}
-	return false;
 }
 
 function smilies($text)
@@ -244,13 +191,8 @@ function smilies($text)
 
 function update_config_table($field, $value)
 {
-	// todo: if ($config_table[$field] == $value) ...
-	// ---> skip query
-	// Um Recourcen zu sparen ;P
-	// edit: ist breits im andern script drin :D
 	global $db, $config_table;
-	if (isset($value))
-	{
+	if (isset($value)) {
 		$sql = 'UPDATE ' . CONFIG_TABLE . '
 			SET config_value = ' . $db->sql_escape($value) . '
 			WHERE config_name = ' . $db->sql_escape($field) . '
@@ -271,15 +213,11 @@ function generate_quote($post_id)
 	$result = $db->sql_query($sql);
 
 	// Fixed in 0.2.4
-	if (!$db->sql_numrows($result))
-	{	
-		// ID nicht existent
-		// Es wird also nicht zitiert
+	if (!$db->sql_numrows($result)) {
 		return "";
 	}
 	
-	while ($row = $db->sql_fetchrow($result))
-	{
+	while ($row = $db->sql_fetchrow($result)) {
 		$quote_text = sprintf("[quote=%s]%s[/quote]\n", $row['posts_name'], $row['posts_text']);
 	}
 
@@ -297,28 +235,28 @@ function bbcode($string)
 
 function real_path()
 {
-	global $config_table;
-	$url = (!$config_table['https']) ? 'http://' : 'https://';
+	global $config;
+	$url = (!$config->get('https')) ? 'http://' : 'https://';
 	$url .= $_SERVER['HTTP_HOST'] . '/';
-	$url .= $config_table['script_path'];
+	$url .= $config->get('script_path');
 	return $url;
 }
 
 //
 // Etwas Hardcore, aber funktioniert :D
-// Fixed a Bug in 0.2.4: "\n"s wurden nicht mit einbezogen
+// Fixed in 0.2.4: "\n"s wurden nicht mit einbezogen;
 // Dies führte dazu, dass zu unrecht gekürzt wurde. ;)
 //
 function words_cut($text)
 {
-	global $config_table;
-	if (!empty($config_table['max_lenght']) && $config_table['max_lenght'] != '0')
+	global $config;
+	if ($config->get('max_lenght') && $config->get('max_lenght') > 0)
 	{
-		if (preg_match_all('#(\b\w{'.$config_table['max_lenght'].',}\b)#', $text, $matches))
+		if (preg_match_all('#(\b\w{'.$config->get('max_lenght').',}\b)#', $text, $matches))
 		{
 			foreach ($matches[0] as $cut_word)
 			{
-				$text = str_replace($cut_word, substr($cut_word, 0, -(strlen($cut_word) - $config_table['max_lenght'])) . '... ', $text);
+				$text = str_replace($cut_word, substr($cut_word, 0, -(strlen($cut_word) - $config->get('max_lenght'))) . '... ', $text);
 			}
 		}
 	}
@@ -327,8 +265,8 @@ function words_cut($text)
 
 function badwords($text)
 {
-	global $db, $config_table;
-	if ($config_table['censor_words'] == '1')
+	global $db, $config;
+	if ($config->get('censor_words') == '1')
 	{
 		$sql = 'SELECT words_id, words_name, words_replacement
 				FROM ' . WORDS_TABLE;
@@ -354,8 +292,7 @@ function banned_email($user_email)
 		WHERE banlist_email = ' . $db->sql_escape($user_email);
 	$result = $db->sql_query($sql);
 
-	if (!$db->sql_numrows($result))
-	{
+	if (!$db->sql_numrows($result)) {
 		return false;
 	}
 	return true;

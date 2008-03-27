@@ -69,6 +69,12 @@
 			<a href="../../qGuestbook/admin/_admin---users.php.html">		users.php
 		</a><br>
 	  </div><br />
+	subpackage <b>common</b><br>  <div class="package">
+			<a href="../../qGuestbook/common/_includes---common---config.php.html">		config.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
 			<a href="../../qGuestbook/config/_includes---config---config.php.html">		config.php
 		</a><br>
@@ -104,6 +110,8 @@
 		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_install.php.html">		functions_install.php
 		</a><br>
+			<a href="../../qGuestbook/functions/_includes---functions---functions_php4.php.html">		functions_php4.php
+		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_sessions.php.html">		functions_sessions.php
 		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_valdiate.php.html">		functions_valdiate.php
@@ -124,9 +132,9 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="../../qGuestbook/template/_styles---soscy---imageset---soscy---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="../../qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
+		</a><br>
+			<a href="../../qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
 			<a href="../../qGuestbook/template/_includes---template---template.php.html">		template.php
 		</a><br>
@@ -135,6 +143,10 @@
       
             <b>Classes:</b><br />
         <div class="package">
+	common<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qStyles.html">qStyles</a><br />
+	  </div>
+  <div class="package">
 	encode<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/encode/qEncode.html">qEncode</a><br />
 	  </div>
   <div class="package">
@@ -186,11 +198,13 @@ Source Location: /includes/language/language.php<br /><br />
     <li><a href="../../qGuestbook/language/qLanguage.html#method__construct">__construct</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodcache_language">cache_language</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodencode_language">encode_language</a></li>
+    <li><a href="../../qGuestbook/language/qLanguage.html#methodexport_language">export_language</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodexport_seralized">export_seralized</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodexport_unserialized">export_unserialized</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodimport_seralized">import_seralized</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodimport_unserialized">import_unserialized</a></li>
     <li><a href="../../qGuestbook/language/qLanguage.html#methodlanguage_info">language_info</a></li>
+    <li><a href="../../qGuestbook/language/qLanguage.html#methodload_template">load_template</a></li>
   </ul>
 </td>
 
@@ -323,7 +337,7 @@ $serialized)</code>
   </div>
   <hr />
 	<a name="methodcache_language"></a>
-	<h3>method cache_language <span class="smalllinenumber">[line 167]</span></h3>
+	<h3>method cache_language <span class="smalllinenumber">[line 166]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -359,7 +373,7 @@ $filename)</code>
   </div>
   <hr />
 	<a name="methodencode_language"></a>
-	<h3>method encode_language <span class="smalllinenumber">[line 122]</span></h3>
+	<h3>method encode_language <span class="smalllinenumber">[line 121]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -383,8 +397,33 @@ $filename)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodexport_language"></a>
+	<h3>method export_language <span class="smalllinenumber">[line 183]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void export_language(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Alias for export_unserialized()<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodexport_seralized"></a>
-	<h3>method export_seralized <span class="smalllinenumber">[line 151]</span></h3>
+	<h3>method export_seralized <span class="smalllinenumber">[line 150]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -409,7 +448,7 @@ $filename)</code>
   </div>
   <hr />
 	<a name="methodexport_unserialized"></a>
-	<h3>method export_unserialized <span class="smalllinenumber">[line 186]</span></h3>
+	<h3>method export_unserialized <span class="smalllinenumber">[line 193]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -434,7 +473,7 @@ $filename)</code>
   </div>
   <hr />
 	<a name="methodimport_seralized"></a>
-	<h3>method import_seralized <span class="smalllinenumber">[line 140]</span></h3>
+	<h3>method import_seralized <span class="smalllinenumber">[line 139]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -470,7 +509,7 @@ $filename)</code>
   </div>
   <hr />
 	<a name="methodimport_unserialized"></a>
-	<h3>method import_unserialized <span class="smalllinenumber">[line 174]</span></h3>
+	<h3>method import_unserialized <span class="smalllinenumber">[line 173]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -506,7 +545,7 @@ $filename)</code>
   </div>
   <hr />
 	<a name="methodlanguage_info"></a>
-	<h3>method language_info <span class="smalllinenumber">[line 205]</span></h3>
+	<h3>method language_info <span class="smalllinenumber">[line 228]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -529,12 +568,48 @@ $filename)</code>
 	
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
+  <hr />
+	<a name="methodload_template"></a>
+	<h3>method load_template <span class="smalllinenumber">[line 216]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void load_template(
+
+$template)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Lädt ein E-Mail Template<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$template</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
 </div><br />
 
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 25 Mar 2008 21:06:50 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Thu, 27 Mar 2008 20:37:47 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

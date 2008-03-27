@@ -28,14 +28,8 @@
 * @version    CVS: $Id: popup.php 15 2008-03-27 13:35:32Z kwhark $
 * @link       http://www.simlau.net/
 */
-//
-// Konstanten
-//
-define('GUESTBOOK', true);
 
-//
-// Dateien includieren
-//
+define('GUESTBOOK', true);
 $root_dir = "./";
 include_once $root_dir . 'includes/common.php';
 

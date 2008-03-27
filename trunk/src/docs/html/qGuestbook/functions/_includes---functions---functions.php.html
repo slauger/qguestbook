@@ -69,6 +69,12 @@
 			<a href="../../qGuestbook/admin/_admin---users.php.html">		users.php
 		</a><br>
 	  </div><br />
+	subpackage <b>common</b><br>  <div class="package">
+			<a href="../../qGuestbook/common/_includes---common---config.php.html">		config.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
 			<a href="../../qGuestbook/config/_includes---config---config.php.html">		config.php
 		</a><br>
@@ -104,6 +110,8 @@
 		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_install.php.html">		functions_install.php
 		</a><br>
+			<a href="../../qGuestbook/functions/_includes---functions---functions_php4.php.html">		functions_php4.php
+		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_sessions.php.html">		functions_sessions.php
 		</a><br>
 			<a href="../../qGuestbook/functions/_includes---functions---functions_valdiate.php.html">		functions_valdiate.php
@@ -124,9 +132,9 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="../../qGuestbook/template/_styles---soscy---imageset---soscy---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="../../qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
+		</a><br>
+			<a href="../../qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
 			<a href="../../qGuestbook/template/_includes---template---template.php.html">		template.php
 		</a><br>
@@ -135,6 +143,10 @@
       
             <b>Classes:</b><br />
         <div class="package">
+	common<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qStyles.html">qStyles</a><br />
+	  </div>
+  <div class="package">
 	encode<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/encode/qEncode.html">qEncode</a><br />
 	  </div>
   <div class="package">
@@ -168,7 +180,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
     <td><b>author:</b>&nbsp;&nbsp;</td><td>Simon Lauger &lt;<a href="mailto:admin@simlau.net">admin@simlau.net</a>&gt;</td>
   </tr>
   <tr>
-    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.2.4</td>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>CVS: $Id: functions.php 24 2008-03-27 18:33:54Z kwhark $</td>
   </tr>
   <tr>
     <td><b>copyright:</b>&nbsp;&nbsp;</td><td>2007-2008 Simon Lauger</td>
@@ -635,21 +647,6 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
     	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
 	</div>
   <hr />
-	<a name="functionparse_imageset"></a>
-	<h3>parse_imageset <span class="smalllinenumber">[line 379]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void parse_imageset(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-
-		    <br /><br />
-	
-    	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
-	</div>
-  <hr />
 	<a name="functionreal_path"></a>
 	<h3>real_path <span class="smalllinenumber">[line 298]</span></h3>
 	<div class="function">
@@ -783,7 +780,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionvaldiate_error"></a>
-	<h3>valdiate_error <span class="smalllinenumber">[line 397]</span></h3>
+	<h3>valdiate_error <span class="smalllinenumber">[line 384]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -815,7 +812,7 @@ $error $error)</code>
 	</div>
   <hr />
 	<a name="functionvalid_var"></a>
-	<h3>valid_var <span class="smalllinenumber">[line 421]</span></h3>
+	<h3>valid_var <span class="smalllinenumber">[line 408]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -871,7 +868,7 @@ $error $error)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 25 Mar 2008 21:06:48 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Thu, 27 Mar 2008 20:37:46 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

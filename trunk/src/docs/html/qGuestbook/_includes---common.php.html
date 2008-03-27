@@ -69,6 +69,12 @@
 			<a href="../qGuestbook/admin/_admin---users.php.html">		users.php
 		</a><br>
 	  </div><br />
+	subpackage <b>common</b><br>  <div class="package">
+			<a href="../qGuestbook/common/_includes---common---config.php.html">		config.php
+		</a><br>
+			<a href="../qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
 			<a href="../qGuestbook/config/_includes---config---config.php.html">		config.php
 		</a><br>
@@ -104,6 +110,8 @@
 		</a><br>
 			<a href="../qGuestbook/functions/_includes---functions---functions_install.php.html">		functions_install.php
 		</a><br>
+			<a href="../qGuestbook/functions/_includes---functions---functions_php4.php.html">		functions_php4.php
+		</a><br>
 			<a href="../qGuestbook/functions/_includes---functions---functions_sessions.php.html">		functions_sessions.php
 		</a><br>
 			<a href="../qGuestbook/functions/_includes---functions---functions_valdiate.php.html">		functions_valdiate.php
@@ -124,9 +132,9 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="../qGuestbook/template/_styles---soscy---imageset---soscy---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="../qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
+		</a><br>
+			<a href="../qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
 			<a href="../qGuestbook/template/_includes---template---template.php.html">		template.php
 		</a><br>
@@ -135,6 +143,10 @@
       
             <b>Classes:</b><br />
         <div class="package">
+	common<br />	    &nbsp;&nbsp;		<a href="../qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="../qGuestbook/common/qStyles.html">qStyles</a><br />
+	  </div>
+  <div class="package">
 	encode<br />	    &nbsp;&nbsp;		<a href="../qGuestbook/encode/qEncode.html">qEncode</a><br />
 	  </div>
   <div class="package">
@@ -168,7 +180,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
     <td><b>author:</b>&nbsp;&nbsp;</td><td>Simon Lauger &lt;<a href="mailto:admin@simlau.net">admin@simlau.net</a>&gt;</td>
   </tr>
   <tr>
-    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.2.4</td>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>CVS: $Id: common.php 24 2008-03-27 18:33:54Z kwhark $</td>
   </tr>
   <tr>
     <td><b>copyright:</b>&nbsp;&nbsp;</td><td>2007-2008 Simon Lauger</td>
@@ -184,26 +196,27 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 <br /><br />
 <h4>Includes:</h4>
 <div class="tags">
-include_once(<a href="../qGuestbook/constants/_includes---constants---constants.php.html">$root_dir.'includes/constants/constants.php'</a>) [line 41]<br />
 include_once(<a href="../qGuestbook/functions/_includes---functions---functions.php.html">$root_dir.'includes/functions/functions.php'</a>) [line 44]<br />
-include_once(<a href="../qGuestbook/config/_includes---config---config.php.html">$root_dir.'includes/config/config.php'</a>) [line 38]<br />
-include_once(<a href="../qGuestbook/functions/_includes---functions---functions_display.php.html">$root_dir.'includes/functions/functions_display.php'</a>) [line 46]<br />
-include_once(<a href="../qGuestbook/functions/_includes---functions---functions_sessions.php.html">$root_dir.'includes/functions/functions_sessions.php'</a>) [line 47]<br />
-include_once(<a href="../qGuestbook/functions/_includes---functions---functions_acp.php.html">$root_dir.'includes/functions/functions_acp.php'</a>) [line 171]<br />
 include_once(<a href="../qGuestbook/functions/_includes---functions---functions_valdiate.php.html">$root_dir.'includes/functions/functions_valdiate.php'</a>) [line 45]<br />
-include_once(<a href="../qGuestbook/sessions/_includes---sessions---sessions.php.html">$root_dir.'includes/sessions/sessions.php'</a>) [line 170]<br />
-include_once($style_imageset.'/imageset.php') [line 153]<br />
+include_once(<a href="../qGuestbook/functions/_includes---functions---functions_display.php.html">$root_dir.'includes/functions/functions_display.php'</a>) [line 46]<br />
 include_once(<a href="../qGuestbook/functions/_includes---functions---functions_email.php.html">$root_dir.'includes/functions/functions_email.php'</a>) [line 54]<br />
-include_once(<a href="../StringParser_BBCode/_includes---bbcode---bbcode.php.html">$root_dir.'includes/bbcode/bbcode.php'</a>) [line 89]<br />
-include_once($style_imageset.'/imageset.php') [line 136]<br />
-require_once(<a href="../qGuestbook/database/_includes---database---db_select.php.html">$root_dir.'includes/database/db_select.php'</a>) [line 59]<br />
-require_once(<a href="../qGuestbook/template/_includes---template---template.php.html">$root_dir.'includes/template/template.php'</a>) [line 60]<br />
-require_once(<a href="../qGuestbook/language/_includes---language---language.php.html">$root_dir.'includes/language/language.php'</a>) [line 61]<br />
-require_once(<a href="../htmlMimmeMail5/_includes---email---htmlMimeMail5.php.html">$root_dir.'includes/email/htmlMimeMail5.php'</a>) [line 56]<br />
+include_once(<a href="../qGuestbook/constants/_includes---constants---constants.php.html">$root_dir.'includes/constants/constants.php'</a>) [line 41]<br />
+include_once(<a href="../qGuestbook/functions/_includes---functions---functions_sessions.php.html">$root_dir.'includes/functions/functions_sessions.php'</a>) [line 47]<br />
+include_once(<a href="../qGuestbook/functions/_includes---functions---functions_acp.php.html">$root_dir.'includes/functions/functions_acp.php'</a>) [line 110]<br />
+include_once(<a href="../qGuestbook/config/_includes---config---config.php.html">$root_dir.'includes/config/config.php'</a>) [line 38]<br />
+include_once(<a href="../StringParser_BBCode/_includes---bbcode---bbcode.php.html">$root_dir.'includes/bbcode/bbcode.php'</a>) [line 84]<br />
+include_once(<a href="../qGuestbook/sessions/_includes---sessions---sessions.php.html">$root_dir.'includes/sessions/sessions.php'</a>) [line 109]<br />
+include_once(<a href="../qGuestbook/functions/_includes---functions---functions_php4.php.html">$root_dir.'includes/functions/functions_php4.php'</a>) [line 69]<br />
 require_once(<a href="../htmlMimmeMail5/_includes---email---mimePart.php.html">$root_dir.'includes/email/mimePart.php'</a>) [line 55]<br />
-require_once(<a href="../qGuestbook/encode/_includes---encode---encode.php.html">$root_dir.'includes/encode/encode.php'</a>) [line 62]<br />
-require_once(<a href="../StringParser_BBCode/_includes---bbcode---stringparser_bbcode.class.php.html">$root_dir.'includes/bbcode/stringparser_bbcode.class.php'</a>) [line 51]<br />
+require_once(<a href="../qGuestbook/common/_includes---common---config.php.html">$root_dir.'includes/common/config.php'</a>) [line 59]<br />
+require_once(<a href="../qGuestbook/database/_includes---database---db_select.php.html">$root_dir.'includes/database/db_select.php'</a>) [line 60]<br />
 require_once(<a href="../StringParser_BBCode/_includes---bbcode---stringparser.class.php.html">$root_dir.'includes/bbcode/stringparser.class.php'</a>) [line 50]<br />
+require_once(<a href="../qGuestbook/template/_includes---template---template.php.html">$root_dir.'includes/template/template.php'</a>) [line 61]<br />
+require_once(<a href="../qGuestbook/language/_includes---language---language.php.html">$root_dir.'includes/language/language.php'</a>) [line 62]<br />
+require_once(<a href="../qGuestbook/encode/_includes---encode---encode.php.html">$root_dir.'includes/encode/encode.php'</a>) [line 63]<br />
+require_once(<a href="../qGuestbook/common/_includes---common---styles.php.html">$root_dir.'includes/common/styles.php'</a>) [line 64]<br />
+require_once(<a href="../htmlMimmeMail5/_includes---email---htmlMimeMail5.php.html">$root_dir.'includes/email/htmlMimeMail5.php'</a>) [line 56]<br />
+require_once(<a href="../StringParser_BBCode/_includes---bbcode---stringparser_bbcode.class.php.html">$root_dir.'includes/bbcode/stringparser_bbcode.class.php'</a>) [line 51]<br />
 </div>
 <br /><br />
 <br /><br />
@@ -211,7 +224,7 @@ require_once(<a href="../StringParser_BBCode/_includes---bbcode---stringparser.c
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 25 Mar 2008 21:06:48 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Thu, 27 Mar 2008 20:37:45 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

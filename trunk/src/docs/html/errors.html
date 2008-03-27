@@ -36,6 +36,7 @@
 
 <a href="#Post-parsing">Post-parsing</a><br>
 <a href="#common.php">common.php</a><br>
+<a href="#config.php">config.php</a><br>
 <a href="#constants.php">constants.php</a><br>
 <a href="#database.php">database.php</a><br>
 <a href="#db_select.php">db_select.php</a><br>
@@ -46,6 +47,7 @@
 <a href="#functions_display.php">functions_display.php</a><br>
 <a href="#functions_email.php">functions_email.php</a><br>
 <a href="#functions_install.php">functions_install.php</a><br>
+<a href="#functions_php4.php">functions_php4.php</a><br>
 <a href="#functions_sessions.php">functions_sessions.php</a><br>
 <a href="#functions_valdiate.php">functions_valdiate.php</a><br>
 <a href="#htmlMimeMail5.php">htmlMimeMail5.php</a><br>
@@ -70,113 +72,121 @@
 <a href="#sqlite.php">sqlite.php</a><br>
 <a href="#stringparser.class.php">stringparser.class.php</a><br>
 <a href="#stringparser_bbcode.class.php">stringparser_bbcode.class.php</a><br>
+<a href="#styles.php">styles.php</a><br>
 <a href="#template.php">template.php</a><br>
 <a href="#users.php">users.php</a><br>
 <a name="Post-parsing"></a>
 <h1>Post-parsing</h1>
 <h2>Warnings:</h2><br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/install/install.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/posting.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/posting.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/index.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/login.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/login.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/newsfeed.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/install/install.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/database.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/newsfeed.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/users.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/index.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/index.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/database.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/smilies.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/smilies.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/settings.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/settings.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/index.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/index.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/database.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/database.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/meta.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/meta.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/users.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/users.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/email.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/email.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/phpinfo.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/phpinfo.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "GUESTBOOK" in file /var/www/qgb/quanta/project/qGuestbook/admin/moderate.php will be ignored.
+duplicate define element "GUESTBOOK" in file /home/simon/.arbeitskopie/qguestbook/src/admin/moderate.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/moderate.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/email.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/email.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/users.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/phpinfo.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/phpinfo.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/email.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/moderate.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/settings.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/email.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/smilies.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/settings.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/includes/sessions/sessions.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/smilies.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/login.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/includes/sessions/sessions.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/users.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/login.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/moderate.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/users.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/index.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/moderate.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/settings.php will be ignored.
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/index.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/phpinfo.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/settings.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "ADMIN_PAGE" in file /var/www/qgb/quanta/project/qGuestbook/admin/smilies.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/phpinfo.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/admin/database.php will be ignored.
+duplicate define element "ADMIN_PAGE" in file /home/simon/.arbeitskopie/qguestbook/src/admin/smilies.php will be ignored.
+Use an @ignore tag on the original if you want this case to be documented.<br>
+<b>Warning</b> - 
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/admin/database.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="bbcode.php"></a>
 <h1>bbcode.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 31</b> - package qGuestbook is already in category qGuestbook, will now replace with category Guestbook<br>
+<b>Warning on line 31</b> - package qGuestbook is already in category default, will now replace with category Guestbook<br>
 <b>Warning on line 44</b> - Page-level DocBlock precedes "function convertlinebreaks", use another DocBlock to document the source element<br>
 <a name="common.php"></a>
 <h1>common.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 37</b> - Page-level DocBlock precedes "include_once $root_dir.'includes/config/config.php'", use another DocBlock to document the source element<br>
+<a name="config.php"></a>
+<h1>config.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 38</b> - DocBlock would be page-level, but precedes class "qConfig", use another DocBlock to document the file<br>
 <a name="constants.php"></a>
 <h1>constants.php</h1>
 <h2>Warnings:</h2><br>
@@ -218,6 +228,10 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <h1>functions_install.php</h1>
 <h2>Warnings:</h2><br>
 <b>Warning on line 54</b> - Page-level DocBlock precedes "function write_config", use another DocBlock to document the source element<br>
+<a name="functions_php4.php"></a>
+<h1>functions_php4.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 41</b> - Page-level DocBlock precedes "function file_put_contents", use another DocBlock to document the source element<br>
 <a name="functions_sessions.php"></a>
 <h1>functions_sessions.php</h1>
 <h2>Warnings:</h2><br>
@@ -244,10 +258,11 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="imageset.php"></a>
 <h1>imageset.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 32</b> - package qGuestbook is already in category qGuestbook, will now replace with category Guestbook<br>
+<b>Warning on line 32</b> - package qGuestbook is already in category default, will now replace with category Guestbook<br>
 <a name="index.php"></a>
 <h1>index.php</h1>
 <h2>Warnings:</h2><br>
+<b>Warning on line 31</b> - Page-level DocBlock precedes "define GUESTBOOK", use another DocBlock to document the source element<br>
 <b>Warning on line 33</b> - Page-level DocBlock precedes "define GUESTBOOK", use another DocBlock to document the source element<br>
 <a name="install.php"></a>
 <h1>install.php</h1>
@@ -285,7 +300,7 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="popup.php"></a>
 <h1>popup.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 33</b> - Page-level DocBlock precedes "define GUESTBOOK", use another DocBlock to document the source element<br>
+<b>Warning on line 31</b> - Page-level DocBlock precedes "define GUESTBOOK", use another DocBlock to document the source element<br>
 <a name="postgresql.php"></a>
 <h1>postgresql.php</h1>
 <h2>Warnings:</h2><br>
@@ -302,8 +317,9 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="sessions.php"></a>
 <h1>sessions.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 50</b> - 
-duplicate define element "REQUIRED_AUTH_LEVEL" in file /var/www/qgb/quanta/project/qGuestbook/includes/sessions/sessions.php will be ignored.
+<b>Warning on line 41</b> - Page-level DocBlock precedes "define REQUIRED_AUTH_LEVEL", use another DocBlock to document the source element<br>
+<b>Warning on line 43</b> - 
+duplicate define element "REQUIRED_AUTH_LEVEL" in file /home/simon/.arbeitskopie/qguestbook/src/includes/sessions/sessions.php will be ignored.
 Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="settings.php"></a>
 <h1>settings.php</h1>
@@ -321,17 +337,21 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <a name="sqlite.php"></a>
 <h1>sqlite.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 32</b> - package qGuestbook is already in category qGuestbook, will now replace with category Guestbook<br>
+<b>Warning on line 32</b> - package qGuestbook is already in category default, will now replace with category Guestbook<br>
 <b>Warning on line 35</b> - DocBlock would be page-level, but precedes class "qDatabase_SQLite", use another DocBlock to document the file<br>
 <a name="stringparser.class.php"></a>
 <h1>stringparser.class.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 40</b> - package qGuestbook is already in category Guestbook, will now replace with category qGuestbook<br>
+<b>Warning on line 40</b> - package qGuestbook is already in category Guestbook, will now replace with category default<br>
 <a name="stringparser_bbcode.class.php"></a>
 <h1>stringparser_bbcode.class.php</h1>
 <h2>Warnings:</h2><br>
-<b>Warning on line 33</b> - package qGuestbook is already in category Guestbook, will now replace with category qGuestbook<br>
 <b>Warning on line 33</b> - Page-level DocBlock precedes "require_once dirname(__FILE__).'/stringparser.class.php'", use another DocBlock to document the source element<br>
+<b>Warning on line 33</b> - package qGuestbook is already in category Guestbook, will now replace with category default<br>
+<a name="styles.php"></a>
+<h1>styles.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 38</b> - DocBlock would be page-level, but precedes class "qStyles", use another DocBlock to document the file<br>
 <a name="template.php"></a>
 <h1>template.php</h1>
 <h2>Warnings:</h2><br>
@@ -342,7 +362,7 @@ Use an @ignore tag on the original if you want this case to be documented.<br>
 <b>Warning on line 35</b> - Page-level DocBlock precedes "define GUESTBOOK", use another DocBlock to document the source element<br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 25 Mar 2008 21:06:52 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Thu, 27 Mar 2008 20:37:50 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

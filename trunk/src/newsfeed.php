@@ -30,27 +30,23 @@
 */
 
 define('GUESTBOOK', true);
-
 $root_dir = './';
 include_once $root_dir . 'includes/common.php';
 
-if ($config_table['newsfeed'] != 1)
-{
+if (!$config->get('newsfeed')) {
 	message_die('RSS Feed nicht verfügbar!', 'Diese Funktion wurde vom Administrator deaktiviert!');
 }
 
 header('Cache-Control: private, pre-check=0, post-check=0, max-age=0');
 header('Expires: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
 header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-header('Content-Type: text/xml; charset=' . $config_table['charset']);
-
-$sort_by = (!$config_table['posts_sort_new']) ? 'ASC' :  'DESC';
+header('Content-Type: text/xml; charset=' . $config->get('charset'));
 
 $sql = 'SELECT posts_id, posts_name, posts_email, posts_ip, posts_www, posts_icq, posts_text, posts_date, posts_active, posts_hide_email, posts_marked
 	FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . $db->sql_escape(POST_ACTIVE) . '
-	ORDER BY posts_id ' . $sort_by . '
-	LIMIT ' . $db->sql_escape($config_table['rss_limit']);
+	ORDER BY posts_id ' . strtoupper($config->get('postorder')) . '
+	LIMIT ' . $db->sql_escape($config->get('rss_limit'));
 $result = $db->sql_query($sql);
 
 $template->set_filenames(array(

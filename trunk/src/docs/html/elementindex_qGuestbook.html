@@ -69,6 +69,12 @@
 			<a href="qGuestbook/admin/_admin---users.php.html">		users.php
 		</a><br>
 	  </div><br />
+	subpackage <b>common</b><br>  <div class="package">
+			<a href="qGuestbook/common/_includes---common---config.php.html">		config.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
 			<a href="qGuestbook/config/_includes---config---config.php.html">		config.php
 		</a><br>
@@ -104,6 +110,8 @@
 		</a><br>
 			<a href="qGuestbook/functions/_includes---functions---functions_install.php.html">		functions_install.php
 		</a><br>
+			<a href="qGuestbook/functions/_includes---functions---functions_php4.php.html">		functions_php4.php
+		</a><br>
 			<a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html">		functions_sessions.php
 		</a><br>
 			<a href="qGuestbook/functions/_includes---functions---functions_valdiate.php.html">		functions_valdiate.php
@@ -124,9 +132,9 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="qGuestbook/template/_styles---soscy---imageset---soscy---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
+		</a><br>
+			<a href="qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
 			<a href="qGuestbook/template/_includes---template---template.php.html">		template.php
 		</a><br>
@@ -135,6 +143,10 @@
       
             <b>Classes:</b><br />
         <div class="package">
+	common<br />	    &nbsp;&nbsp;		<a href="qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qStyles.html">qStyles</a><br />
+	  </div>
+  <div class="package">
 	encode<br />	    &nbsp;&nbsp;		<a href="qGuestbook/encode/qEncode.html">qEncode</a><br />
 	  </div>
   <div class="package">
@@ -183,6 +195,10 @@
 		<h2>_</h2>
 		<dl>
 							<dt><b>__construct</b></dt>
+				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#method__construct">qStyles::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#method__construct">qConfig::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
 				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#method__construct">qDatabase_SQLite::__construct()</a></dd>
 							<dt><b>__construct</b></dt>
 				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#method__construct">qDatabase_PostgreSQL::__construct()</a></dd>
@@ -204,6 +220,8 @@
 		<dl>
 							<dt><b>ADMIN_PAGE</b></dt>
 				<dd>in file meta.php, constant <a href="qGuestbook/admin/_admin---meta.php.html#defineADMIN_PAGE">ADMIN_PAGE</a></dd>
+							<dt><b>add</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodadd">qConfig::add()</a></dd>
 							<dt><b>ABUSE_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineABUSE_TABLE">ABUSE_TABLE</a></dd>
 							<dt><b>assign_mutli_vars</b></dt>
@@ -246,6 +264,8 @@
 		<dl>
 							<dt><b>common.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/_includes---common.php.html">common.php</a></dd>
+							<dt><b>config.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---config.php.html">config.php</a></dd>
 							<dt><b>config.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/config/_includes---config---config.php.html">config.php</a></dd>
 							<dt><b>COLOR_ADMINISTRATOR</b></dt>
@@ -314,6 +334,8 @@
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionencode_ip">encode_ip()</a></dd>
 							<dt><b>encode_language</b></dt>
 				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodencode_language">qLanguage::encode_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Das komplette Sprachpaket in einen anderen  Zeichensatz konvertieren.</dd>
+							<dt><b>export_language</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodexport_language">qLanguage::export_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Alias for export_unserialized()</dd>
 							<dt><b>export_seralized</b></dt>
 				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodexport_seralized">qLanguage::export_seralized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Macht das serialisierte Sprachpaket global verfügbar.</dd>
 							<dt><b>export_unserialized</b></dt>
@@ -328,6 +350,8 @@
 		<dl>
 							<dt><b>footer.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/_includes---footer.php.html">footer.php</a></dd>
+							<dt><b>file_put_contents</b></dt>
+				<dd>in file functions_php4.php, function <a href="qGuestbook/functions/_includes---functions---functions_php4.php.html#functionfile_put_contents">file_put_contents()</a></dd>
 							<dt><b>format_date</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionformat_date">format_date()</a></dd>
 							<dt><b>format_email_adress</b></dt>
@@ -342,6 +366,8 @@
 				<dd>procedural page <a href="qGuestbook/functions/_includes---functions---functions_email.php.html">functions_email.php</a></dd>
 							<dt><b>functions_install.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/functions/_includes---functions---functions_install.php.html">functions_install.php</a></dd>
+							<dt><b>functions_php4.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/functions/_includes---functions---functions_php4.php.html">functions_php4.php</a></dd>
 							<dt><b>functions_sessions.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html">functions_sessions.php</a></dd>
 							<dt><b>functions_valdiate.php</b></dt>
@@ -356,6 +382,10 @@
 		<dl>
 							<dt><b>GUESTBOOK</b></dt>
 				<dd>in file popup.php, constant <a href="qGuestbook/_popup.php.html#defineGUESTBOOK">GUESTBOOK</a></dd>
+							<dt><b>get</b></dt>
+				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodget">qStyles::get()</a></dd>
+							<dt><b>get</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodget">qConfig::get()</a></dd>
 							<dt><b>get_encoding</b></dt>
 				<dd>in file encode.php, method <a href="qGuestbook/encode/qEncode.html#methodget_encoding">qEncode::get_encoding()</a></dd>
 							<dt><b>generate_link</b></dt>
@@ -392,6 +422,8 @@
 		<dl>
 							<dt><b>header.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/_includes---header.php.html">header.php</a></dd>
+							<dt><b>htmlentities</b></dt>
+				<dd>in file functions_php4.php, function <a href="qGuestbook/functions/_includes---functions---functions_php4.php.html#functionhtmlentities">htmlentities()</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -404,6 +436,8 @@
 				<dd>procedural page <a href="qGuestbook/_index.php.html">index.php</a></dd>
 							<dt><b>index.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---index.php.html">index.php</a></dd>
+							<dt><b>img</b></dt>
+				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodimg">qStyles::img()</a></dd>
 							<dt><b>icq_url</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionicq_url">icq_url()</a></dd>
 							<dt><b>is_negative</b></dt>
@@ -417,7 +451,7 @@
 							<dt><b>imageset.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/template/_admin---style---imageset---imageset.php.html">imageset.php</a></dd>
 							<dt><b>imageset.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/template/_styles---soscy---imageset---soscy---imageset.php.html">imageset.php</a></dd>
+				<dd>procedural page <a href="qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">imageset.php</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -454,6 +488,8 @@
 				<dd>procedural page <a href="qGuestbook/language/_includes---language---language.php.html">language.php</a></dd>
 							<dt><b>language_info</b></dt>
 				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodlanguage_info">qLanguage::language_info()</a></dd>
+							<dt><b>load_template</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodload_template">qLanguage::load_template()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt ein E-Mail Template</dd>
 							<dt><b>loadfile</b></dt>
 				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodloadfile">qTemplate::loadfile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;If not already done, load the file for the given handle and populate  the uncompiled_code[] hash with its code. Do not compile.</dd>
 					</dl>
@@ -502,6 +538,8 @@
 				<dd>procedural page <a href="qGuestbook/_posting.php.html">posting.php</a></dd>
 							<dt><b>phpinfo.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---phpinfo.php.html">phpinfo.php</a></dd>
+							<dt><b>parse</b></dt>
+				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodparse">qStyles::parse()</a></dd>
 							<dt><b>PAGE_ABUSE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#definePAGE_ABUSE">PAGE_ABUSE</a></dd>
 							<dt><b>PAGE_ADMIN_DATABASE</b></dt>
@@ -554,8 +592,6 @@
 				<dd>in file functions_display.php, function <a href="qGuestbook/functions/_includes---functions---functions_display.php.html#functionpage_header">page_header()</a></dd>
 							<dt><b>page_title</b></dt>
 				<dd>in file functions_display.php, function <a href="qGuestbook/functions/_includes---functions---functions_display.php.html#functionpage_title">page_title()</a></dd>
-							<dt><b>parse_imageset</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionparse_imageset">parse_imageset()</a></dd>
 							<dt><b>parse_language</b></dt>
 				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionparse_language">parse_language()</a></dd>
 							<dt><b>pparse</b></dt>
@@ -568,6 +604,10 @@
 	<div>
 		<h2>q</h2>
 		<dl>
+							<dt><b>qConfig</b></dt>
+				<dd>in file config.php, class <a href="qGuestbook/common/qConfig.html">qConfig</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qStyles</b></dt>
+				<dd>in file styles.php, class <a href="qGuestbook/common/qStyles.html">qStyles</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
 							<dt><b>qDatabase_MySQL</b></dt>
 				<dd>in file mysql.php, class <a href="qGuestbook/database/qDatabase_MySQL.html">qDatabase_MySQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
 							<dt><b>qDatabase_PostgreSQL</b></dt>
@@ -590,6 +630,10 @@
 		<dl>
 							<dt><b>REQUIRED_AUTH_LEVEL</b></dt>
 				<dd>in file meta.php, constant <a href="qGuestbook/admin/_admin---meta.php.html#defineREQUIRED_AUTH_LEVEL">REQUIRED_AUTH_LEVEL</a></dd>
+							<dt><b>refresh</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodrefresh">qConfig::refresh()</a></dd>
+							<dt><b>remove</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodremove">qConfig::remove()</a></dd>
 							<dt><b>read_directory</b></dt>
 				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionread_directory">read_directory()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Gibt ein Array mit den Dateinamen in $directory zurück</dd>
 							<dt><b>real_path</b></dt>
@@ -606,6 +650,8 @@
 				<dd>procedural page <a href="qGuestbook/admin/_admin---settings.php.html">settings.php</a></dd>
 							<dt><b>smilies.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---smilies.php.html">smilies.php</a></dd>
+							<dt><b>styles.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---styles.php.html">styles.php</a></dd>
 							<dt><b>sample.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/config/_includes---config---sample.php.html">sample.php</a></dd>
 							<dt><b>SMILIES_TABLE</b></dt>
@@ -736,6 +782,8 @@
 		<dl>
 							<dt><b>users.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---users.php.html">users.php</a></dd>
+							<dt><b>update</b></dt>
+				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodupdate">qConfig::update()</a></dd>
 							<dt><b>USERS_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineUSERS_TABLE">USERS_TABLE</a></dd>
 							<dt><b>USER_ADMINISTRATOR</b></dt>
@@ -809,7 +857,7 @@
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 25 Mar 2008 21:06:47 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Thu, 27 Mar 2008 20:37:45 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>
