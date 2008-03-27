@@ -25,7 +25,7 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    CVS: $Id$
+* @version    CVS: $Revision$
 * @link       http://www.simlau.net/
 */
 
@@ -105,6 +105,7 @@ $page_last = $start - $limit;
 $post_limit = $start + $limit;
 $post_limit--;
 
+// Template wird geladen
 $template->set_filenames(array(
 	'index' => 'index_body.html',
 ));
