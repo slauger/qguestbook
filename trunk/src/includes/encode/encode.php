@@ -37,7 +37,7 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    0.2.4
+* @version    CVS: $Id$
 * @link       http://www.simlau.net/
 * @since      File available since Release 0.2.2
 */

@@ -26,18 +26,16 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    0.2.4
+* @version    CVS: $Id$
 * @link       http://www.simlau.net/
 */
 
-if (!defined('GUESTBOOK'))
-{
+if (!defined('GUESTBOOK')) {
 	die('Hacking');
 	exit;
 }
 
-if (!isset($template_images) || !is_array($template_images))
-{
+if (!isset($template_images) || !is_array($template_images)) {
 	$template_images = array();
 }
 
@@ -49,7 +47,7 @@ $imageset = array_merge($template_images, array(
 	'IMAGE_DELETE_POST' => '%1s/delete.gif',
 ));
 
-// Wir bleiben kompatibel ;D
+// Wir bleiben kompatibel zu alten Versionen ;D
 $template_images = $imageset;
 
 ?>
