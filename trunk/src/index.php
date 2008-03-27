@@ -101,7 +101,9 @@ if (!$posts = $db->sql_numrows($result)) {
 
 // Navigation und Designmumpitz
 $page_next = $start + $limit;
+$page_next = ($page_next > $max) ? $page_next = $max - $limit : $page_next;
 $page_last = $start - $limit;
+$page_last = ($page_last <= 0) ? $page_last = 0 : $page_last;
 $post_limit = $start + $limit;
 $post_limit--;
 
