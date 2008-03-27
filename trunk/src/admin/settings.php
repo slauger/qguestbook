@@ -113,6 +113,9 @@ $enable_rss_no = (!$config_table['newsfeed']) ?  "checked=\"checked\"" : "";
 $debug_info_yes = ($config_table['debug_info']) ?  "checked=\"checked\"" : "";
 $debug_info_no = (!$config_table['debug_info']) ?  "checked=\"checked\"" : "";
 
+$postorder_asc = ($config->get['postorder'] == 'asc') ?  "checked=\"checked\"" : "";
+$postorder_desc = ($config->get['postorder'] == 'desc') ?  "checked=\"checked\"" : "";
+
 /**
   * Sprachpakete auslesen
   */
@@ -163,6 +166,8 @@ $template->assign_vars(array(
 	'RSS_LIMIT' => $config_table['rss_limit'],
 	'LIMIT_IMAGES' => $config_table['limit_images'],
 
+	'POSTORDER_ASC' => $postorder_asc,
+	'POSTORDER_DESC' => $postorder_desc,
 	'DEBUG_INFO_YES' => $debug_info_yes,
 	'DEBUG_INFO_NO' => $debug_info_no,
 	'RSS_YES' => $enable_rss_yes,

@@ -51,14 +51,6 @@ if (!$max || $max == 0) {
 	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 }
 
-// Ein tolles Workaround!
-// Da Config Table Einträge noch falsch
-if ($config_table['posts_sort_new'] == 1) {
-	$config_table['postorder'] = 'desc'; 
-} else {
-	$config_table['postorder'] = 'asc'; 
-}
-
 // Variablen gesetzt?
 $start = (isset($_GET['start']) && !empty($_GET['start'])) ? $_GET['start'] : 0;
 $limit = (isset($_GET['limit']) && !empty($_GET['limit'])) ? $_GET['limit'] : $config_table['posts_site'];

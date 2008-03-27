@@ -376,19 +376,6 @@ function banned_ip($user_ip)
 	return true;
 }
 
-function parse_imageset()
-{
-	global $style_imageset, $imageset;
-	global $language, $template;
-	foreach ($imageset as $image => $path)
-	{
-		$parsed_image = sprintf($path, $language->language_info());
-		$template->assign_vars(array(
-			$image => $style_imageset . $parsed_image,
-		));
-	}
-}
-
 /**
   * function valdiate_error
   * @param $error Fehler ID
