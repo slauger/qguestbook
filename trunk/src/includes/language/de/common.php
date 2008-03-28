@@ -64,6 +64,7 @@ $lang = array_merge($lang, array(
 	'ACTIVE' => 'aktiv',
 	'INACTIVE' => 'inaktiv',
 	'PASSWORD' => 'Passwort',
+	'IMAGE' => 'Grafik',
 
 	'ERROR' => 'Fehler',
 	'ERROR_MAIN' => 'Bei der Verarbeitung traten folgende Fehler auf.',

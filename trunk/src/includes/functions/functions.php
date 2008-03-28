@@ -333,6 +333,8 @@ function valdiate_error($error)
 		case 'icq':
 			return 'Deine angegebene ICQ UIN ensrpicht nicht den allgemeinen Standarts!';
 		break;
+		case 'flood':
+			return 'Du kannst nicht so schnell hintereinander Beiträge schreiben!';
 		default:
 			return 'Unbekannter Fehler ist aufgetreten, bitte überprüfe deine Eingaben!';
 	}

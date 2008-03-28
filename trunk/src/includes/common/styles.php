@@ -97,8 +97,9 @@ Class qStyles
 		include_once $this->path['imageset'] . '/imageset.php';
 		
 		foreach ($imageset as $image => $path) {
+			$this->images[$image] = $this->path['imageset'] . '/' . sprintf($path, $config->get('language'));
 			$template->assign_vars(array(
-				$image => $this->path['imageset'] . '/' . sprintf($path, $config->get('language')),
+				$image => $this->images[$image],
 			));
 		}
 		
@@ -109,7 +110,14 @@ Class qStyles
 	
 	public function img($img, $alt)
 	{
-		
+		global $language;
+		if (!isset($this->images[$img])) {
+			return false;
+		}
+		if (!$language->get($alt)) {
+			$alt = 'IMAGE';
+		}
+		return sprintf("<img src=\"%1s\" alt=\"%2s\" />", $this->images[$img], $language->get($alt));
 	}
 
 	public function get($name)

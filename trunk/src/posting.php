@@ -91,7 +91,21 @@ switch ($mode) {
 				break;
 			}
 		}
-
+		
+		// echo (1206716617 - time()) * -1;
+		// Added in 0.2.4
+		// Simple Floodprotection
+		$sql = 'SELECT posts_id
+			FROM ' . POSTS_TABLE . '
+				WHERE posts_ip = ' . $db->sql_escape($user_ip) . '
+				AND (' . time() . ' - posts_date) < ' . $config->get('flood_timeout');
+		$result = $db->sql_query($sql);
+		
+		if ($db->sql_numrows($result)) {
+			$valdiate_error = 'flood';
+			break;
+		}
+		
 		// Beitrag in die Moderations-Warteschlange stellen?
 		$active = (isset($config_table['moderated']) && $config_table['moderated'] == 1) ? POST_WAIT_LIST : POST_ACTIVE;
 
