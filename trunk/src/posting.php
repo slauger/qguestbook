@@ -92,9 +92,7 @@ switch ($mode) {
 			}
 		}
 		
-		// echo (1206716617 - time()) * -1;
-		// Added in 0.2.4
-		// Simple Floodprotection
+		// Handelt es sich hier etwa um Flooding?
 		$sql = 'SELECT posts_id
 			FROM ' . POSTS_TABLE . '
 				WHERE posts_ip = ' . $db->sql_escape($user_ip) . '
@@ -102,6 +100,7 @@ switch ($mode) {
 		$result = $db->sql_query($sql);
 		
 		if ($db->sql_numrows($result)) {
+			// Ja, also Fehlermeldung anzeigen
 			$valdiate_error = 'flood';
 			break;
 		}

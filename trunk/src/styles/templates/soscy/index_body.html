@@ -1,4 +1,4 @@
-<table cellpadding="3" cellspacing="1" width="80%" class="headline" style="margin-left: auto; margin-right: auto;">
+<table cellpadding="3" cellspacing="1" class="headline" style="margin-left: auto; margin-right: auto; width: 80%;">
 	<tr>
 		<th class="thHead" colspan="2">
 			<b>{L_VIEW_POSTS}</b>
@@ -21,10 +21,10 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="row1" valign="top">
+		<td class="row1" valign="top" style="width: 20%; border-right: 1px #021A4A solid;">
 			<b>{L_AUTHOR}:</b>
 		</td>
-		<td class="row1" valign="top">
+		<td class="row1" valign="top" style="width: 80%;">
 			{posts.USERNAME}
 		</td>
 	</tr>
@@ -39,20 +39,20 @@
 	</tr>
 	<!-- END switch_rate -->
 	<tr>
-		<td class="row2" valign="top">
+		<td class="row2" valign="top" style="width: 20%; border-right: 1px #021A4A solid;">
 			<b>Nachricht:</b>
 		</td>
-		<td class="row2" valign="top">
+		<td class="row2" valign="top" style="width: 80%;">
 			{posts.MESSAGE}
 		</td>
 	</tr>
 	<!-- BEGIN switch_comment -->
 	<tr>
-		<td class="row2" valign="top">
+		<td class="row2" valign="top" style="width: 20%; border-top: 1px #021A4A solid; border-right: 1px #021A4A solid;">
 			<b>Kommentar von {posts.COMMENT_USERNAME}:</b><br />
 			am {posts.COMMENT_DATE}
 		</td>
-		<td class="row2" valign="top">
+		<td class="row2" valign="top" style="width: 20%; border-top: 1px #021A4A solid;">
 			{posts.COMMENT_TEXT}
 		</td>
 	</tr>
@@ -73,7 +73,7 @@
 	</tr>
 	<!-- END posts -->
 	<tr>
-		<td class="row1" valign="top" colspan="2">
+		<td class="row1" valign="top" colspan="2" style="border-top: none;">
 			<div style="text-align: right">
 				<a href="{U_POSTING}"><img src="{IMAGE_NEW_POST}" alt="{L_NEW_POST}" class="image"/></a>
 			</div>

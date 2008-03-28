@@ -59,7 +59,7 @@ $template->assign_vars(array(
 	'TITLE' => $config->get('sitename'),
 	'LINK' => real_path(),
 	'LANGUAGE' => $config->get('language'),
-	'DESCRIPTION' => $config-get('description'),
+	'DESCRIPTION' => $config->get('description'),
 ));
 
 while ($row = $db->sql_fetchrow($result))

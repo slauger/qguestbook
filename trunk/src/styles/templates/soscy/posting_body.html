@@ -33,26 +33,26 @@
 		</td>
 	</tr>
 		<tr>
-			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
 				<b>Name:</b>
 			</td>
-			<td class="row1" valign="top" style="vertical-align: middle;">
+			<td class="row2" valign="top" style="vertical-align: middle;">
 				<input type="text" name="name" value="{NAME}" maxlength="255" size="40" />
 			</td>
 		</tr>
 		<tr>
-			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
 				<b>E-Mail:</b>
 			</td>
-			<td class="row2" valign="top" style="vertical-align: middle;">
+			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="text" name="email" value="{EMAIL}" maxlength="255" size="40"  />
 			</td>
 		</tr>
 		<tr>
-			<td class="row1" valign="top" width="22%" height="28" style="vertical-align: middle;">
+			<td class="row2" valign="top" width="22%" height="28" style="vertical-align: middle;">
 				<b>E-Mail verstecken:</b>
 			</td>
-			<td class="row1" valign="top" style="vertical-align: middle;">
+			<td class="row2" valign="top" style="vertical-align: middle;">
 				<input type="checkbox" name="hide_email" value="1" {HIDE_EMAIL} /> Meine E-Mail Adresse verstecken
 			</td>
 		</tr>
@@ -90,10 +90,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
 				<b>BBCodes</b>
 			</td>
-			<td class="row2" valign="top" style="vertical-align: middle;">
+			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="button" value="Fett" onClick="insert('[b]', '[/b]')" />
 				<input type="button" value="Unterstrichen" onClick="insert('[u]', '[/u]')" />
 				<input type="button" value="Kursiv" onClick="insert('[k]', '[/k]')" />
@@ -101,7 +101,7 @@
 		</tr>
 		<!-- END switch_dissabled -->
 		<tr>
-			<td class="row2" valign="top" width="22%">
+			<td class="row1" valign="top" style="width: 20%;">
 				<b>Nachricht:</b><br /><br />
 					<ul type="square">
 						<!--
@@ -113,28 +113,28 @@
 					</ul>
 			<br />
 			</td>
-			<td class="row2" valign="top" height="100%">
+			<td class="row1" valign="top" style="width: 80%;">
 				<textarea name="textarea" rows="10" cols="60">{TEXTAREA}</textarea>
 			</td>
 		</tr>
 <!-- BEGIN switch_capatcha -->
    <tr>
-	<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+	<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
 		<div align="center">
 		  <img src="includes/capatcha/image.php" alt="Capatcha">
 		</div>
 	</td>
-	<td class="row1" valign="top" style="vertical-align: middle;">
+	<td class="row2" valign="top" style="vertical-align: middle;">
 	 <input type="text" name="code" value="" style="width:50px">
 	 Bitte tragen Sie hier den Code aus der Grafik links ein.
 	</td>
    </tr>
 <!-- END switch_capatcha -->
 		<tr>
-			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
 				&nbsp;
 			</td>
-			<td class="row1" valign="top" style="vertical-align: middle;">
+			<td class="row2" valign="top" style="vertical-align: middle;">
 				<!-- <input type="submit" value="Vorschau" name="preview" /> -->
 				<input type="submit" value="In das Gästebuch eintragen" name="submit" />
 			</td>
