@@ -57,12 +57,12 @@ require_once $root_dir . 'includes/email/htmlMimeMail5.php';
 
 // classes
 require_once $root_dir . 'includes/common/config.php';
-require_once $root_dir . 'includes/encode/encode.php';
+require_once $root_dir . 'includes/common/encode.php';
 require_once $root_dir . 'includes/common/styles.php';
 require_once $root_dir . 'includes/common/globals.php';
-require_once $root_dir . 'includes/database/db_select.php';
-require_once $root_dir . 'includes/template/template.php';
-require_once $root_dir . 'includes/language/language.php';
+require_once $root_dir . 'includes/common/language.php';
+require_once $root_dir . 'includes/common/db_select.php';
+require_once $root_dir . 'includes/common/template.php';
 
 // Befinden wir uns unter PHP4?
 // Wenn ja brauchen wir noch einige Sachen...
