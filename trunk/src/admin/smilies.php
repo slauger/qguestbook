@@ -49,58 +49,55 @@ $mode = (isset($_GET['mode'])) ? $_GET['mode'] : '';
 switch ($mode)
 {
 	case 'import':
-		if (isset($_POST['file']))
-		{
-			load_smilie_pack($_POST['file']);
-			message_die($lang['smilies_export_submit'], $lang['smilies_export_submit_desc']);
-		}
-		else
-		{
-			message_die($lang['guestbook_error'], 'var nicht gesetzt, daher abbruch.');
+		if (!$globals->post('file')) {
+			message_die($lang['ERROR_MAIN'], 'Du hast keine Datei angegeben, die du importieren willst!');
+		} else {
+			$import_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
+			if (load_smilie_pack($import_file, true)) {
+				message_die('Smilie Paket wurde erfolgreich importiert!', 'Smilie Paket wurde erfolgreich importiert!');
+			} else {
+				message_die($lang['ERROR_MAIN'], 'Konnte Paket nicht importieren!');
+			}
 		}
 	break;
 	case 'export':
-		$smilies_file = (isset($_POST['file'])) ? $_POST['file'] : '';
-		$export_file = $root_dir . 'includes/store/smilies/' . $smilies_file;
+		if (!$globals->post('file')) {
+			message_die($lang['ERROR_MAIN'], 'Du musst eine Datei angeben, in die du exportieren willst!');
+		}
+	
+		$export_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
 
-		if (!is_writeable($export_file))
-		{
-			message_die($lang['guestbook_error'], sprintf($lang['smilies_export_file'], $export_file, '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
+		if (!@file_put_contents($export_file, generate_smilie_pack())) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['smilies_export_file'], $encode->encode_html($globals->post('file')), '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
 		}
 
-		file_put_contents($export_file, generate_smilie_pack());
-
-		message_die($lang['smilies_export_submit'], sprintf($lang['smilies_export_submit_desc'], $export_file, '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
+		message_die($lang['smilies_export_submit'], sprintf($lang['smilies_export_submit_desc'], $encode->encode_html($globals->post('file')), '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
 	break;
 	case 'edit':
-		if (isset($_POST['submit']) && !empty($_POST['submit']))
-		{
+		if ($globals->post('submit')) {
 			$sql = 'UPDATE ' . SMILIES_TABLE . '
 					SET `smilies_code` = ' . $db->sql_escape($_POST['smilies_code']) . ',
 					    `smilies_url` = ' . $db->sql_escape($_POST['smilies_url']) . ',
 					    `smilies_name` = ' . $db->sql_escape($_POST['smilies_name']) . '
 				WHERE smilies_id = ' . $db->sql_escape($_POST['smilies_id']) . '
 					LIMIT 1';
-			$db->sql_query($sql) or die(var_dump($db->sql_error()));
+			$db->sql_query($sql);
 			
 			message_die('Smilie wurde geändert!', 'Smilie wurde geändert!');
 		}
-		
-		$smilies = (isset($_GET['smilies'])) ? $_GET['smilies'] : "";
-		
-		if (empty($smilies))
-		{
-			die('foo');
+				
+		if (!$globals->get('smilies')) {
+			message_die('Du hast keine ID angegeben die du bearbeiten willst', 'Du hast keine ID angegeben die du bearbeiten willst');
 		}
 
 		$template->set_filenames(array(
 			'body' => 'smilies_edit_body.html',
 		));
 
-		if (is_array($smilies) && count($smilies) > 1)
+		if (is_array($globals->get('smilies')) && count($globals->get('smilies')) > 1)
 		{
 			$sql_where_statement = '';
-			foreach ($smilies as $smilie_id)
+			foreach ($globals->get('smilies') as $smilie_id)
 			{
 				if (empty($sql_where_statement))
 				{
@@ -119,7 +116,7 @@ switch ($mode)
 		{
 			$sql = 'SELECT *
 				FROM ' . SMILIES_TABLE . '
-				WHERE smilies_id = ' . $db->sql_escape($smilies);
+				WHERE smilies_id = ' . $db->sql_escape($globals->get('smilies'));
 		}
 
 		$result = $db->sql_query($sql);
@@ -145,8 +142,7 @@ switch ($mode)
 		FROM ' . SMILIES_TABLE;
 		$result = $db->sql_query($sql);
 
-		while ($row = $db->sql_fetchrow($result))
-		{
+		while ($row = $db->sql_fetchrow($result)) {
 			$template->assign_block_vars('smilies', array(
 				'ID' => $row['smilies_id'],
 				'CODE' => $row['smilies_code'],
@@ -157,22 +153,20 @@ switch ($mode)
 
 		$directory = read_directory($root_dir . 'includes/store/smilies/');
 		$smilie_packs = array();
-		foreach ($directory['file'] as $key => $filename)
-		{
-			if(preg_match('/\.(pak)$/', $filename))
-			{
+		foreach ($directory['file'] as $key => $filename) {
+			if(preg_match('/\.(pak)$/', $filename)) {
 				$smilie_packs[] = $filename;
 			}
 		}
 
-		foreach ($smilie_packs as $smilie_pack_name)
-		{
+		foreach ($smilie_packs as $smilie_pack_name) {
 			$template->assign_block_vars('smilie_packs', array(
 				'FILENAME' => $smilie_pack_name,
 			));
 		}
 
 		$template->pparse('body');
+	break;
 }
 
 include_once $root_dir . 'includes/footer.php';

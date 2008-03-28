@@ -30,25 +30,31 @@
 * @link       http://www.simlau.net/
 */
 
-function load_smilie_pack($filename)
+function load_smilie_pack($filename, $clean_tables = false)
 {
+	global $db;
 	$smilie_pack = file($filename);
 	foreach ($smilie_pack as $line)
 	{
-		$smilie = explode('#', $line);
+		$smilie = explode('=+', $line);
 		$smilies[] = array(
-			'code' => $smilie[0],
-			'url' => $smilie[1],
-			'name' => $smilie[2],
+			'code' => $smilie[1],
+			'url' => $smilie[0],
+			'name' => str_replace("\n", '', $smilie[2]),
 		);
+	}
+	if ($clean_tables) {
+		$sql = 'TRUNCATE TABLE ' . SMILIES_TABLE;
+		$db->sql_query($sql);
 	}
 	foreach ($smilies as $key => $value)
 	{
 		$sql = 'INSERT INTO ' . SMILIES_TABLE . '
-		smilies_id, smilies_code, smilies_url, smilies_name
-		VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($smilies[$key]['code']) . ', ' . $db->sql_escape($smilies[$key]['url']) . ', ' . $db->sql_escape($smilies[$key]['name']);
-		$result = $db->sql_query($sql);
+			(smilies_id, smilies_code, smilies_url, smilies_name)
+			VALUES (\'\', ' . $db->sql_escape($smilies[$key]['code']) . ', ' . $db->sql_escape($smilies[$key]['url']) . ', ' . $db->sql_escape($smilies[$key]['name']) . ')';
+		$db->sql_query($sql);
 	}
+	return true;
 }
 
 function generate_smilie_pack()
@@ -63,7 +69,7 @@ function generate_smilie_pack()
 
 	while ($row = $db->sql_fetchrow($result))
 	{
-		$smilie_pack .= $row['smilies_code'] . "#" . $row['smilies_url'] . "#" . $row['smilies_name'] . "\n";
+		$smilie_pack .= $row['smilies_url'] . "=+" . $row['smilies_code'] . "=+" . $row['smilies_name'] . "\n";
 	}
 
 	return $smilie_pack;
