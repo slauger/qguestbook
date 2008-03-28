@@ -156,24 +156,6 @@ Class qDatabase_MySQL
 		return @mysql_free_result($sql);
 	}
 
-	public function sql_list_tables($database)
-	{
-		$sql = 'SHOW TABLES
-			FROM ' . $database;
-		$result = $this->sql_query($sql);
-
-		if ($this->sql_numrows($result))
-		{
-			$tables = array();
-			while ($row = $this->sql_fetchrow($result, 'BOTH'))
-			{
-				$tables[] = $row[0];
-			}
-			return $tables;
-		}
-		return false;
-	}
-
 	public function sql_escape($string)
 	{
 		if (@get_magic_quotes_gpc())
@@ -189,12 +171,9 @@ Class qDatabase_MySQL
 
 	function sql_split_dump($file)
 	{
-	
-		foreach ($file as $line)
-		{
+		foreach ($file as $line) {
 			$check = explode(' ', trim($line));
-			if ($check[0] != "--")
-			{
+			if ($check[0] != "--") {
 				$lines[] = $line;
 			}
 		}

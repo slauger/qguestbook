@@ -54,12 +54,12 @@ $template->set_filenames(array(
 ));
 
 $template->assign_vars(array(
-	'ENCODING' => $config_table['charset'],
+	'ENCODING' => $config->get('charset'),
 	'GENERATOR' => 'qGuestbook',
-	'TITLE' => $config_table['sitename'],
+	'TITLE' => $config->get('sitename'),
 	'LINK' => real_path(),
-	'LANGUAGE' => $config_table['language'],
-	'DESCRIPTION' => $config_table['description'],
+	'LANGUAGE' => $config->get('language'),
+	'DESCRIPTION' => $config-get('description'),
 ));
 
 while ($row = $db->sql_fetchrow($result))

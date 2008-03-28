@@ -55,9 +55,6 @@ if (!defined('GUESTBOOK'))
  * Achtung: Der jewelige Ordner in dem der Cache gespeichert wird, (Verzeichniss "includes/store") benötigt dann natürlich Chmod 777.
  */
 
-/**
- * @ignore
- */
 Abstract Class qLanguageAbstract
 {
 	abstract public function __construct($language, $seralized = 0);
@@ -71,6 +68,8 @@ Abstract Class qLanguageAbstract
 	abstract protected function import_unserialized($filename);
 
 	abstract protected function export_unserialized();
+	
+	abstract public function get($var);
 }
 
 Class qLanguage // extends qLanguageAbstract
@@ -186,13 +185,13 @@ Class qLanguage // extends qLanguageAbstract
 	}
 	
 	/**
-	 * Macht das serialisierte Sprachpaket global verfügbar.
+	 * Macht das serialisierte Sprachpaket wieder global verfügbar.
 	 *
 	 * @access protected
 	 */
-	protected function export_unserialized()
+	protected function export_unserialized($var = 'lang')
 	{
-		global $lang, $config_table;
+		global $$var, $config_table;
 		global $root_dir, $encode;
 		
 		if (!is_array($lang))
@@ -203,10 +202,8 @@ Class qLanguage // extends qLanguageAbstract
 		// Müssen wir das Sprachpaket behandeln?
 		if ($encode->get_encoding() != $lang['CHARSET'])
 		{
-			foreach ($this->language_pack as $key => $value)
-			{
-				$lang[$key] = $encode->encode_string($value);
-			}
+			array_map_r(array($encode, 'encode_html'), $this->language_pack);
+			$$var = $this->language_pack;
 		}
 	}
 	
@@ -228,6 +225,14 @@ Class qLanguage // extends qLanguageAbstract
 	public function language_info()
 	{
 		return $this->language_pack_name;
+	}
+	
+	public function get($var)
+	{
+		if (!isset($this->language_pack[$var]) || empty($this->language_pack[$var])) {
+			return false;
+		}
+		return $this->language_pack[$var];
 	}
 }
 

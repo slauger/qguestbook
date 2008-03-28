@@ -11,6 +11,13 @@
 		</th>
 	</tr>
 	<tr>
+		<td class="row1" valign="top">
+			<b>Datum:</b></td>
+		<td class="row1" valign="top">
+			{moderate_posts.POST_DATE}
+		</td>
+	</tr>
+	<tr>
 		<td class="row2" valign="top">
 			<b>Benutzername:</b></td>
 		<td class="row2" valign="top">
@@ -56,6 +63,17 @@
 			{moderate_posts.POST_TEXT}
 		</td>
 	</tr>
+	<!-- BEGIN switch_comment -->
+	<tr>
+		<td class="row1" valign="top">
+			<b>Kommentar von {moderate_posts.COMMENT_USER}:</b><br />
+			am {moderate_posts.COMMENT_DATE}
+		</td>
+		<td class="row1" valign="top">
+			{moderate_posts.COMMENT_TEXT}
+		</td>
+	</tr>
+	<!-- END switch_comment -->
 	<tr>
 		<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
 			&nbsp;
@@ -78,5 +96,4 @@
 <!-- END moderate_posts -->
 
 <div align="center">
-	<p class="gensmall"><a href="moderate.php?view=waitlist">Hier</a> klicken um nur die Beiträge in der Warteliste anzuzeigen.</p>
-</div>
+	<p class="gensmall"><a href="moderate.php?view=all">Hier</a> klicken um alle Beiträge anzuzeigen.<br /><a href="moderate.php?view=waitlist">Hier</a> klicken um nur die Beiträge in der Warteliste anzuzeigen.</p>

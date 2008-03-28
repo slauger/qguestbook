@@ -35,6 +35,8 @@ if (!defined('GUESTBOOK')) {
     exit;
 }
 
+define('INSTALLED', true);
+
 $dbtype = 'mysql'; // Datenbank
 $dbhost = 'localhost'; // Datenbank Host
 $dbuser = 'root'; // Datenbank Benutzer

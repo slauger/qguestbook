@@ -30,16 +30,10 @@
 * @link       http://www.simlau.net/
 */
 
-//
-// Konstanten
-//
 define('GUESTBOOK', true);
 define('ADMIN_PAGE', true);
 define('REQUIRED_AUTH_LEVEL', 2);
 
-//
-// Dateien includieren
-//
 $root_dir = '../';
 include_once $root_dir . 'includes/common.php';
 
@@ -56,8 +50,8 @@ switch ($mode)
 		// Kommentar in die DB eintragen
 		if (isset($_POST['textarea']) && isset($_POST['post_id']))
 		{
-			if (empty($_POST['textarea'])) {} // die();
-			if (empty($_POST['post_id'])) {} // die();
+			if (empty($_POST['textarea']))  die('no comment');
+			if (empty($_POST['post_id'])) die('no comment');
 			
 			$sql = 'INSERT INTO ' . COMMENTS_TABLE . '
 				(`comment_id`, `comment_post`, `comment_user`, `comment_text`, `comment_date`)
@@ -79,12 +73,12 @@ switch ($mode)
 		));
 
 		// Kommentare vorhanden?
-		$sql = 'SELECT comment_id
+		$sql = 'SELECT COUNT(`comment_id`)
 				FROM ' . COMMENTS_TABLE . '
 			WHERE comment_post = ' . $db->sql_escape($_GET['id']);
 		$result = $db->sql_query($sql);
 
-		$comments = $db->sql_numrows($result);
+		$comments = $db->sql_result($result, 0);
 
 		// Auflisten ;)
 		if ($comments >= 1)
@@ -96,10 +90,7 @@ switch ($mode)
 						WHERE c.comment_id = ' . $db->sql_escape($_GET['id']) . '
 				ORDER BY c.comment_post DESC';
 
-			if (!$result = $db->sql_query($sql))
-			{
-				// Exit!
-			}
+			$result = $db->sql_query($sql);
 
 			while ($row = $db->sql_fetchrow($result))
 			{
@@ -138,19 +129,16 @@ switch ($mode)
 	case 'disable':
 		$value = 0;
 	case 'enable':
-		if (!isset($value))
-		{
+		if (!isset($value)) {
 			$value = 1;
 			// hier Email an den User senden :)
 		}
 
-		if (isset($_GET['view']) && $_GET['view'] == 'all')
-		{
+		if (isset($_GET['view']) && $_GET['view'] == 'all') {
 			$url_append = '?view=all';
 		}
 
-		if (!isset($_GET['id']) || empty($_GET['id']))
-		{
+		if (!isset($_GET['id']) || empty($_GET['id'])) {
 			message_die('Kein Beitrag ausgewählt', 'Du musst einen Beitrag auswählen, den du aktivieren bzw. deaktiveren willst.');
 		}
 
@@ -167,33 +155,35 @@ switch ($mode)
 			'body' => 'moderate_body.html',
 		));
 
-		//
-		// Hier liese sich der code noch um
-		// "view=active" und "view=deactice" erweitern
-		//
-		switch ($view)
-		{
-			default:
-			case 'waitlist':
-				$sql = 'SELECT *
-						FROM ' . POSTS_TABLE . '
-					WHERE posts_active = ' . POST_WAIT_LIST . '
-						ORDER BY posts_id DESC';
-				$url_append = '&amp;view=waitlist';
-			break;
-			case 'all':
-				$sql = 'SELECT *
-						FROM ' . POSTS_TABLE . '
-					ORDER BY posts_id DESC';
-				$url_append = '&amp;view=all';
-			break;
+		$view_allowed = array('waitlist', 'all');
+		if (!in_array($view, $view_allowed)) {
+			$view = 'waitlist';
 		}
+		
+		$where_statement = '';
+		
+		if ($view != 'all') {
+			switch ($view) {
+			 	case 'waitlist':
+				// $where_statement = 'WHERE p.posts_id = ' . POST_WAIT_LIST;
+				break;
+			}
+		}
+		
+		$sql = 'SELECT p.*, c.*, u.user_name
+			FROM ' . POSTS_TABLE . ' p
+				LEFT JOIN ' . COMMENTS_TABLE . ' AS c
+					ON c.comment_post = p.posts_id
+				LEFT JOIN ' . USERS_TABLE . ' AS u
+					ON u.user_id = c.comment_user
+				' . $where_statement . '
+			ORDER BY p.posts_id DESC';
 
-		$result = $db->sql_query($sql);
+	$result = $db->sql_query($sql);
 
 		if (!$db->sql_numrows($result))
 		{
-			if (isset($view) && $view = 'all')
+			if (empty($waitlist) || $view == 'waitlist')
 			{
 				message_die('Keine Beiträge vorhanden', "Es sind keine Beiträge in der Warteliste vorhanden.<br /><br />Klicke <a href=\"moderate.php?view=all\">hier</a> um alle Einträge anzuzeigen, die vorhanden sind.<br /><br />Klicke <a href=\"" . PAGE_ADMIN_INDEX . "\">hier</a> um zur Moderatoren Startseite zurückzukehren.");
 			}
@@ -208,42 +198,43 @@ switch ($mode)
 		while ($row = $db->sql_fetchrow($result))
 		{
 			$template->assign_block_vars('moderate_posts', array(
-				'POST_ID' => decode_html($row['posts_id']),
-				'POST_NAME' => decode_html($row['posts_name']),
+				'POST_ID' => $encode->encode_html($row['posts_id']),
+				'POST_NAME' => $encode->encode_html($row['posts_name']),
 				'POST_TEXT' => bbcode($row['posts_text']),
-				'POST_EMAIL' => decode_html($row['posts_email']),
-				'POST_ICQ' => decode_html($row['posts_icq']),
-				'POST_WWW' => decode_html($row['posts_www']),
+				'POST_EMAIL' => $encode->encode_html($row['posts_email']),
+				'POST_ICQ' => $encode->encode_html($row['posts_icq']),
+				'POST_WWW' => $encode->encode_html($row['posts_www']),
 				'POST_IP' => decode_ip($row['posts_ip']),
+				'POST_DATE' => format_date($row['posts_date']),
 				'POST_IP_URL' => sprintf($whois_url, decode_ip($row['posts_ip'])),
+				'COMMENT_USER' => $encode->encode_html($row['user_name']),
+				'COMMENT_TEXT' => bbcode($row['comment_text']),
+				'COMMENT_DATE' => format_date($row['comment_date']),
 				'URL_APPEND' => $url_append,
 			));
-
-			if (valdiate_website($row['posts_www']))
-			{
+			
+			if (!empty($row['comment_text'])) {
+				$template->assign_block_vars('moderate_posts.switch_comment', array());
+			}
+			
+			if (valdiate_website($row['posts_www'])) {
 				$template->assign_block_vars('moderate_posts.switch_www', array());
 			}
 
-			if (valdiate_icq($row['posts_icq']))
-			{
+			if (valdiate_icq($row['posts_icq'])) {
 				$template->assign_block_vars('moderate_posts.switch_icq', array());
 			}
 
-			if (isset($row['posts_active']) && $row['posts_active'] == POST_ACTIVE)
-			{
+			if (isset($row['posts_active']) && $row['posts_active'] == POST_ACTIVE) {
 				$template->assign_block_vars('moderate_posts.switch_post_active', array());
 			}
-			elseif (isset($row['posts_active']) && $row['posts_active'] == POST_INACTIVE)
-			{
+			elseif (isset($row['posts_active']) && $row['posts_active'] == POST_INACTIVE) {
 				$template->assign_block_vars('moderate_posts.switch_post_inactive', array());
 			}
-			elseif (isset($row['posts_active']) && $row['posts_active'] == POST_WAIT_LIST)
-			{
+			elseif (isset($row['posts_active']) && $row['posts_active'] == POST_WAIT_LIST) {
 				$template->assign_block_vars('moderate_posts.switch_post_waitlist', array());
-			}
-			else
-			{
-				die("Hacking attempt!");
+			} else {
+				trigger_error('Es wurde an den SQL Tabellen herumgespielt!', E_USER_ERROR);
 				exit;
 			}
 		}

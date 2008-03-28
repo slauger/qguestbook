@@ -37,7 +37,7 @@ page_header($lang['GUESTBOOK_ENTRY']);
 
 // Sind überhaupt Einträge vorhanden?
 $sql = 'SELECT COUNT(`posts_id`)
-	FROM ' . POSTS_TABLE . '
+		FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . POST_ACTIVE;
 $result = $db->sql_query($sql);
 
@@ -49,18 +49,18 @@ if (!$max || $max == 0) {
 }
 
 // Variablen gesetzt?
-$start = (isset($_GET['start']) && !empty($_GET['start'])) ? $_GET['start'] : 0;
-$limit = (isset($_GET['limit']) && !empty($_GET['limit'])) ? $_GET['limit'] : $config_table['posts_site'];
+$start = ($globals->get('start')) ? $globals->get('start') : 0;
+$limit = ($globals->get('limit')) ? $globals->get('limit') : $config->get('posts_site');
 
 // Überprüfen der Variablen
-if ($limit <= 0 || !is_numeric($limit)) $limit = $config_table['posts_site']; // Limit ungülitg? Standard setzen.
+if ($limit <= 0 || !is_numeric($limit)) $limit = $config->get('posts_site'); // Limit ungülitg? Standard setzen.
 if ($start >= $max) $start = $max - $limit; // Start zu gross? Setze ihn auf grösstmöglichstes Resultat.
 if ($start <= 0 || !is_numeric($start)) $start = 0; // Start = 1 falls falsch.
 if ($start + $limit > $max) $start = $max - $limit; // Limit zu gross? Setze ihn auf grösstmöglichstes Resultat.
 
 // Wie wird sortiert?
-$postorder = (isset($_GET['postorder']) && !empty($_GET['postorder'])) ? $_GET['postorder'] : $config_table['postorder'];
-$postorder = ($postorder == 'asc' || $postorder == 'desc') ? $postorder : $config_table['postorder'];
+$postorder = ($globals->get('postorder')) ? $globals->get('postorder') : $config->get('postorder');
+$postorder = ($postorder == 'asc' || $postorder == 'desc') ? $postorder : $config->get('postorder');
 
 //
 // Der ultimative SQL-Query.
@@ -89,12 +89,12 @@ if (!$posts = $db->sql_numrows($result)) {
 }
 
 // Navigation und Designmumpitz
+// Muss nochmal überarbeitet werden, sieht hässlich aus :P
 $page_next = $start + $limit;
 $page_next = ($page_next > $max) ? $page_next = $max - $limit : $page_next;
 $page_last = $start - $limit;
 $page_last = ($page_last <= 0) ? $page_last = 0 : $page_last;
-$post_limit = $start + $limit;
-$post_limit--;
+$post_limit = ($start + $limit) - 1;
 
 // Template wird geladen
 $template->set_filenames(array(
@@ -129,7 +129,7 @@ while ($row = $db->sql_fetchrow($result)) {
 		'U_WWW' => $encode->encode_html($row['posts_www']),
 		'U_EMAIL' => $encode->encode_html($row['posts_email']),
 		'COMMENT_TEXT' => bbcode($row['comment_text']),
-		'COMMENT_USERNAME' => decode_html($row['user_name']),
+		'COMMENT_USERNAME' => $encode->encode_html($row['user_name']),
 		'COMMENT_DATE' => format_date($row['comment_date']),
 	));
 	

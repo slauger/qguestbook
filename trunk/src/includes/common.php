@@ -57,17 +57,27 @@ require_once $root_dir . 'includes/email/htmlMimeMail5.php';
 
 // classes
 require_once $root_dir . 'includes/common/config.php';
+require_once $root_dir . 'includes/encode/encode.php';
+require_once $root_dir . 'includes/common/styles.php';
+require_once $root_dir . 'includes/common/globals.php';
 require_once $root_dir . 'includes/database/db_select.php';
 require_once $root_dir . 'includes/template/template.php';
 require_once $root_dir . 'includes/language/language.php';
-require_once $root_dir . 'includes/encode/encode.php';
-require_once $root_dir . 'includes/common/styles.php';
 
 // Befinden wir uns unter PHP4?
 // Wenn ja brauchen wir noch einige Sachen...
 if (substr(phpversion(), 0, 1) == 4) {
+	// Backports für die Klassen existieren nocht nicht...
 	include_once $root_dir . 'includes/functions/functions_php4.php';
 }
+
+// Schon installiert?
+if (!defined('INSTALLED')) {
+	header("Location: $root_dir/install/index.php");
+	exit;
+}
+
+$globals = new qGlobals();
 
 // Zerlegen der IP Adresse
 $client_ip = ( !empty($HTTP_SERVER_VARS['REMOTE_ADDR']) ) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : ( ( !empty($HTTP_ENV_VARS['REMOTE_ADDR']) ) ? $HTTP_ENV_VARS['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
@@ -77,6 +87,8 @@ $user_ip = encode_ip($client_ip);
 $db = new $database_class($dbhost, $dbuser, $dbpasswd, $dbname);
 
 // Konfiguration auslesen
+// Export als $config_table
+// Wieder mal die Rückswärtskompatibilität
 $config = new qConfig('config_table');
 
 // Nun kann auch die BBCode Klasse gestartet werden
@@ -84,7 +96,7 @@ $config = new qConfig('config_table');
 include_once $root_dir . 'includes/bbcode/bbcode.php';
 
 // PHP Debug Informationen anzeigen?
-if ($config->get('show_warnings') == 1) {
+if ($config->get('show_warnings')) {
 	error_reporting(E_ALL);
 } else {
 	error_reporting(0);
@@ -94,7 +106,6 @@ if ($config->get('show_warnings') == 1) {
 header("Content-Type: text/html; charset=" . $config->get('charset'));
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header("Content-Type: text/html");
 
 $language = new qLanguage();
 $encode = new qEncode($lang['CHARSET'], $config->get('charset'));
@@ -111,13 +122,14 @@ if (defined('ADMIN_PAGE') || defined('LOGIN_PAGE')) {
 }
 
 // Wurde das Gästebuch deaktivert?
-if ($config->get('active') == 0) {
+if (!$config->get('active')) {
 	if (!defined('ADMIN_PAGE') && !defined('LOGIN_PAGE')) {
-		message_die($lang['ERROR_MAIN'], $encode->encode_string($config->get('disable_msg')));
+		message_die($lang['ERROR_MAIN'], $encode->encode_html($config->get('disable_msg')));
 	}
 }
 
 // Ein paar tolle Session Sachen
+// Besonders für die Designer wichtig
 if (user_logged_in()) {
 	$template->assign_block_vars('switch_logged_in', array());
 } else {
