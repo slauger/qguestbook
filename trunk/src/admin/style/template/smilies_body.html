@@ -3,14 +3,14 @@
 	<p>Hier kannst du die installierten Smilies einsehen und bearbeiten.</p>
 </div>
 
-<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
+<table border="0" cellpadding="3" cellspacing="1" style="margin-left: auto; margin-right: auto; width: 80%;" class="headline">
 	<tr>
-		<th class="thHead" height="25" colspan="5">
+		<th class="thHead" height="25" colspan="6">
 			<b>Smilies Verwaltung</b>
 		</th>
 	</tr>
 	<tr>
-		<td class="row1" valign="top" colspan="5">
+		<td class="row1" valign="top" colspan="6">
 			<span class="gensmall">Hier können sie die Smilies des Gästebuches verwalten.</span>
 		</td>
 	</tr>
@@ -29,6 +29,9 @@
 		</td>
 		<td class="row2" valign="top" align="center">
 			<b>Bearbeiten</b>
+		</td>
+		<td class="row2" valign="top" align="center">
+			<b>Löschen</b>
 		</td>
 	</tr>
 <!-- BEGIN smilies -->
@@ -55,7 +58,12 @@
 		</td>
 		<td class="row1" valign="top">
 			<div align="center">
-				<a href="smilies.php?mode=edit&smilies={smilies.ID}">Bearbeiten</a>
+				<a href="smilies.php?mode=edit&amp;smilies={smilies.ID}">Bearbeiten</a>
+			</div>
+		</td>
+		<td class="row1" valign="top">
+			<div align="center">
+				<a href="smilies.php?mode=delete&amp;smilies={smilies.ID}">Löschen</a>
 			</div>
 		</td>
 	</tr>

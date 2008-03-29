@@ -53,7 +53,7 @@ switch ($mode)
 			message_die($lang['ERROR_MAIN'], 'Du hast keine Datei angegeben, die du importieren willst!');
 		} else {
 			$import_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
-			if (load_smilie_pack($import_file, true)) {
+			if (import_smiliepack($import_file, true)) {
 				message_die('Smilie Paket wurde erfolgreich importiert!', 'Smilie Paket wurde erfolgreich importiert!');
 			} else {
 				message_die($lang['ERROR_MAIN'], 'Konnte Paket nicht importieren!');
@@ -67,7 +67,7 @@ switch ($mode)
 	
 		$export_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
 
-		if (!@file_put_contents($export_file, generate_smilie_pack())) {
+		if (!@file_put_contents($export_file, export_smiliepack())) {
 			message_die($lang['ERROR_MAIN'], sprintf($lang['smilies_export_file'], $encode->encode_html($globals->post('file')), '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
 		}
 
@@ -132,6 +132,42 @@ switch ($mode)
 		}
 		
 		$template->pparse('body');
+	break;
+	case 'delete':
+		if (!$globals->get('smilies')) {
+			message_die('foo', 'bar');
+		}
+		
+		if (is_array($globals->get('smilies')) && count($globals->get('smilies')) > 1)
+		{
+			$sql_where_statement = '';
+			foreach ($globals->get('smilies') as $smilie_id)
+			{
+				if (empty($sql_where_statement))
+				{
+					$sql_where_statement = 'WHERE smilies_id = ' . $db->sql_escape($smilie_id) . ' ';
+				}
+				else
+				{
+					$sql_where_statement .= 'OR smilies_id = ' . $db->sql_escape($smilie_id) . ' ';
+				}
+			}
+			$sql = 'DELETE FROM ' . SMILIES_TABLE . '
+					' . $sql_where_statement . '
+				LIMIT ' . count($sql_where_statement);
+		}
+		else
+		{
+			$sql = 'DELETE FROM ' . SMILIES_TABLE . '
+					WHERE smilies_id = ' . $db->sql_escape($globals->get('smilies')) . '
+				LIMIT 1';
+		}
+		
+		if (!$db->sql_query($sql)) {
+			message_die('nope', 'was falsch');
+		}
+		
+		message_die('Erolgreich gelöscht', 'Erfolgreich gelöscht!');
 	break;
 	default:
 		$template->set_filenames(array(
