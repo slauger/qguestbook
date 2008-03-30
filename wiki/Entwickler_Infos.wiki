@@ -54,3 +54,7 @@ Dazu gehört z. B. "<>" statt "!=" zu verwenden. MSSQL hat hiermit seine Problem
 Es sind die PEAR Coding Standarts einzuhalten.
 
 http://pear.php.net/manual/de/standards.php
+
+Die PEAR Codings Standards gelten für Quellcode der Bestandteil der offiziellen qGuestbook-Distribution ist. Module von Drittanbietern sollten diese Standarts ebenfalls einhalten, ansonsten werden sie nicht in unsere Datenbank aufgenommen.
+
+Die Codings Standards werden meist kurz als CS bezeichnet. Ihr Ziel ist es, den Quellcode konsistent zu halten und somit es allen Beteiligten zu erleichtern den Quellcode zu lesen und zu betreuen. 
