@@ -109,18 +109,19 @@ switch ($mode) {
 		$active = (isset($config_table['moderated']) && $config_table['moderated'] == 1) ? POST_WAIT_LIST : POST_ACTIVE;
 
 		$sql = 'INSERT INTO ' . POSTS_TABLE . '
-			(posts_id, posts_name, posts_email, posts_ip, posts_www, posts_icq, posts_text, posts_date, posts_active, posts_hide_email) VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($user) . ',' . $db->sql_escape($email) . ', ' . $db->sql_escape($user_ip) . ', ' . $db->sql_escape($www) . ', ' . $db->sql_escape($icq) . ', ' . $db->sql_escape($text) . ', ' . $db->sql_escape(time()) . ', ' . $db->sql_escape($active) . ', ' . $db->sql_escape($hide_email) . ')';
+			(posts_id, posts_name, posts_email, posts_ip, posts_www, posts_icq, posts_text, posts_date, posts_active, posts_hide_email) 
+			VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($user) . ',' . $db->sql_escape($email) . ', ' . $db->sql_escape($user_ip) . ', ' . $db->sql_escape($www) . ', ' . $db->sql_escape($icq) . ', ' . $db->sql_escape($text) . ', ' . $db->sql_escape(time()) . ', ' . $db->sql_escape($active) . ', ' . $db->sql_escape($hide_email) . ')';
 		$db->sql_query($sql);
 		
 		// Bestätigungs E-Mail an den User
-		if ($config_table['success_email'] == 1) {
+		if ($config->get('success_email'])) {
 			generate_mail($lang['email_post_user'], array($email), sprintf($config_table['success_email_text'], $user));
 		}
 		
 		// Benachrichtungs E-Mails an die Mods
-		if ($config_table['success_email_admin'] == 1) {
+		if ($config->get('success_email_admin'])) {
 			// An die komplette Manschaft ;)
-			if ($config_table['success_email_admin'] == 1) {
+			if ($config->get('success_email_admin')) {
 				$sql = 'SELECT user_email
 					FROM ' . USERS_TABLE;
 				$result = $db->sql_query($sql);
@@ -130,14 +131,15 @@ switch ($mode) {
 			} else {
 				// Nur an den Administrator
 				// Bzw. die angegebene E-Mail in der Konfiguration
-				$email_adresses[] = $config_table['email_admin'];
+				$email_adresses[] = $config->get('email_admin');
 			}
 
 			// HTMLMimmeMail5 möchte ein Array
-			$emails = (!$config_table['success_email_admin_all']) ? array($config_table['email_admin']) : $email_adresses;
+			$email_adresses = (!$config->get('success_email_admin_all')) ? array($config->get('email_admin')) : $email_adresses;
 			
 			// E-Mail verschicken!
-			generate_mail($lang['email_post_admin'], array($config_table['email_admin']), sprintf($config_table['success_email_admin_text'], $user, $text, real_path()));
+			// Fixed in 0.2.4 (forgot $email_adresses)
+			generate_mail($lang['email_post_admin'], $email_adresses, sprintf($config_table['success_email_admin_text'], $user, $text, real_path()));
 		}
 		
 		// Done! Bestätigung ausgeben.
@@ -160,18 +162,18 @@ $template->set_filenames(array(
 ));
 
 // User darf ICQ UIN angeben
-if ($config_table['enable_icq'] == 1) {
+if ($config->get('enable_icq'] == 1) {
 	$template->assign_block_vars('icq_enabled', array());
 }
 
 // User darf Homepage angeben
-if ($config_table['enable_www'] == 1) {
+if ($config->get('enable_www')) {
 	$template->assign_block_vars('www_enabled', array());
 }
 
 // Smilie und BBCode Status anzeigen
-$bbcodes_status = (!$config_table['bbcode']) ? $lang['inactive'] : $lang['active'];
-$smilies_status = (!$config_table['smilies']) ? $lang['smilies'] : $lang['active'];
+$bbcodes_status = (!$config->get('bbcode')) ? $lang['inactive'] : $lang['active'];
+$smilies_status = (!$config->get['smilies')) ? $lang['smilies'] : $lang['active'];
 
 // Fehler beim valdieren der Userdaten?
 if (isset($valdiate_error) && !empty($valdiate_error)) {
@@ -184,10 +186,9 @@ $textarea = "";
 
 // Textfeld des Formulars füllen
 // Wenn Zitat gewählt, geht dieses vor
-if (isset($reply_text) && !empty($reply_text))
-{
+if (isset($reply_text) && !empty($reply_text)) {
 	$textarea = $encode->encode_html($reply_text);
-} elseif (isset($_POST['textarea']) && !empty($_POST['textarea'])) {
+} elseif ($globals->post('textarea')) {
 	$textarea = $encode->encode_html($_POST['textarea']);
 }
 
