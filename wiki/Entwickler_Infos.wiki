@@ -1,0 +1,56 @@
+#summary Informationen für Entwickler
+
+==1. Wie auf globale Variablen zugreifen?==
+
+Hierzu steht die Klasse qGlobals zur verfügung.
+
+_$globals->post('text'); // $_POST['text'];_
+
+_$globals->get('id'); // $_GET['id'];_
+
+_$globals->session('session_id'); // $_SESSION['session_id'];_
+
+Nur so ist sichergestellt das alle Variablen mit addslashes() bearbeitet werden.
+
+==2. Konfigurationsvariablen==
+
+Das alte System ($config_table) sollte nicht mehr verwendet werden. Dieses steht nur noch aus Gründen der Rückwärtskompatibiltät zur Verfügung-
+
+Besser also die Methode get() der Klasse qConfig benutzen:
+
+$config->get('foo'); // früher: $config_table['foo'];
+
+Somit ist sichergestellt, dass die Variablen nicht manipuliert werden können.
+
+Hier noch weiter wichtige Methoden der qConfig Klasse:
+
+_// Konfiguration zur Laufzeit neu laden_
+
+_$config->refresh();_
+
+_// Konfigurationsvariable in die Datenbank eintragen_
+
+_$config->add('foo', 'bar');_
+
+_// Wert updaten_
+
+_$config->update('bar', 'foo');_
+
+==3. Fehlerbehandlung==
+
+Hierzu wird in Zukunft die Klasse qEscape zur Verfügung stehen.
+Ist es möglich den Fehler während der Laufzeit zu beheben, so wird qEscape dies auch tun.
+
+Dies ist z. B. der Fall, wenn die Konfiguration aus irgendeinem Grund nicht gelesen werden kann. In diesem Fall wird auf eine Cache Version zugegriffen.
+
+==4. SQL Standarts==
+
+Um sicherzustellen, dass die Querys auch mit allen Datenbanksystem funktionieren sind einige Standarts einzuhalten.
+
+Dazu gehört z. B. "<>" statt "!=" zu verwenden. MSSQL hat hiermit seine Probleme.
+
+==5. Coding Standarts==
+
+Es sind die PEAR Coding Standarts einzuhalten.
+
+http://pear.php.net/manual/de/standards.php
