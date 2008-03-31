@@ -22,7 +22,7 @@
 *
 * @category   Guestbook
 * @package    qGuestbook
-* @subpackage language
+* @subpackage common
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
@@ -30,8 +30,7 @@
 * @link       http://www.simlau.net/
 */
 
-if (!defined('GUESTBOOK'))
-{
+if (!defined('GUESTBOOK')) {
 	die('Hacking attempt');
 	exit;
 }
@@ -54,23 +53,6 @@ if (!defined('GUESTBOOK'))
  *
  * Achtung: Der jewelige Ordner in dem der Cache gespeichert wird, (Verzeichniss "includes/store") benötigt dann natürlich Chmod 777.
  */
-
-Abstract Class qLanguageAbstract
-{
-	abstract public function __construct($language, $seralized = 0);
-
-	abstract protected function import_serialized($filename);
-
-	abstract protected function export_serialized();
-
-	abstract protected function cache_language($filename);
-
-	abstract protected function import_unserialized($filename);
-
-	abstract protected function export_unserialized();
-	
-	abstract public function get($var);
-}
 
 Class qLanguage // extends qLanguageAbstract
 {

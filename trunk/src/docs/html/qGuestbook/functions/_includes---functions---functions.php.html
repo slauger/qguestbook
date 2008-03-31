@@ -72,7 +72,25 @@
 	subpackage <b>common</b><br>  <div class="package">
 			<a href="../../qGuestbook/common/_includes---common---config.php.html">		config.php
 		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---db_select.php.html">		db_select.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---encode.php.html">		encode.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---escape.php.html">		escape.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---globals.php.html">		globals.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---language.php.html">		language.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---database---dbms---mysql.php.html">		mysql.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---database---dbms---postgresql.php.html">		postgresql.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---database---dbms---sqlite.php.html">		sqlite.php
+		</a><br>
 			<a href="../../qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---template.php.html">		template.php
 		</a><br>
 	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
@@ -83,20 +101,6 @@
 	  </div><br />
 	subpackage <b>constants</b><br>  <div class="package">
 			<a href="../../qGuestbook/constants/_includes---constants---constants.php.html">		constants.php
-		</a><br>
-	  </div><br />
-	subpackage <b>database</b><br>  <div class="package">
-			<a href="../../qGuestbook/database/_includes---database---db_select.php.html">		db_select.php
-		</a><br>
-			<a href="../../qGuestbook/database/_includes---database---dbms---mysql.php.html">		mysql.php
-		</a><br>
-			<a href="../../qGuestbook/database/_includes---database---dbms---postgresql.php.html">		postgresql.php
-		</a><br>
-			<a href="../../qGuestbook/database/_includes---database---dbms---sqlite.php.html">		sqlite.php
-		</a><br>
-	  </div><br />
-	subpackage <b>encode</b><br>  <div class="package">
-			<a href="../../qGuestbook/encode/_includes---encode---encode.php.html">		encode.php
 		</a><br>
 	  </div><br />
 	subpackage <b>functions</b><br>  <div class="package">
@@ -124,19 +128,15 @@
 	subpackage <b>language</b><br>  <div class="package">
 			<a href="../../qGuestbook/language/_includes---language---de---common.php.html">		common.php
 		</a><br>
-			<a href="../../qGuestbook/language/_includes---language---language.php.html">		language.php
-		</a><br>
 	  </div><br />
 	subpackage <b>sessions</b><br>  <div class="package">
 			<a href="../../qGuestbook/sessions/_includes---sessions---sessions.php.html">		sessions.php
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="../../qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="../../qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
-			<a href="../../qGuestbook/template/_includes---template---template.php.html">		template.php
+			<a href="../../qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
 		</a><br>
 	  </div><br />
       
@@ -144,21 +144,15 @@
             <b>Classes:</b><br />
         <div class="package">
 	common<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qDatabase_MySQL.html">qDatabase_MySQL</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qDatabase_SQLite.html">qDatabase_SQLite</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qEncode.html">qEncode</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qEscape.html">qEscape</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qGlobals.html">qGlobals</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qLanguage.html">qLanguage</a><br />
 	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qStyles.html">qStyles</a><br />
-	  </div>
-  <div class="package">
-	encode<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/encode/qEncode.html">qEncode</a><br />
-	  </div>
-  <div class="package">
-	language<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/language/qLanguage.html">qLanguage</a><br />
-	  </div>
-  <div class="package">
-	database<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/database/qDatabase_MySQL.html">qDatabase_MySQL</a><br />
-	    &nbsp;&nbsp;		<a href="../../qGuestbook/database/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br />
-	    &nbsp;&nbsp;		<a href="../../qGuestbook/database/qDatabase_SQLite.html">qDatabase_SQLite</a><br />
-	  </div>
-  <div class="package">
-	template<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/template/qTemplate.html">qTemplate</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qTemplate.html">qTemplate</a><br />
 	  </div>
                 </td>
     <td>
@@ -198,13 +192,13 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 <br /><br />
 <br />
   <hr />
-	<a name="functionassign_mutli_vars"></a>
-	<h3>assign_mutli_vars <span class="smalllinenumber">[line 110]</span></h3>
+	<a name="functionarray_map_r"></a>
+	<h3>array_map_r <span class="smalllinenumber">[line 356]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void assign_mutli_vars(
- $array, [ $prefix = &#039;&#039;])</code>
+		<code>void array_map_r(
+ $func,  $arr)</code>
     </td></tr></table>
     </td></tr></table><br />
 
@@ -214,12 +208,12 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
     <table border="0" cellspacing="0" cellpadding="0">
 		      <tr>
         <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$array</b>&nbsp;&nbsp;</td>
+        <td><b>$func</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
 		      <tr>
         <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$prefix</b>&nbsp;&nbsp;</td>
+        <td><b>$arr</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
 				</table>
@@ -227,7 +221,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionbadwords"></a>
-	<h3>badwords <span class="smalllinenumber">[line 328]</span></h3>
+	<h3>badwords <span class="smalllinenumber">[line 266]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -250,7 +244,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionbanned_email"></a>
-	<h3>banned_email <span class="smalllinenumber">[line 349]</span></h3>
+	<h3>banned_email <span class="smalllinenumber">[line 287]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -273,7 +267,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionbanned_ip"></a>
-	<h3>banned_ip <span class="smalllinenumber">[line 364]</span></h3>
+	<h3>banned_ip <span class="smalllinenumber">[line 301]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -296,7 +290,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionbbcode"></a>
-	<h3>bbcode <span class="smalllinenumber">[line 289]</span></h3>
+	<h3>bbcode <span class="smalllinenumber">[line 227]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -342,7 +336,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functiondecode_html"></a>
-	<h3>decode_html <span class="smalllinenumber">[line 212]</span></h3>
+	<h3>decode_html <span class="smalllinenumber">[line 172]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -365,7 +359,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functiondecode_ip"></a>
-	<h3>decode_ip <span class="smalllinenumber">[line 104]</span></h3>
+	<h3>decode_ip <span class="smalllinenumber">[line 95]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -388,7 +382,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionencode_html"></a>
-	<h3>encode_html <span class="smalllinenumber">[line 207]</span></h3>
+	<h3>encode_html <span class="smalllinenumber">[line 166]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -411,7 +405,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionencode_ip"></a>
-	<h3>encode_ip <span class="smalllinenumber">[line 98]</span></h3>
+	<h3>encode_ip <span class="smalllinenumber">[line 89]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -434,7 +428,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionformat_date"></a>
-	<h3>format_date <span class="smalllinenumber">[line 198]</span></h3>
+	<h3>format_date <span class="smalllinenumber">[line 157]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -457,7 +451,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functiongenerate_link"></a>
-	<h3>generate_link <span class="smalllinenumber">[line 164]</span></h3>
+	<h3>generate_link <span class="smalllinenumber">[line 136]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -485,7 +479,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functiongenerate_quote"></a>
-	<h3>generate_quote <span class="smalllinenumber">[line 264]</span></h3>
+	<h3>generate_quote <span class="smalllinenumber">[line 206]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -501,29 +495,6 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 		      <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$post_id</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-				</table>
-    	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
-	</div>
-  <hr />
-	<a name="functionget_lang"></a>
-	<h3>get_lang <span class="smalllinenumber">[line 222]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void get_lang(
- $string)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-
-		    <br /><br />
-	
-    		<h4>Parameters</h4>
-    <table border="0" cellspacing="0" cellpadding="0">
-		      <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$string</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
 				</table>
@@ -553,74 +524,8 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
     	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
 	</div>
   <hr />
-	<a name="functionis_negative"></a>
-	<h3>is_negative <span class="smalllinenumber">[line 83]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void is_negative(
- $int)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-
-		    <br /><br />
-	
-    		<h4>Parameters</h4>
-    <table border="0" cellspacing="0" cellpadding="0">
-		      <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$int</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-				</table>
-    	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
-	</div>
-  <hr />
-	<a name="functionjs_back"></a>
-	<h3>js_back <span class="smalllinenumber">[line 188]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void js_back(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-
-		    <br /><br />
-	
-    	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
-	</div>
-  <hr />
-	<a name="functionmake_link"></a>
-	<h3>make_link <span class="smalllinenumber">[line 193]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void make_link(
- $title,  $url)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-
-		    <br /><br />
-	
-    		<h4>Parameters</h4>
-    <table border="0" cellspacing="0" cellpadding="0">
-		      <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$title</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-		      <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$url</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-				</table>
-    	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
-	</div>
-  <hr />
 	<a name="functionmessage_die"></a>
-	<h3>message_die <span class="smalllinenumber">[line 126]</span></h3>
+	<h3>message_die <span class="smalllinenumber">[line 101]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -648,7 +553,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionreal_path"></a>
-	<h3>real_path <span class="smalllinenumber">[line 298]</span></h3>
+	<h3>real_path <span class="smalllinenumber">[line 236]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -678,7 +583,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionsite_microtime_calc"></a>
-	<h3>site_microtime_calc <span class="smalllinenumber">[line 92]</span></h3>
+	<h3>site_microtime_calc <span class="smalllinenumber">[line 83]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -706,7 +611,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionsmilies"></a>
-	<h3>smilies <span class="smalllinenumber">[line 231]</span></h3>
+	<h3>smilies <span class="smalllinenumber">[line 178]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -729,7 +634,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionupdate_config_table"></a>
-	<h3>update_config_table <span class="smalllinenumber">[line 245]</span></h3>
+	<h3>update_config_table <span class="smalllinenumber">[line 192]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -780,7 +685,7 @@ qGuestbook<br /><br /><p>An advanced Guestbook written in PHP5.</p><p>PHP versio
 	</div>
   <hr />
 	<a name="functionvaldiate_error"></a>
-	<h3>valdiate_error <span class="smalllinenumber">[line 384]</span></h3>
+	<h3>valdiate_error <span class="smalllinenumber">[line 321]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -812,7 +717,7 @@ $error $error)</code>
 	</div>
   <hr />
 	<a name="functionvalid_var"></a>
-	<h3>valid_var <span class="smalllinenumber">[line 408]</span></h3>
+	<h3>valid_var <span class="smalllinenumber">[line 347]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -844,7 +749,7 @@ $error $error)</code>
 	</div>
   <hr />
 	<a name="functionwords_cut"></a>
-	<h3>words_cut <span class="smalllinenumber">[line 312]</span></h3>
+	<h3>words_cut <span class="smalllinenumber">[line 250]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -868,7 +773,7 @@ $error $error)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 27 Mar 2008 20:37:46 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Sun, 30 Mar 2008 19:54:53 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

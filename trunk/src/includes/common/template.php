@@ -36,7 +36,7 @@
 *
 * @category   Guestbook
 * @package    qGuestbook
-* @subpackage template
+* @subpackage common
 * @author     The phpBB Group <support@phpbb.com>
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  (C) 2001 The phpBB Group

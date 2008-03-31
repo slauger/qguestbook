@@ -7,9 +7,6 @@
 	</tr>
 	<tr>
 		<td class="row1" valign="top">
-			<!--<div align="center">
-				<b>{ERROR_TITLE}</b><br /><br />
-			</div>-->
 			<div align="center">
 				<br />{ERROR_MESSAGE}<br /><br />
 			</div>
@@ -104,9 +101,6 @@
 			<td class="row1" valign="top" style="width: 20%;">
 				<b>Nachricht:</b><br /><br />
 					<ul type="square">
-						<!--
-							<li style="list-style-type: none;"><u>Optionen</u></li>
-						-->
 						<li><a href="popup.php?mode=smilies" onclick="window.open('popup.php?mode=smilies', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>Smilies</b></a>: {SMILIES_STATUS}</li>
 						<li><a href="popup.php?mode=bbcodes" onclick="window.open('popup.php?mode=bbcodes', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>BBCodes</b></a>: {BBCODES_STATUS}</li>
 						<li><b>HTML</b>: {HTML_STATUS}</li>
@@ -117,25 +111,23 @@
 				<textarea name="textarea" rows="10" cols="60">{TEXTAREA}</textarea>
 			</td>
 		</tr>
-<!-- BEGIN switch_capatcha -->
-   <tr>
-	<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
-		<div align="center">
-		  <img src="includes/capatcha/image.php" alt="Capatcha">
-		</div>
-	</td>
-	<td class="row2" valign="top" style="vertical-align: middle;">
-	 <input type="text" name="code" value="" style="width:50px">
-	 Bitte tragen Sie hier den Code aus der Grafik links ein.
-	</td>
-   </tr>
-<!-- END switch_capatcha -->
 		<tr>
 			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
-				&nbsp;
+				<b>Spamschutz:</b>
 			</td>
 			<td class="row2" valign="top" style="vertical-align: middle;">
-				<!-- <input type="submit" value="Vorschau" name="preview" /> -->
+				Was ergibt {CAPTCHA_A} und {CAPTCHA_B}?&nbsp;&nbsp;
+				<input type="hidden" value="{CAPTCHA_A}" name="captcha_a" />
+				<input type="hidden" value="{CAPTCHA_B}" name="captcha_b" />
+				<input type="hidden" value="{CAPTCHA_SUM}" name="db_captcha_sum" />
+				<input type="text" value="" name="captcha_sum" maxlength="5" size="5"  />
+			</td>
+		</tr>
+		<tr style="border-bottom: none;">
+			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
+				&nbsp;
+			</td>
+			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="submit" value="In das Gästebuch eintragen" name="submit" />
 			</td>
 		</tr>

@@ -33,7 +33,7 @@
 *
 * @category   Guestbook
 * @package    qGuestbook
-* @subpackage encode
+* @subpackage common
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0

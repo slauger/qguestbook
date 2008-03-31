@@ -72,6 +72,10 @@
 	subpackage <b>common</b><br>  <div class="package">
 			<a href="../../qGuestbook/common/_includes---common---config.php.html">		config.php
 		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---escape.php.html">		escape.php
+		</a><br>
+			<a href="../../qGuestbook/common/_includes---common---globals.php.html">		globals.php
+		</a><br>
 			<a href="../../qGuestbook/common/_includes---common---styles.php.html">		styles.php
 		</a><br>
 	  </div><br />
@@ -86,7 +90,7 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>database</b><br>  <div class="package">
-			<a href="../../qGuestbook/database/_includes---database---db_select.php.html">		db_select.php
+			<a href="../../qGuestbook/database/_includes---common---db_select.php.html">		db_select.php
 		</a><br>
 			<a href="../../qGuestbook/database/_includes---database---dbms---mysql.php.html">		mysql.php
 		</a><br>
@@ -96,7 +100,7 @@
 		</a><br>
 	  </div><br />
 	subpackage <b>encode</b><br>  <div class="package">
-			<a href="../../qGuestbook/encode/_includes---encode---encode.php.html">		encode.php
+			<a href="../../qGuestbook/encode/_includes---common---encode.php.html">		encode.php
 		</a><br>
 	  </div><br />
 	subpackage <b>functions</b><br>  <div class="package">
@@ -124,7 +128,7 @@
 	subpackage <b>language</b><br>  <div class="package">
 			<a href="../../qGuestbook/language/_includes---language---de---common.php.html">		common.php
 		</a><br>
-			<a href="../../qGuestbook/language/_includes---language---language.php.html">		language.php
+			<a href="../../qGuestbook/language/_includes---common---language.php.html">		language.php
 		</a><br>
 	  </div><br />
 	subpackage <b>sessions</b><br>  <div class="package">
@@ -136,7 +140,7 @@
 		</a><br>
 			<a href="../../qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
-			<a href="../../qGuestbook/template/_includes---template---template.php.html">		template.php
+			<a href="../../qGuestbook/template/_includes---common---template.php.html">		template.php
 		</a><br>
 	  </div><br />
       
@@ -144,6 +148,8 @@
             <b>Classes:</b><br />
         <div class="package">
 	common<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qEscape.html">qEscape</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qGlobals.html">qGlobals</a><br />
 	    &nbsp;&nbsp;		<a href="../../qGuestbook/common/qStyles.html">qStyles</a><br />
 	  </div>
   <div class="package">
@@ -151,6 +157,7 @@
 	  </div>
   <div class="package">
 	language<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/language/qLanguage.html">qLanguage</a><br />
+	    &nbsp;&nbsp;		<a href="../../qGuestbook/language/qLanguageAbstract.html">qLanguageAbstract</a><br />
 	  </div>
   <div class="package">
 	database<br />	    &nbsp;&nbsp;		<a href="../../qGuestbook/database/qDatabase_MySQL.html">qDatabase_MySQL</a><br />
@@ -210,7 +217,6 @@ Source Location: /includes/database/dbms/mysql.php<br /><br />
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_escape">sql_escape</a></li>
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_fetchrow">sql_fetchrow</a></li>
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_free_result">sql_free_result</a></li>
-    <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_list_tables">sql_list_tables</a></li>
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_numrows">sql_numrows</a></li>
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_num_queries">sql_num_queries</a></li>
     <li><a href="../../qGuestbook/database/qDatabase_MySQL.html#methodsql_query">sql_query</a></li>
@@ -470,7 +476,7 @@ $persistency = false])</code>
   </div>
   <hr />
 	<a name="methodsql_escape"></a>
-	<h3>method sql_escape <span class="smalllinenumber">[line 177]</span></h3>
+	<h3>method sql_escape <span class="smalllinenumber">[line 159]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -576,42 +582,6 @@ $sql)</code>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$sql</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsql_list_tables"></a>
-	<h3>method sql_list_tables <span class="smalllinenumber">[line 159]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void sql_list_tables(
-
-$database)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$database</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -826,7 +796,7 @@ $database)</code>
   </div>
   <hr />
 	<a name="methodsql_split_dump"></a>
-	<h3>method sql_split_dump <span class="smalllinenumber">[line 190]</span></h3>
+	<h3>method sql_split_dump <span class="smalllinenumber">[line 172]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -856,7 +826,7 @@ $file)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 27 Mar 2008 20:37:48 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Sun, 30 Mar 2008 19:42:39 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

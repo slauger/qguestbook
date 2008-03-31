@@ -72,7 +72,25 @@
 	subpackage <b>common</b><br>  <div class="package">
 			<a href="qGuestbook/common/_includes---common---config.php.html">		config.php
 		</a><br>
+			<a href="qGuestbook/common/_includes---common---db_select.php.html">		db_select.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---encode.php.html">		encode.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---escape.php.html">		escape.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---globals.php.html">		globals.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---language.php.html">		language.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---database---dbms---mysql.php.html">		mysql.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---database---dbms---postgresql.php.html">		postgresql.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---database---dbms---sqlite.php.html">		sqlite.php
+		</a><br>
 			<a href="qGuestbook/common/_includes---common---styles.php.html">		styles.php
+		</a><br>
+			<a href="qGuestbook/common/_includes---common---template.php.html">		template.php
 		</a><br>
 	  </div><br />
 	subpackage <b>config</b><br>  <div class="package">
@@ -83,20 +101,6 @@
 	  </div><br />
 	subpackage <b>constants</b><br>  <div class="package">
 			<a href="qGuestbook/constants/_includes---constants---constants.php.html">		constants.php
-		</a><br>
-	  </div><br />
-	subpackage <b>database</b><br>  <div class="package">
-			<a href="qGuestbook/database/_includes---database---db_select.php.html">		db_select.php
-		</a><br>
-			<a href="qGuestbook/database/_includes---database---dbms---mysql.php.html">		mysql.php
-		</a><br>
-			<a href="qGuestbook/database/_includes---database---dbms---postgresql.php.html">		postgresql.php
-		</a><br>
-			<a href="qGuestbook/database/_includes---database---dbms---sqlite.php.html">		sqlite.php
-		</a><br>
-	  </div><br />
-	subpackage <b>encode</b><br>  <div class="package">
-			<a href="qGuestbook/encode/_includes---encode---encode.php.html">		encode.php
 		</a><br>
 	  </div><br />
 	subpackage <b>functions</b><br>  <div class="package">
@@ -124,19 +128,15 @@
 	subpackage <b>language</b><br>  <div class="package">
 			<a href="qGuestbook/language/_includes---language---de---common.php.html">		common.php
 		</a><br>
-			<a href="qGuestbook/language/_includes---language---language.php.html">		language.php
-		</a><br>
 	  </div><br />
 	subpackage <b>sessions</b><br>  <div class="package">
 			<a href="qGuestbook/sessions/_includes---sessions---sessions.php.html">		sessions.php
 		</a><br>
 	  </div><br />
 	subpackage <b>template</b><br>  <div class="package">
-			<a href="qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
-		</a><br>
 			<a href="qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">		imageset.php
 		</a><br>
-			<a href="qGuestbook/template/_includes---template---template.php.html">		template.php
+			<a href="qGuestbook/template/_admin---style---imageset---imageset.php.html">		imageset.php
 		</a><br>
 	  </div><br />
       
@@ -144,21 +144,15 @@
             <b>Classes:</b><br />
         <div class="package">
 	common<br />	    &nbsp;&nbsp;		<a href="qGuestbook/common/qConfig.html">qConfig</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qDatabase_MySQL.html">qDatabase_MySQL</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qDatabase_SQLite.html">qDatabase_SQLite</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qEncode.html">qEncode</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qEscape.html">qEscape</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qGlobals.html">qGlobals</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qLanguage.html">qLanguage</a><br />
 	    &nbsp;&nbsp;		<a href="qGuestbook/common/qStyles.html">qStyles</a><br />
-	  </div>
-  <div class="package">
-	encode<br />	    &nbsp;&nbsp;		<a href="qGuestbook/encode/qEncode.html">qEncode</a><br />
-	  </div>
-  <div class="package">
-	language<br />	    &nbsp;&nbsp;		<a href="qGuestbook/language/qLanguage.html">qLanguage</a><br />
-	  </div>
-  <div class="package">
-	database<br />	    &nbsp;&nbsp;		<a href="qGuestbook/database/qDatabase_MySQL.html">qDatabase_MySQL</a><br />
-	    &nbsp;&nbsp;		<a href="qGuestbook/database/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br />
-	    &nbsp;&nbsp;		<a href="qGuestbook/database/qDatabase_SQLite.html">qDatabase_SQLite</a><br />
-	  </div>
-  <div class="package">
-	template<br />	    &nbsp;&nbsp;		<a href="qGuestbook/template/qTemplate.html">qTemplate</a><br />
+	    &nbsp;&nbsp;		<a href="qGuestbook/common/qTemplate.html">qTemplate</a><br />
 	  </div>
                 </td>
     <td>
@@ -175,7 +169,6 @@
 	[ <a href="elementindex_qGuestbook.html#g">g</a> ]
 	[ <a href="elementindex_qGuestbook.html#h">h</a> ]
 	[ <a href="elementindex_qGuestbook.html#i">i</a> ]
-	[ <a href="elementindex_qGuestbook.html#j">j</a> ]
 	[ <a href="elementindex_qGuestbook.html#l">l</a> ]
 	[ <a href="elementindex_qGuestbook.html#m">m</a> ]
 	[ <a href="elementindex_qGuestbook.html#n">n</a> ]
@@ -195,21 +188,25 @@
 		<h2>_</h2>
 		<dl>
 							<dt><b>__construct</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#method__construct">qDatabase_PostgreSQL::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#method__construct">qDatabase_SQLite::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
 				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#method__construct">qStyles::__construct()</a></dd>
 							<dt><b>__construct</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#method__construct">qTemplate::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Setzt den Wurzelpfad auf den übergebenen Parameter.</dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#method__construct">qDatabase_MySQL::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#method__construct">qLanguage::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Der Konstruktor der Klasse.</dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file encode.php, method <a href="qGuestbook/common/qEncode.html#method__construct">qEncode::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file escape.php, method <a href="qGuestbook/common/qEscape.html#method__construct">qEscape::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
+				<dd>in file globals.php, method <a href="qGuestbook/common/qGlobals.html#method__construct">qGlobals::__construct()</a></dd>
+							<dt><b>__construct</b></dt>
 				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#method__construct">qConfig::__construct()</a></dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#method__construct">qDatabase_SQLite::__construct()</a></dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#method__construct">qDatabase_PostgreSQL::__construct()</a></dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#method__construct">qDatabase_MySQL::__construct()</a></dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file encode.php, method <a href="qGuestbook/encode/qEncode.html#method__construct">qEncode::__construct()</a></dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#method__construct">qLanguage::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Der Konstruktor der Klasse.</dd>
-							<dt><b>__construct</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#method__construct">qTemplate::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Setzt den Wurzelpfad auf den übergebenen Parameter.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -222,18 +219,18 @@
 				<dd>in file meta.php, constant <a href="qGuestbook/admin/_admin---meta.php.html#defineADMIN_PAGE">ADMIN_PAGE</a></dd>
 							<dt><b>add</b></dt>
 				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodadd">qConfig::add()</a></dd>
+							<dt><b>assign_block_vars</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodassign_block_vars">qTemplate::assign_block_vars()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Block-level variable assignment. Adds a new block iteration with the given  variable assignments. Note that this should only be called once per block  iteration.</dd>
+							<dt><b>assign_var</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodassign_var">qTemplate::assign_var()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Root-level variable assignment. Adds to current assignments, overriding  any existing variable assignment with the same name.</dd>
+							<dt><b>assign_vars</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodassign_vars">qTemplate::assign_vars()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Root-level variable assignment. Adds to current assignments, overriding  any existing variable assignment with the same name.</dd>
+							<dt><b>assign_var_from_handle</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodassign_var_from_handle">qTemplate::assign_var_from_handle()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Inserts the uncompiled code for $handle as the  value of $varname in the root-level. This can be used  to effectively include a template in the middle of another  template.</dd>
 							<dt><b>ABUSE_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineABUSE_TABLE">ABUSE_TABLE</a></dd>
-							<dt><b>assign_mutli_vars</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionassign_mutli_vars">assign_mutli_vars()</a></dd>
-							<dt><b>assign_block_vars</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodassign_block_vars">qTemplate::assign_block_vars()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Block-level variable assignment. Adds a new block iteration with the given  variable assignments. Note that this should only be called once per block  iteration.</dd>
-							<dt><b>assign_var</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodassign_var">qTemplate::assign_var()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Root-level variable assignment. Adds to current assignments, overriding  any existing variable assignment with the same name.</dd>
-							<dt><b>assign_vars</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodassign_vars">qTemplate::assign_vars()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Root-level variable assignment. Adds to current assignments, overriding  any existing variable assignment with the same name.</dd>
-							<dt><b>assign_var_from_handle</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodassign_var_from_handle">qTemplate::assign_var_from_handle()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Inserts the uncompiled code for $handle as the  value of $varname in the root-level. This can be used  to effectively include a template in the middle of another  template.</dd>
+							<dt><b>array_map_r</b></dt>
+				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionarray_map_r">array_map_r()</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -264,6 +261,10 @@
 		<dl>
 							<dt><b>common.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/_includes---common.php.html">common.php</a></dd>
+							<dt><b>cache_language</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodcache_language">qLanguage::cache_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Serialisiert ein bearbeitetes Sprachpaket.</dd>
+							<dt><b>compile</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodcompile">qTemplate::compile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Compiles the given string of code, and returns  the result in a string.</dd>
 							<dt><b>config.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/common/_includes---common---config.php.html">config.php</a></dd>
 							<dt><b>config.php</b></dt>
@@ -286,12 +287,8 @@
 				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionclean_database">clean_database()</a></dd>
 							<dt><b>costum_phpinfo</b></dt>
 				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functioncostum_phpinfo">costum_phpinfo()</a></dd>
-							<dt><b>cache_language</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodcache_language">qLanguage::cache_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Serialisiert ein bearbeitetes Sprachpaket.</dd>
 							<dt><b>common.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/language/_includes---language---de---common.php.html">common.php</a></dd>
-							<dt><b>compile</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodcompile">qTemplate::compile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Compiles the given string of code, and returns  the result in a string.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -302,16 +299,16 @@
 		<dl>
 							<dt><b>database.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---database.php.html">database.php</a></dd>
+							<dt><b>destroy</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methoddestroy">qTemplate::destroy()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Löscht alle kompilierten Templates.</dd>
+							<dt><b>db_select.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---db_select.php.html">db_select.php</a></dd>
 							<dt><b>DISSALOW_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineDISSALOW_TABLE">DISSALOW_TABLE</a></dd>
-							<dt><b>db_select.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/database/_includes---database---db_select.php.html">db_select.php</a></dd>
 							<dt><b>decode_html</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functiondecode_html">decode_html()</a></dd>
 							<dt><b>decode_ip</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functiondecode_ip">decode_ip()</a></dd>
-							<dt><b>destroy</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methoddestroy">qTemplate::destroy()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Löscht alle kompilierten Templates.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -323,23 +320,27 @@
 							<dt><b>email.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---email.php.html">email.php</a></dd>
 							<dt><b>encode_html</b></dt>
-				<dd>in file encode.php, method <a href="qGuestbook/encode/qEncode.html#methodencode_html">qEncode::encode_html()</a></dd>
+				<dd>in file encode.php, method <a href="qGuestbook/common/qEncode.html#methodencode_html">qEncode::encode_html()</a></dd>
+							<dt><b>encode_language</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodencode_language">qLanguage::encode_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Das komplette Sprachpaket in einen anderen  Zeichensatz konvertieren.</dd>
 							<dt><b>encode_string</b></dt>
-				<dd>in file encode.php, method <a href="qGuestbook/encode/qEncode.html#methodencode_string">qEncode::encode_string()</a></dd>
+				<dd>in file encode.php, method <a href="qGuestbook/common/qEncode.html#methodencode_string">qEncode::encode_string()</a></dd>
+							<dt><b>export_language</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodexport_language">qLanguage::export_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Alias for export_unserialized()</dd>
+							<dt><b>export_seralized</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodexport_seralized">qLanguage::export_seralized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Macht das serialisierte Sprachpaket global verfügbar.</dd>
+							<dt><b>export_unserialized</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodexport_unserialized">qLanguage::export_unserialized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Macht das serialisierte Sprachpaket wieder global verfügbar.</dd>
 							<dt><b>encode.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/encode/_includes---encode---encode.php.html">encode.php</a></dd>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---encode.php.html">encode.php</a></dd>
+							<dt><b>escape.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---escape.php.html">escape.php</a></dd>
 							<dt><b>encode_html</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionencode_html">encode_html()</a></dd>
 							<dt><b>encode_ip</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionencode_ip">encode_ip()</a></dd>
-							<dt><b>encode_language</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodencode_language">qLanguage::encode_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Das komplette Sprachpaket in einen anderen  Zeichensatz konvertieren.</dd>
-							<dt><b>export_language</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodexport_language">qLanguage::export_language()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Alias for export_unserialized()</dd>
-							<dt><b>export_seralized</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodexport_seralized">qLanguage::export_seralized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Macht das serialisierte Sprachpaket global verfügbar.</dd>
-							<dt><b>export_unserialized</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodexport_unserialized">qLanguage::export_unserialized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Macht das serialisierte Sprachpaket global verfügbar.</dd>
+							<dt><b>export_smiliepack</b></dt>
+				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionexport_smiliepack">export_smiliepack()</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -382,12 +383,22 @@
 		<dl>
 							<dt><b>GUESTBOOK</b></dt>
 				<dd>in file popup.php, constant <a href="qGuestbook/_popup.php.html#defineGUESTBOOK">GUESTBOOK</a></dd>
+							<dt><b>generate_block_data_ref</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodgenerate_block_data_ref">qTemplate::generate_block_data_ref()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a reference to the array of data values for the given  (possibly nested) block namespace. This is a string of the form:  $this-&gt;_tpldata['parent'][$_parent_i]['$child1'][$_child1_i]['$child2'][$_child2_i]...['$childN']</dd>
+							<dt><b>generate_block_varref</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodgenerate_block_varref">qTemplate::generate_block_varref()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a reference to the given variable inside the given (possibly nested)  block namespace. This is a string of the form:  ' . $this-&gt;_tpldata['parent'][$_parent_i]['$child1'][$_child1_i]['$child2'][$_child2_i]...['varname'] . '  It's ready to be inserted into an &quot;echo&quot; line in one of the templates.</dd>
 							<dt><b>get</b></dt>
 				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodget">qStyles::get()</a></dd>
 							<dt><b>get</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodget">qLanguage::get()</a></dd>
+							<dt><b>get</b></dt>
+				<dd>in file globals.php, method <a href="qGuestbook/common/qGlobals.html#methodget">qGlobals::get()</a></dd>
+							<dt><b>get</b></dt>
 				<dd>in file config.php, method <a href="qGuestbook/common/qConfig.html#methodget">qConfig::get()</a></dd>
 							<dt><b>get_encoding</b></dt>
-				<dd>in file encode.php, method <a href="qGuestbook/encode/qEncode.html#methodget_encoding">qEncode::get_encoding()</a></dd>
+				<dd>in file encode.php, method <a href="qGuestbook/common/qEncode.html#methodget_encoding">qEncode::get_encoding()</a></dd>
+							<dt><b>globals.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---globals.php.html">globals.php</a></dd>
 							<dt><b>generate_link</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functiongenerate_link">generate_link()</a></dd>
 							<dt><b>generate_mail</b></dt>
@@ -396,22 +407,14 @@
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functiongenerate_quote">generate_quote()</a></dd>
 							<dt><b>generate_sid</b></dt>
 				<dd>in file functions_sessions.php, function <a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html#functiongenerate_sid">generate_sid()</a></dd>
-							<dt><b>generate_smilie_pack</b></dt>
-				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functiongenerate_smilie_pack">generate_smilie_pack()</a></dd>
 							<dt><b>get_auth_level</b></dt>
 				<dd>in file functions_sessions.php, function <a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html#functionget_auth_level">get_auth_level()</a></dd>
 							<dt><b>get_email_mode</b></dt>
 				<dd>in file functions_email.php, function <a href="qGuestbook/functions/_includes---functions---functions_email.php.html#functionget_email_mode">get_email_mode()</a></dd>
-							<dt><b>get_lang</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionget_lang">get_lang()</a></dd>
 							<dt><b>get_sid</b></dt>
 				<dd>in file functions_sessions.php, function <a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html#functionget_sid">get_sid()</a></dd>
 							<dt><b>get_user_id</b></dt>
 				<dd>in file functions_sessions.php, function <a href="qGuestbook/functions/_includes---functions---functions_sessions.php.html#functionget_user_id">get_user_id()</a></dd>
-							<dt><b>generate_block_data_ref</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodgenerate_block_data_ref">qTemplate::generate_block_data_ref()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a reference to the array of data values for the given  (possibly nested) block namespace. This is a string of the form:  $this-&gt;_tpldata['parent'][$_parent_i]['$child1'][$_child1_i]['$child2'][$_child2_i]...['$childN']</dd>
-							<dt><b>generate_block_varref</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodgenerate_block_varref">qTemplate::generate_block_varref()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a reference to the given variable inside the given (possibly nested)  block namespace. This is a string of the form:  ' . $this-&gt;_tpldata['parent'][$_parent_i]['$child1'][$_child1_i]['$child2'][$_child2_i]...['varname'] . '  It's ready to be inserted into an &quot;echo&quot; line in one of the templates.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -438,30 +441,22 @@
 				<dd>procedural page <a href="qGuestbook/admin/_admin---index.php.html">index.php</a></dd>
 							<dt><b>img</b></dt>
 				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodimg">qStyles::img()</a></dd>
+							<dt><b>import_seralized</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodimport_seralized">qLanguage::import_seralized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt eine Datei aus dem Cache und bereitet sie auf.</dd>
+							<dt><b>import_unserialized</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodimport_unserialized">qLanguage::import_unserialized()</a></dd>
+							<dt><b>INSTALLED</b></dt>
+				<dd>in file config.php, constant <a href="qGuestbook/config/_includes---config---config.php.html#defineINSTALLED">INSTALLED</a></dd>
 							<dt><b>icq_url</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionicq_url">icq_url()</a></dd>
-							<dt><b>is_negative</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionis_negative">is_negative()</a></dd>
+							<dt><b>import_smiliepack</b></dt>
+				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionimport_smiliepack">import_smiliepack()</a></dd>
 							<dt><b>install.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/install/_install---install.php.html">install.php</a></dd>
-							<dt><b>import_seralized</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodimport_seralized">qLanguage::import_seralized()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt eine Datei aus dem Cache und bereitet sie auf.</dd>
-							<dt><b>import_unserialized</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodimport_unserialized">qLanguage::import_unserialized()</a></dd>
 							<dt><b>imageset.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/template/_admin---style---imageset---imageset.php.html">imageset.php</a></dd>
 							<dt><b>imageset.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/template/_styles---imagesets---soscy---imageset.php.html">imageset.php</a></dd>
-					</dl>
-	</div>
-	<a href="elementindex_qGuestbook.html#top">top</a><br>
-  <hr />
-	<a name="j"></a>
-	<div>
-		<h2>j</h2>
-		<dl>
-							<dt><b>js_back</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionjs_back">js_back()</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -474,24 +469,22 @@
 				<dd>procedural page <a href="qGuestbook/admin/_admin---login.php.html">login.php</a></dd>
 							<dt><b>LOGIN_PAGE</b></dt>
 				<dd>in file login.php, constant <a href="qGuestbook/admin/_admin---login.php.html#defineLOGIN_PAGE">LOGIN_PAGE</a></dd>
+							<dt><b>$language_pack</b></dt>
+				<dd>in file language.php, variable <a href="qGuestbook/common/qLanguage.html#var$language_pack">qLanguage::$language_pack</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Enthält das geparste Sprachpaket.</dd>
+							<dt><b>$language_pack_name</b></dt>
+				<dd>in file language.php, variable <a href="qGuestbook/common/qLanguage.html#var$language_pack_name">qLanguage::$language_pack_name</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Der Name des benutzen Sprachpakets.</dd>
+							<dt><b>language.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---language.php.html">language.php</a></dd>
+							<dt><b>language_info</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodlanguage_info">qLanguage::language_info()</a></dd>
+							<dt><b>loadfile</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodloadfile">qTemplate::loadfile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;If not already done, load the file for the given handle and populate  the uncompiled_code[] hash with its code. Do not compile.</dd>
+							<dt><b>load_template</b></dt>
+				<dd>in file language.php, method <a href="qGuestbook/common/qLanguage.html#methodload_template">qLanguage::load_template()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt ein E-Mail Template</dd>
 							<dt><b>LANGUAGE_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineLANGUAGE_TABLE">LANGUAGE_TABLE</a></dd>
 							<dt><b>load_email</b></dt>
 				<dd>in file functions_email.php, function <a href="qGuestbook/functions/_includes---functions---functions_email.php.html#functionload_email">load_email()</a></dd>
-							<dt><b>load_smilie_pack</b></dt>
-				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionload_smilie_pack">load_smilie_pack()</a></dd>
-							<dt><b>$language_pack</b></dt>
-				<dd>in file language.php, variable <a href="qGuestbook/language/qLanguage.html#var$language_pack">qLanguage::$language_pack</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Enthält das geparste Sprachpaket.</dd>
-							<dt><b>$language_pack_name</b></dt>
-				<dd>in file language.php, variable <a href="qGuestbook/language/qLanguage.html#var$language_pack_name">qLanguage::$language_pack_name</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Der Name des benutzen Sprachpakets.</dd>
-							<dt><b>language.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/language/_includes---language---language.php.html">language.php</a></dd>
-							<dt><b>language_info</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodlanguage_info">qLanguage::language_info()</a></dd>
-							<dt><b>load_template</b></dt>
-				<dd>in file language.php, method <a href="qGuestbook/language/qLanguage.html#methodload_template">qLanguage::load_template()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt ein E-Mail Template</dd>
-							<dt><b>loadfile</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodloadfile">qTemplate::loadfile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;If not already done, load the file for the given handle and populate  the uncompiled_code[] hash with its code. Do not compile.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -504,16 +497,14 @@
 				<dd>procedural page <a href="qGuestbook/admin/_admin---meta.php.html">meta.php</a></dd>
 							<dt><b>moderate.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---moderate.php.html">moderate.php</a></dd>
+							<dt><b>mysql.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---database---dbms---mysql.php.html">mysql.php</a></dd>
+							<dt><b>make_filename</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodmake_filename">qTemplate::make_filename()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a full path+filename for the given filename, which can either  be an absolute name, or a name relative to the rootdir for this Template  object.</dd>
 							<dt><b>META_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineMETA_TABLE">META_TABLE</a></dd>
-							<dt><b>mysql.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/database/_includes---database---dbms---mysql.php.html">mysql.php</a></dd>
-							<dt><b>make_link</b></dt>
-				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionmake_link">make_link()</a></dd>
 							<dt><b>message_die</b></dt>
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionmessage_die">message_die()</a></dd>
-							<dt><b>make_filename</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodmake_filename">qTemplate::make_filename()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates a full path+filename for the given filename, which can either  be an absolute name, or a name relative to the rootdir for this Template  object.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -538,8 +529,14 @@
 				<dd>procedural page <a href="qGuestbook/_posting.php.html">posting.php</a></dd>
 							<dt><b>phpinfo.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/admin/_admin---phpinfo.php.html">phpinfo.php</a></dd>
+							<dt><b>postgresql.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---database---dbms---postgresql.php.html">postgresql.php</a></dd>
 							<dt><b>parse</b></dt>
 				<dd>in file styles.php, method <a href="qGuestbook/common/qStyles.html#methodparse">qStyles::parse()</a></dd>
+							<dt><b>post</b></dt>
+				<dd>in file globals.php, method <a href="qGuestbook/common/qGlobals.html#methodpost">qGlobals::post()</a></dd>
+							<dt><b>pparse</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodpparse">qTemplate::pparse()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt die aktuelle Template Datei, kompiliert sie und führt den kompilierten Code aus.</dd>
 							<dt><b>PAGE_ABUSE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#definePAGE_ABUSE">PAGE_ABUSE</a></dd>
 							<dt><b>PAGE_ADMIN_DATABASE</b></dt>
@@ -584,8 +581,6 @@
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#definePOST_NOT_MARKED">POST_NOT_MARKED</a></dd>
 							<dt><b>POST_WAIT_LIST</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#definePOST_WAIT_LIST">POST_WAIT_LIST</a></dd>
-							<dt><b>postgresql.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/database/_includes---database---dbms---postgresql.php.html">postgresql.php</a></dd>
 							<dt><b>page_footer</b></dt>
 				<dd>in file functions_display.php, function <a href="qGuestbook/functions/_includes---functions---functions_display.php.html#functionpage_footer">page_footer()</a></dd>
 							<dt><b>page_header</b></dt>
@@ -594,8 +589,6 @@
 				<dd>in file functions_display.php, function <a href="qGuestbook/functions/_includes---functions---functions_display.php.html#functionpage_title">page_title()</a></dd>
 							<dt><b>parse_language</b></dt>
 				<dd>in file functions_acp.php, function <a href="qGuestbook/functions/_includes---functions---functions_acp.php.html#functionparse_language">parse_language()</a></dd>
-							<dt><b>pparse</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodpparse">qTemplate::pparse()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Lädt die aktuelle Template Datei, kompiliert sie und führt den kompilierten Code aus.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -606,20 +599,24 @@
 		<dl>
 							<dt><b>qConfig</b></dt>
 				<dd>in file config.php, class <a href="qGuestbook/common/qConfig.html">qConfig</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qDatabase_MySQL</b></dt>
+				<dd>in file mysql.php, class <a href="qGuestbook/common/qDatabase_MySQL.html">qDatabase_MySQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qDatabase_PostgreSQL</b></dt>
+				<dd>in file postgresql.php, class <a href="qGuestbook/common/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qDatabase_SQLite</b></dt>
+				<dd>in file sqlite.php, class <a href="qGuestbook/common/qDatabase_SQLite.html">qDatabase_SQLite</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qEncode</b></dt>
+				<dd>in file encode.php, class <a href="qGuestbook/common/qEncode.html">qEncode</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qEncode</dd>
+							<dt><b>qEscape</b></dt>
+				<dd>in file escape.php, class <a href="qGuestbook/common/qEscape.html">qEscape</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
+							<dt><b>qGlobals</b></dt>
+				<dd>in file globals.php, class <a href="qGuestbook/common/qGlobals.html">qGlobals</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGlobals Befreit uns davon, die Variablen immer  auf ihre Existenz hin, zu prüfen.</dd>
+							<dt><b>qLanguage</b></dt>
+				<dd>in file language.php, class <a href="qGuestbook/common/qLanguage.html">qLanguage</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Beschreibung:</dd>
 							<dt><b>qStyles</b></dt>
 				<dd>in file styles.php, class <a href="qGuestbook/common/qStyles.html">qStyles</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
-							<dt><b>qDatabase_MySQL</b></dt>
-				<dd>in file mysql.php, class <a href="qGuestbook/database/qDatabase_MySQL.html">qDatabase_MySQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
-							<dt><b>qDatabase_PostgreSQL</b></dt>
-				<dd>in file postgresql.php, class <a href="qGuestbook/database/qDatabase_PostgreSQL.html">qDatabase_PostgreSQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
-							<dt><b>qDatabase_SQLite</b></dt>
-				<dd>in file sqlite.php, class <a href="qGuestbook/database/qDatabase_SQLite.html">qDatabase_SQLite</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qGuestbook</dd>
-							<dt><b>qEncode</b></dt>
-				<dd>in file encode.php, class <a href="qGuestbook/encode/qEncode.html">qEncode</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qEncode</dd>
-							<dt><b>qLanguage</b></dt>
-				<dd>in file language.php, class <a href="qGuestbook/language/qLanguage.html">qLanguage</a></dd>
 							<dt><b>qTemplate</b></dt>
-				<dd>in file template.php, class <a href="qGuestbook/template/qTemplate.html">qTemplate</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qTemplate Template Class</dd>
+				<dd>in file template.php, class <a href="qGuestbook/common/qTemplate.html">qTemplate</a><br>&nbsp;&nbsp;&nbsp;&nbsp;qTemplate Template Class</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -652,98 +649,102 @@
 				<dd>procedural page <a href="qGuestbook/admin/_admin---smilies.php.html">smilies.php</a></dd>
 							<dt><b>styles.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/common/_includes---common---styles.php.html">styles.php</a></dd>
+							<dt><b>sqlite.php</b></dt>
+				<dd>procedural page <a href="qGuestbook/common/_includes---database---dbms---sqlite.php.html">sqlite.php</a></dd>
+							<dt><b>server</b></dt>
+				<dd>in file globals.php, method <a href="qGuestbook/common/qGlobals.html#methodserver">qGlobals::server()</a></dd>
+							<dt><b>set_filenames</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodset_filenames">qTemplate::set_filenames()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets the template filenames for handles. $filename_array  should be a hash of handle =&gt; filename pairs.</dd>
+							<dt><b>set_rootdir</b></dt>
+				<dd>in file template.php, method <a href="qGuestbook/common/qTemplate.html#methodset_rootdir">qTemplate::set_rootdir()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Setzt den Template Wurzelpfad für das aktuelle Template.</dd>
+							<dt><b>sql_array_type</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_array_type">qDatabase_SQLite::sql_array_type()</a></dd>
+							<dt><b>sql_array_type</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_array_type">qDatabase_PostgreSQL::sql_array_type()</a></dd>
+							<dt><b>sql_array_type</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_array_type">qDatabase_MySQL::sql_array_type()</a></dd>
+							<dt><b>sql_close</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_close">qDatabase_PostgreSQL::sql_close()</a></dd>
+							<dt><b>sql_close</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_close">qDatabase_SQLite::sql_close()</a></dd>
+							<dt><b>sql_close</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_close">qDatabase_MySQL::sql_close()</a></dd>
+							<dt><b>sql_connect</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_connect">qDatabase_PostgreSQL::sql_connect()</a></dd>
+							<dt><b>sql_connect</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_connect">qDatabase_MySQL::sql_connect()</a></dd>
+							<dt><b>sql_connect</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_connect">qDatabase_SQLite::sql_connect()</a></dd>
+							<dt><b>sql_error</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_error">qDatabase_SQLite::sql_error()</a></dd>
+							<dt><b>sql_error</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_error">qDatabase_PostgreSQL::sql_error()</a></dd>
+							<dt><b>sql_error</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_error">qDatabase_MySQL::sql_error()</a></dd>
+							<dt><b>sql_escape</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_escape">qDatabase_SQLite::sql_escape()</a></dd>
+							<dt><b>sql_escape</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_escape">qDatabase_PostgreSQL::sql_escape()</a></dd>
+							<dt><b>sql_escape</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_escape">qDatabase_MySQL::sql_escape()</a></dd>
+							<dt><b>sql_fetchrow</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_fetchrow">qDatabase_SQLite::sql_fetchrow()</a></dd>
+							<dt><b>sql_fetchrow</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_fetchrow">qDatabase_PostgreSQL::sql_fetchrow()</a></dd>
+							<dt><b>sql_fetchrow</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_fetchrow">qDatabase_MySQL::sql_fetchrow()</a></dd>
+							<dt><b>sql_free_result</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_free_result">qDatabase_SQLite::sql_free_result()</a></dd>
+							<dt><b>sql_free_result</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_free_result">qDatabase_PostgreSQL::sql_free_result()</a></dd>
+							<dt><b>sql_free_result</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_free_result">qDatabase_MySQL::sql_free_result()</a></dd>
+							<dt><b>sql_list_tables</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_list_tables">qDatabase_SQLite::sql_list_tables()</a></dd>
+							<dt><b>sql_numrows</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_numrows">qDatabase_SQLite::sql_numrows()</a></dd>
+							<dt><b>sql_numrows</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_numrows">qDatabase_PostgreSQL::sql_numrows()</a></dd>
+							<dt><b>sql_numrows</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_numrows">qDatabase_MySQL::sql_numrows()</a></dd>
+							<dt><b>sql_num_queries</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_num_queries">qDatabase_PostgreSQL::sql_num_queries()</a></dd>
+							<dt><b>sql_num_queries</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_num_queries">qDatabase_SQLite::sql_num_queries()</a></dd>
+							<dt><b>sql_num_queries</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_num_queries">qDatabase_MySQL::sql_num_queries()</a></dd>
+							<dt><b>sql_query</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_query">qDatabase_SQLite::sql_query()</a></dd>
+							<dt><b>sql_query</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_query">qDatabase_PostgreSQL::sql_query()</a></dd>
+							<dt><b>sql_query</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_query">qDatabase_MySQL::sql_query()</a></dd>
+							<dt><b>sql_result</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_result">qDatabase_SQLite::sql_result()</a></dd>
+							<dt><b>sql_result</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_result">qDatabase_MySQL::sql_result()</a></dd>
+							<dt><b>sql_result</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_result">qDatabase_PostgreSQL::sql_result()</a></dd>
+							<dt><b>sql_select</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_select">qDatabase_PostgreSQL::sql_select()</a></dd>
+							<dt><b>sql_select</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_select">qDatabase_SQLite::sql_select()</a></dd>
+							<dt><b>sql_select</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_select">qDatabase_MySQL::sql_select()</a></dd>
+							<dt><b>sql_server_info</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_server_info">qDatabase_MySQL::sql_server_info()</a></dd>
+							<dt><b>sql_server_info</b></dt>
+				<dd>in file sqlite.php, method <a href="qGuestbook/common/qDatabase_SQLite.html#methodsql_server_info">qDatabase_SQLite::sql_server_info()</a></dd>
+							<dt><b>sql_server_info</b></dt>
+				<dd>in file postgresql.php, method <a href="qGuestbook/common/qDatabase_PostgreSQL.html#methodsql_server_info">qDatabase_PostgreSQL::sql_server_info()</a></dd>
+							<dt><b>sql_split_dump</b></dt>
+				<dd>in file mysql.php, method <a href="qGuestbook/common/qDatabase_MySQL.html#methodsql_split_dump">qDatabase_MySQL::sql_split_dump()</a></dd>
 							<dt><b>sample.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/config/_includes---config---sample.php.html">sample.php</a></dd>
 							<dt><b>SMILIES_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineSMILIES_TABLE">SMILIES_TABLE</a></dd>
 							<dt><b>STYLES_TABLE</b></dt>
 				<dd>in file constants.php, constant <a href="qGuestbook/constants/_includes---constants---constants.php.html#defineSTYLES_TABLE">STYLES_TABLE</a></dd>
-							<dt><b>sqlite.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/database/_includes---database---dbms---sqlite.php.html">sqlite.php</a></dd>
-							<dt><b>sql_array_type</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_array_type">qDatabase_MySQL::sql_array_type()</a></dd>
-							<dt><b>sql_array_type</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_array_type">qDatabase_SQLite::sql_array_type()</a></dd>
-							<dt><b>sql_array_type</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_array_type">qDatabase_PostgreSQL::sql_array_type()</a></dd>
-							<dt><b>sql_close</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_close">qDatabase_SQLite::sql_close()</a></dd>
-							<dt><b>sql_close</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_close">qDatabase_PostgreSQL::sql_close()</a></dd>
-							<dt><b>sql_close</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_close">qDatabase_MySQL::sql_close()</a></dd>
-							<dt><b>sql_connect</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_connect">qDatabase_SQLite::sql_connect()</a></dd>
-							<dt><b>sql_connect</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_connect">qDatabase_MySQL::sql_connect()</a></dd>
-							<dt><b>sql_connect</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_connect">qDatabase_PostgreSQL::sql_connect()</a></dd>
-							<dt><b>sql_error</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_error">qDatabase_PostgreSQL::sql_error()</a></dd>
-							<dt><b>sql_error</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_error">qDatabase_SQLite::sql_error()</a></dd>
-							<dt><b>sql_error</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_error">qDatabase_MySQL::sql_error()</a></dd>
-							<dt><b>sql_escape</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_escape">qDatabase_PostgreSQL::sql_escape()</a></dd>
-							<dt><b>sql_escape</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_escape">qDatabase_SQLite::sql_escape()</a></dd>
-							<dt><b>sql_escape</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_escape">qDatabase_MySQL::sql_escape()</a></dd>
-							<dt><b>sql_fetchrow</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_fetchrow">qDatabase_PostgreSQL::sql_fetchrow()</a></dd>
-							<dt><b>sql_fetchrow</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_fetchrow">qDatabase_SQLite::sql_fetchrow()</a></dd>
-							<dt><b>sql_fetchrow</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_fetchrow">qDatabase_MySQL::sql_fetchrow()</a></dd>
-							<dt><b>sql_free_result</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_free_result">qDatabase_SQLite::sql_free_result()</a></dd>
-							<dt><b>sql_free_result</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_free_result">qDatabase_PostgreSQL::sql_free_result()</a></dd>
-							<dt><b>sql_free_result</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_free_result">qDatabase_MySQL::sql_free_result()</a></dd>
-							<dt><b>sql_list_tables</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_list_tables">qDatabase_SQLite::sql_list_tables()</a></dd>
-							<dt><b>sql_list_tables</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_list_tables">qDatabase_MySQL::sql_list_tables()</a></dd>
-							<dt><b>sql_numrows</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_numrows">qDatabase_SQLite::sql_numrows()</a></dd>
-							<dt><b>sql_numrows</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_numrows">qDatabase_MySQL::sql_numrows()</a></dd>
-							<dt><b>sql_numrows</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_numrows">qDatabase_PostgreSQL::sql_numrows()</a></dd>
-							<dt><b>sql_num_queries</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_num_queries">qDatabase_SQLite::sql_num_queries()</a></dd>
-							<dt><b>sql_num_queries</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_num_queries">qDatabase_MySQL::sql_num_queries()</a></dd>
-							<dt><b>sql_num_queries</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_num_queries">qDatabase_PostgreSQL::sql_num_queries()</a></dd>
-							<dt><b>sql_query</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_query">qDatabase_SQLite::sql_query()</a></dd>
-							<dt><b>sql_query</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_query">qDatabase_MySQL::sql_query()</a></dd>
-							<dt><b>sql_query</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_query">qDatabase_PostgreSQL::sql_query()</a></dd>
-							<dt><b>sql_result</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_result">qDatabase_SQLite::sql_result()</a></dd>
-							<dt><b>sql_result</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_result">qDatabase_MySQL::sql_result()</a></dd>
-							<dt><b>sql_result</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_result">qDatabase_PostgreSQL::sql_result()</a></dd>
-							<dt><b>sql_select</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_select">qDatabase_SQLite::sql_select()</a></dd>
-							<dt><b>sql_select</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_select">qDatabase_PostgreSQL::sql_select()</a></dd>
-							<dt><b>sql_select</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_select">qDatabase_MySQL::sql_select()</a></dd>
-							<dt><b>sql_server_info</b></dt>
-				<dd>in file sqlite.php, method <a href="qGuestbook/database/qDatabase_SQLite.html#methodsql_server_info">qDatabase_SQLite::sql_server_info()</a></dd>
-							<dt><b>sql_server_info</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_server_info">qDatabase_MySQL::sql_server_info()</a></dd>
-							<dt><b>sql_server_info</b></dt>
-				<dd>in file postgresql.php, method <a href="qGuestbook/database/qDatabase_PostgreSQL.html#methodsql_server_info">qDatabase_PostgreSQL::sql_server_info()</a></dd>
-							<dt><b>sql_split_dump</b></dt>
-				<dd>in file mysql.php, method <a href="qGuestbook/database/qDatabase_MySQL.html#methodsql_split_dump">qDatabase_MySQL::sql_split_dump()</a></dd>
 							<dt><b>send_email</b></dt>
 				<dd>in file functions_email.php, function <a href="qGuestbook/functions/_includes---functions---functions_email.php.html#functionsend_email">send_email()</a></dd>
 							<dt><b>sessions_expired</b></dt>
@@ -758,10 +759,6 @@
 				<dd>in file functions.php, function <a href="qGuestbook/functions/_includes---functions---functions.php.html#functionsmilies">smilies()</a></dd>
 							<dt><b>sessions.php</b></dt>
 				<dd>procedural page <a href="qGuestbook/sessions/_includes---sessions---sessions.php.html">sessions.php</a></dd>
-							<dt><b>set_filenames</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodset_filenames">qTemplate::set_filenames()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets the template filenames for handles. $filename_array  should be a hash of handle =&gt; filename pairs.</dd>
-							<dt><b>set_rootdir</b></dt>
-				<dd>in file template.php, method <a href="qGuestbook/template/qTemplate.html#methodset_rootdir">qTemplate::set_rootdir()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Setzt den Template Wurzelpfad für das aktuelle Template.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -771,7 +768,9 @@
 		<h2>t</h2>
 		<dl>
 							<dt><b>template.php</b></dt>
-				<dd>procedural page <a href="qGuestbook/template/_includes---template---template.php.html">template.php</a></dd>
+				<dd>procedural page <a href="qGuestbook/common/_includes---common---template.php.html">template.php</a></dd>
+							<dt><b>translate_error</b></dt>
+				<dd>in file escape.php, method <a href="qGuestbook/common/qEscape.html#methodtranslate_error">qEscape::translate_error()</a></dd>
 					</dl>
 	</div>
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
@@ -857,7 +856,7 @@
 	<a href="elementindex_qGuestbook.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 27 Mar 2008 20:37:45 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
+		    Documentation generated on Sun, 30 Mar 2008 19:54:52 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.0</a>
 	      </div>
       </td></tr></table>
     </td>

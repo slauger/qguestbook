@@ -42,28 +42,46 @@ $reply_id = (isset($_GET['id'])) ? $_GET['id'] : '';
 switch ($mode) {
 	case 'insert':		
 		// Pflichtfeld "Username"
-		if (!isset($_POST['name']) || !$user = valdiate_username($_POST['name'])) {
+		if (!$globals->post('name') || !$user = valdiate_username($globals->post('name'))) {
 			$valdiate_error = 'name';
 			break;
 		}
 		
 		// Pflichtfeld "Email"
-		if (!isset($_POST['email']) || !$email = valdiate_email($_POST['email'])) {
+		if (!$globals->post('email') || !$email = valdiate_email($globals->post('email'))) {
 			$valdiate_error ='email';
 			break;
 		}
 		
 		// Pflichtfeld "Textarea"
-		if (!isset($_POST['textarea']) || empty($_POST['textarea'])) {
+		if (!$globals->post('textarea')) {
 			$valdiate_error = 'textarea';
 			break;
 		}
 		
+		// Text based Captcha, added in 0.2.4
+		//
+		// Im Moment nur eine "Quick and Dirty"-Lösung
+		// Das ganze wird noch auf die Datenbank ausgelagert, um den Bots
+		// die Arbeit noch etwas zu erschweren...
+		//
+		// In späteren Versionen wird es auch möglich sein, zwichen Textbasierten
+		// und einem grafischen Captcha zu wechseln.
+		if (!$globals->post('captcha_sum') || !$globals->post('db_captcha_sum')) {
+			$valdiate_error = 'captcha';
+			break;
+		} else {
+			if ($globals->post('db_captcha_sum') != $globals->post('captcha_sum')) {
+				$valdiate_error = 'captcha';
+				break;
+			}
+		}
+		
 		// Valdiate Fields
-		$hide_email = (isset($_POST['hide_email'])) ? 1 : 0;
-		$text = trim($_POST['textarea']);
-		$user = trim($_POST['name']);
-		$icq = (isset($_POST['icq'])) ? trim($_POST['icq']) : '';
+		$hide_email = ($globals->post('hide_email')) ? 1 : 0;
+		$text = trim($globals->post('textarea'));
+		$user = trim($globals->post('name'));
+		$icq = ($globals->post('icq')) ? trim($_POST['icq']) : '';
 		$www = (isset($_POST['www'])) ? trim($_POST['www']) : '';
 
 		// Website URL valdieren
@@ -114,12 +132,12 @@ switch ($mode) {
 		$db->sql_query($sql);
 		
 		// Bestätigungs E-Mail an den User
-		if ($config->get('success_email'])) {
+		if ($config->get('success_email')) {
 			generate_mail($lang['email_post_user'], array($email), sprintf($config_table['success_email_text'], $user));
 		}
 		
 		// Benachrichtungs E-Mails an die Mods
-		if ($config->get('success_email_admin'])) {
+		if ($config->get('success_email_admin')) {
 			// An die komplette Manschaft ;)
 			if ($config->get('success_email_admin')) {
 				$sql = 'SELECT user_email
@@ -162,7 +180,7 @@ $template->set_filenames(array(
 ));
 
 // User darf ICQ UIN angeben
-if ($config->get('enable_icq'] == 1) {
+if ($config->get('enable_icq') == 1) {
 	$template->assign_block_vars('icq_enabled', array());
 }
 
@@ -173,7 +191,7 @@ if ($config->get('enable_www')) {
 
 // Smilie und BBCode Status anzeigen
 $bbcodes_status = (!$config->get('bbcode')) ? $lang['inactive'] : $lang['active'];
-$smilies_status = (!$config->get['smilies')) ? $lang['smilies'] : $lang['active'];
+$smilies_status = (!$config->get('smilies')) ? $lang['smilies'] : $lang['active'];
 
 // Fehler beim valdieren der Userdaten?
 if (isset($valdiate_error) && !empty($valdiate_error)) {
@@ -192,6 +210,11 @@ if (isset($reply_text) && !empty($reply_text)) {
 	$textarea = $encode->encode_html($_POST['textarea']);
 }
 
+// Captcha
+$captcha_a = round(rand(1, 100) / 10);
+$captcha_b = round(rand(1, 100) / 10);
+$captcha_sum = $captcha_a + $captcha_b;
+
 // Template Vars
 $template->assign_vars(array(
 	'BBCODES_STATUS' => $bbcodes_status,
@@ -205,6 +228,10 @@ $template->assign_vars(array(
 	'HIDE_EMAIL' => (isset($_POST['hide_email']) && !empty($_POST['hide_email'])) ? "checked=\"checked\"" : "",
 	'ERROR_TITLE' => $lang['guestbook_error'],
 	'ERROR_MESSAGE' => (isset($error_message) && !empty($error_message)) ? $error_message : "",
+	
+	'CAPTCHA_A' => $captcha_a,
+	'CAPTCHA_B' => $captcha_b,
+	'CAPTCHA_SUM' => $captcha_sum,
 ));
 
 $template->pparse('index');
