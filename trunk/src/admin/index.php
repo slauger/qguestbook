@@ -35,10 +35,8 @@ define('GUESTBOOK', true);
 define('ADMIN_PAGE', true);
 define('REQUIRED_AUTH_LEVEL', 2);
 
-// Dateien includieren
 $root_dir = '../';
 include_once $root_dir . 'includes/common.php';
-
 
 page_header('Aktuelle Statistik');
 
@@ -47,24 +45,29 @@ $template->set_filenames(array(
 	'index' => 'index_body.html',
 ));
 
+//
+// Einige tolle SQL COUNT() Querys
+// für unsere Statistik!
+//
+
 // Eintraege gesamt
-$sql = 'SELECT posts_id
+$sql = 'SELECT COUNT(`posts_id`)
 	FROM ' . POSTS_TABLE;
 $result = $db->sql_query($sql);
-$posts_count = ($posts_count = $db->sql_numrows($result)) ? $posts_count : 'Keine Eintraege';
+$posts_count = $db->sql_result($result, 0);
 
 // Eintraege in der Warteschlange
 $sql = 'SELECT posts_id
 	FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . POST_WAIT_LIST;
 $result = $db->sql_query($sql);
-$wait_list_count = ($wait_list_count = $db->sql_numrows($result)) ? $wait_list_count : 'Keine Eintraege';
+$wait_list_count = $db->sql_result($result, 0);
 
 // Count Users
-$sql = 'SELECT user_id
+$sql = 'SELECT COUNT(`user_id`)
 	FROM ' . USERS_TABLE;
 $result = $db->sql_query($sql);
-$users_count = $db->sql_numrows($result);
+$users_count = $db->sql_result($result, 0);
 
 // Users Online
 $sql = 'SELECT user_id, user_name
@@ -73,32 +76,33 @@ $sql = 'SELECT user_id, user_name
 $result = $db->sql_query($sql);
 
 $user_online = array();
-while ($row = $db->sql_fetchrow($result))
-{
+while ($row = $db->sql_fetchrow($result)) {
 	$user_online[] = array(
 		'user_id' => $row['user_id'],
-		'user_name' => $row['user_name'],
+		'user_name' => "<b>" . $row['user_name'] . "</b>",
 	);
 }
 
 $user_names = array();
-foreach ($user_online as $key => $value)
-{
+foreach ($user_online as $key => $value) {
 	$user_names[] = '<b>' . $user_online[$key]['user_name'] . '</b>';
 }
 $user_names = implode(', ', $user_names);
 $users_online = count($user_online);
-$users_explain = ($users_online > 1) ? 'Moderatoren' : 'Moderator';
+$users_online = ($users_online > 0) ? $users_online . ' Benutzer online: ' : $users_online . ' Benutzer online:';
+$users_explain = ($users_online > 1) ? 'Moderatoren gesamt' : 'Moderator gesamt';
 
-// Statistik
+// Statistikzeugs
 $php_version = phpversion();
-$guestbook_days = (time() - $config_table['startdate']) / 86400;
+$guestbook_days = round((time() - $config_table['startdate']) / 86400);
 $guestbook_date = format_date($config_table['startdate']);
-$posts_per_day = sprintf("%.2f", $posts_count / $guestbook_days);
+$posts_per_day = sprintf("%.2f Einträge pro Tag", $posts_count / $guestbook_days);
 $post_per_day_desc = ($guestbook_days > 1) ? $lang['days'] : $lang['day'];
 $register_globals = (ini_get('register_globals') == '1') ? "<font color=\"#CA3200\">" . $lang['switchted_on'] . "</font>" : "<font color=\"#00CA0F\">" . $lang['switchted_off'] . "</font>";
 $safe_mode = (ini_get('safe_mode') == '1') ? "<font color=\"#00CA0F\">" . $lang['Switchted_On'] . "</font>" : "<font color=\"#CA3200\">" . $lang['switchted_off'] . "</font>";
 $magic_quotes_gpc = (ini_get('magic_quotes_gpc') == '1') ? "<font color=\"#00CA0F\">" . $lang['switchted_on'] . "</font>" : "<font color=\"#CA3200\">" . $lang['switchted_off'] . "</font>";
+$wait_list_count = ($wait_list_count > 0) ? $wait_list_count . ' Einträge' : 'Keine Eintraege';
+$posts_count = ($posts_count > 0) ? $posts_count . ' Einträge' : 'Keine Eintraege';
 
 $template->assign_vars(array(
 	'VERSION' => $config_table['version'],
@@ -121,11 +125,11 @@ $template->assign_vars(array(
 	'PHP_VERSION' => $php_version,
 	// Stats
 	'POSTS_PER_DAY' => $posts_per_day,
-	'START_DATE' => $guestbook_date, //sprintf('%s %s', round($guestbook_days, 2), $post_per_day_desc),
-	'USERS_ONLINE' => sprintf('%1s %2s Online', $users_online, $users_explain),
+	'START_DATE' => "Vor {$guestbook_days} Tagen", //sprintf('%s %s', round($guestbook_days, 2), $post_per_day_desc),
+	'USERS_ONLINE' => sprintf('%1s %2s', $users_online, $user_names),
 	'USERS_ONLINE_EXPLAIN' => $user_names,
 	'SQL_SERVER' => $db->sql_server_info(),
-	'USERS_COUNT' => $users_count,
+	'USERS_COUNT' => "$users_count registrierte Benutzer gesamt",
 ));
 
 $template->pparse('index');
