@@ -26,7 +26,7 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    CVS: $Id: sessions.php 20 2008-03-27 14:02:56Z kwhark $
+* @version    CVS: $Id$
 * @link       http://www.simlau.net/
 */
 

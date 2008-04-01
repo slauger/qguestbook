@@ -48,32 +48,9 @@ $mode = (isset($_GET['mode'])) ? $_GET['mode'] : '';
 
 switch ($mode)
 {
-	case 'import':
-		if (!$globals->post('file')) {
-			message_die($lang['ERROR_MAIN'], 'Du hast keine Datei angegeben, die du importieren willst!');
-		} else {
-			$import_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
-			if (import_smiliepack($import_file, true)) {
-				message_die('Smilie Paket wurde erfolgreich importiert!', 'Smilie Paket wurde erfolgreich importiert!');
-			} else {
-				message_die($lang['ERROR_MAIN'], 'Konnte Paket nicht importieren!');
-			}
-		}
-	break;
-	case 'export':
-		if (!$globals->post('file')) {
-			message_die($lang['ERROR_MAIN'], 'Du musst eine Datei angeben, in die du exportieren willst!');
-		}
-	
-		$export_file = sprintf("%sincludes/store/smilies/%s", $root_dir, $globals->post('file'));
-
-		if (!@file_put_contents($export_file, export_smiliepack())) {
-			message_die($lang['ERROR_MAIN'], sprintf($lang['smilies_export_file'], $encode->encode_html($globals->post('file')), '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
-		}
-
-		message_die($lang['smilies_export_submit'], sprintf($lang['smilies_export_submit_desc'], $encode->encode_html($globals->post('file')), '<a href="' . PAGE_ADMIN_SMILIES . '">', '</a>', '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>'));
-	break;
 	case 'edit':
+		die('Noch nicht fertig  :)');
+		
 		if ($globals->post('submit')) {
 			$sql = 'UPDATE ' . SMILIES_TABLE . '
 					SET `smilies_code` = ' . $db->sql_escape($_POST['smilies_code']) . ',
@@ -134,32 +111,32 @@ switch ($mode)
 		$template->pparse('body');
 	break;
 	case 'delete':
-		if (!$globals->get('smilies')) {
+		if (!$globals->get('badwords')) {
 			message_die('foo', 'bar');
 		}
 		
-		if (is_array($globals->get('smilies')) && count($globals->get('smilies')) > 1)
+		if (is_array($globals->get('badwords')) && count($globals->get('badwords')) > 1)
 		{
 			$sql_where_statement = '';
-			foreach ($globals->get('smilies') as $smilie_id)
+			foreach ($globals->get('badwords') as $smilie_id)
 			{
 				if (empty($sql_where_statement))
 				{
-					$sql_where_statement = 'WHERE smilies_id = ' . $db->sql_escape($smilie_id) . ' ';
+					$sql_where_statement = 'WHERE words_id = ' . $db->sql_escape($smilie_id) . ' ';
 				}
 				else
 				{
-					$sql_where_statement .= 'OR smilies_id = ' . $db->sql_escape($smilie_id) . ' ';
+					$sql_where_statement .= 'OR words_id = ' . $db->sql_escape($smilie_id) . ' ';
 				}
 			}
-			$sql = 'DELETE FROM ' . SMILIES_TABLE . '
+			$sql = 'DELETE FROM ' . WORDS_TABLE . '
 					' . $sql_where_statement . '
 				LIMIT ' . count($sql_where_statement);
 		}
 		else
 		{
-			$sql = 'DELETE FROM ' . SMILIES_TABLE . '
-					WHERE smilies_id = ' . $db->sql_escape($globals->get('smilies')) . '
+			$sql = 'DELETE FROM ' . WORDS_TABLE . '
+					WHERE words_id = ' . $db->sql_escape($globals->get('badwords')) . '
 				LIMIT 1';
 		}
 		
@@ -171,33 +148,18 @@ switch ($mode)
 	break;
 	default:
 		$template->set_filenames(array(
-			'body' => 'smilies_body.html',
+			'body' => 'badwords_body.html',
 		));
 
-		$sql = 'SELECT smilies_id, smilies_code, smilies_url, smilies_name
-		FROM ' . SMILIES_TABLE;
+		$sql = 'SELECT words_id, words_name, words_replacement
+				FROM ' . WORDS_TABLE;
 		$result = $db->sql_query($sql);
 
 		while ($row = $db->sql_fetchrow($result)) {
-			$template->assign_block_vars('smilies', array(
-				'ID' => $row['smilies_id'],
-				'CODE' => $row['smilies_code'],
-				'URL' => $root_dir . $config_table['smilies_path'] . '/' .$row['smilies_url'],
-				'NAME' => $row['smilies_name'],
-			));
-		}
-
-		$directory = read_directory($root_dir . 'includes/store/smilies/');
-		$smilie_packs = array();
-		foreach ($directory['file'] as $key => $filename) {
-			if(preg_match('/\.(pak)$/', $filename)) {
-				$smilie_packs[] = $filename;
-			}
-		}
-
-		foreach ($smilie_packs as $smilie_pack_name) {
-			$template->assign_block_vars('smilie_packs', array(
-				'FILENAME' => $smilie_pack_name,
+			$template->assign_block_vars('badwords', array(
+				'ID' => $row['words_id'],
+				'NAME' => $row['words_name'],
+				'REPLACEMENT' => $row['words_replacement'],
 			));
 		}
 

@@ -25,7 +25,7 @@
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
-* @version    CVS: $Id: newsfeed.php 15 2008-03-27 13:35:32Z kwhark $
+* @version    CVS: $Id$
 * @link       http://www.simlau.net/
 */
 

@@ -43,7 +43,7 @@
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
 * @version    0.2.4
 * @link       http://www.simlau.net/
-* @version    CVS: $Id: template.php 20 2008-03-27 14:02:56Z kwhark $
+* @version    CVS: $Id$
 * @link       http://www.simlau.net/
 * @since      Class available since Release 0.2.1
 */
