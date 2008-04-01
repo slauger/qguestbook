@@ -67,11 +67,12 @@ switch ($mode) {
 		//
 		// In späteren Versionen wird es auch möglich sein, zwichen Textbasierten
 		// und einem grafischen Captcha zu wechseln.
-		if (!$globals->post('captcha_sum') || !$globals->post('db_captcha_sum')) {
+		if (!$globals->post('captcha_sum') || !$globals->post('captcha_checksum')) {
 			$valdiate_error = 'captcha';
+			echo "passed";
 			break;
 		} else {
-			if ($globals->post('db_captcha_sum') != $globals->post('captcha_sum')) {
+			if ($globals->post('captcha_checksum') != md5($globals->post('captcha_sum'))) {
 				$valdiate_error = 'captcha';
 				break;
 			}
@@ -213,7 +214,7 @@ if (isset($reply_text) && !empty($reply_text)) {
 // Captcha
 $captcha_a = round(rand(1, 100) / 10);
 $captcha_b = round(rand(1, 100) / 10);
-$captcha_sum = $captcha_a + $captcha_b;
+$captcha_checksum = md5($captcha_a + $captcha_b);
 
 // Template Vars
 $template->assign_vars(array(
@@ -231,7 +232,7 @@ $template->assign_vars(array(
 	
 	'CAPTCHA_A' => $captcha_a,
 	'CAPTCHA_B' => $captcha_b,
-	'CAPTCHA_SUM' => $captcha_sum,
+	'CAPTCHA_CHECKSUM' => $captcha_checksum,
 ));
 
 $template->pparse('index');
