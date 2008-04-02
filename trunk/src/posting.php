@@ -35,12 +35,11 @@ include_once $root_dir . 'includes/common.php';
 page_header('Neuen Eintrag schreiben');
 
 $valdiate_error = '';
-$mode = (!isset($_GET['mode']) || empty($_GET['mode'])) ? '' : $_GET['mode'];
-$mode = (isset($_POST['preview'])) ? 'preview' : $mode;
-$reply_id = (isset($_GET['id'])) ? $_GET['id'] : '';
+$mode = (!$globals->get('mode')) ? '' : $globals->get('mode');
+$reply_id = ($globals->get('id')) ? $globals->get('id') : '';
 
 switch ($mode) {
-	case 'insert':		
+	case 'insert':
 		// Pflichtfeld "Username"
 		if (!$globals->post('name') || !$user = valdiate_username($globals->post('name'))) {
 			$valdiate_error = 'name';
@@ -69,7 +68,6 @@ switch ($mode) {
 		// und einem grafischen Captcha zu wechseln.
 		if (!$globals->post('captcha_sum') || !$globals->post('captcha_checksum')) {
 			$valdiate_error = 'captcha';
-			echo "passed";
 			break;
 		} else {
 			if ($globals->post('captcha_checksum') != md5($globals->post('captcha_sum'))) {
@@ -82,13 +80,13 @@ switch ($mode) {
 		$hide_email = ($globals->post('hide_email')) ? 1 : 0;
 		$text = trim($globals->post('textarea'));
 		$user = trim($globals->post('name'));
-		$icq = ($globals->post('icq')) ? trim($_POST['icq']) : '';
-		$www = (isset($_POST['www'])) ? trim($_POST['www']) : '';
+		$icq = ($globals->post('icq')) ? trim($globals->post('icq')) : '';
+		$www = ($globals->post('www')) ? trim($globals->post('www')) : '';
 
 		// Website URL valdieren
 		if (!empty($icq)) {
 			// Darf er die überhaupt angeben?
-			if ($config_table['enable_icq'] == 0) {
+			if (!$config->get('enable_icq')) {
 				$icq = '';
 			}
 			// Ja, aber ist sie valid?
@@ -101,7 +99,7 @@ switch ($mode) {
 		// ICQ UIN valdieren
 		if (!empty($www)) {
 			// Darf er die überhaupt angeben?
-			if ($config_table['enable_www'] == 0) {
+			if (!$config->get('enable_www')) {
 				$www = '';
 			}
 			// Ja, aber ist sie valid?
@@ -125,16 +123,18 @@ switch ($mode) {
 		}
 		
 		// Beitrag in die Moderations-Warteschlange stellen?
-		$active = (isset($config_table['moderated']) && $config_table['moderated'] == 1) ? POST_WAIT_LIST : POST_ACTIVE;
+		$active = ($config->get('moderated')) ? POST_WAIT_LIST : POST_ACTIVE;
 
 		$sql = 'INSERT INTO ' . POSTS_TABLE . '
 			(posts_id, posts_name, posts_email, posts_ip, posts_www, posts_icq, posts_text, posts_date, posts_active, posts_hide_email) 
 			VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($user) . ',' . $db->sql_escape($email) . ', ' . $db->sql_escape($user_ip) . ', ' . $db->sql_escape($www) . ', ' . $db->sql_escape($icq) . ', ' . $db->sql_escape($text) . ', ' . $db->sql_escape(time()) . ', ' . $db->sql_escape($active) . ', ' . $db->sql_escape($hide_email) . ')';
-		$db->sql_query($sql);
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
 		
 		// Bestätigungs E-Mail an den User
 		if ($config->get('success_email')) {
-			generate_mail($lang['email_post_user'], array($email), sprintf($config_table['success_email_text'], $user));
+			generate_mail($lang['email_post_user'], array($email), sprintf($config->get('success_email_text'), $user));
 		}
 		
 		// Benachrichtungs E-Mails an die Mods
@@ -158,7 +158,7 @@ switch ($mode) {
 			
 			// E-Mail verschicken!
 			// Fixed in 0.2.4 (forgot $email_adresses)
-			generate_mail($lang['email_post_admin'], $email_adresses, sprintf($config_table['success_email_admin_text'], $user, $text, real_path()));
+			generate_mail($lang['email_post_admin'], $email_adresses, sprintf($config->get('success_email_admin_text'), $user, $text, real_path()));
 		}
 		
 		// Done! Bestätigung ausgeben.
@@ -167,7 +167,8 @@ switch ($mode) {
 	break;
 	case 'preview':
 		// Vorschau ist noch nicht möglich.
-		message_die($lang['guestbook_error'], 'Die Vorschau Funktion ist leider in diesem Release noch nicht verfügbar, wird aber so bald wie möglich nachgereicht werden. :)<br /><br />Versuchs doch einfach später nochmal... :P');
+		$valdiate_error = 'Funktion nocht nicht verfügbar!';
+		break;
 	break;
 	case 'reply':
 		// Zitat generieren.
@@ -181,7 +182,7 @@ $template->set_filenames(array(
 ));
 
 // User darf ICQ UIN angeben
-if ($config->get('enable_icq') == 1) {
+if ($config->get('enable_icq')) {
 	$template->assign_block_vars('icq_enabled', array());
 }
 
@@ -195,20 +196,19 @@ $bbcodes_status = (!$config->get('bbcode')) ? $lang['inactive'] : $lang['active'
 $smilies_status = (!$config->get('smilies')) ? $lang['smilies'] : $lang['active'];
 
 // Fehler beim valdieren der Userdaten?
-if (isset($valdiate_error) && !empty($valdiate_error)) {
+if (!empty($valdiate_error)) {
 	$template->assign_block_vars('valdiate_error', array());
 	$error_message = valdiate_error($valdiate_error);
 }
-
-// Initialisierung
-$textarea = "";
 
 // Textfeld des Formulars füllen
 // Wenn Zitat gewählt, geht dieses vor
 if (isset($reply_text) && !empty($reply_text)) {
 	$textarea = $encode->encode_html($reply_text);
 } elseif ($globals->post('textarea')) {
-	$textarea = $encode->encode_html($_POST['textarea']);
+	$textarea = $encode->encode_html($globals->post('textarea'));
+} else {
+	$textarea = '';
 }
 
 // Captcha
@@ -220,14 +220,16 @@ $captcha_checksum = md5($captcha_a + $captcha_b);
 $template->assign_vars(array(
 	'BBCODES_STATUS' => $bbcodes_status,
 	'SMILIES_STATUS' => $smilies_status,
+	
 	'TEXTAREA' => $textarea,
 	'HTML_STATUS' => $lang['inactive'],
-	'NAME' => (isset($_POST['name']) && !empty($_POST['name'])) ? $encode->encode_html($_POST['name']) : "",
-	'EMAIL' => (isset($_POST['email']) && !empty($_POST['email'])) ? $encode->encode_html($_POST['email']) : "",
-	'ICQ' => (isset($_POST['icq']) && !empty($_POST['icq'])) ? $encode->encode_html($_POST['icq']) : "",
-	'WWW' => (isset($_POST['www']) && !empty($_POST['www'])) ? $encode->encode_html($_POST['www']) : "",
-	'HIDE_EMAIL' => (isset($_POST['hide_email']) && !empty($_POST['hide_email'])) ? "checked=\"checked\"" : "",
-	'ERROR_TITLE' => $lang['guestbook_error'],
+	'NAME' => ($globals->post('name')) ? $encode->encode_html($globals->post('name')) : "",
+	'EMAIL' => ($globals->post('email')) ? $encode->encode_html($globals->post('email')) : "",
+	'ICQ' => ($globals->post('icq')) ? $encode->encode_html($globals->post('icq')) : "",
+	'WWW' => ($globals->post('www')) ? $encode->encode_html($globals->post('www')) : "",
+	'HIDE_EMAIL' => ($globals->post('hide_email')) ? "checked=\"checked\"" : "",
+	
+	'ERROR_TITLE' => $lang['ERROR_MAIN'],
 	'ERROR_MESSAGE' => (isset($error_message) && !empty($error_message)) ? $error_message : "",
 	
 	'CAPTCHA_A' => $captcha_a,

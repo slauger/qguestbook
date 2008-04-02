@@ -87,6 +87,8 @@ $lang = array_merge($lang, array(
 
 	'ERROR_BANNED_IP' => 'Deine IP Adresse wurde vom Administrator gesperrt.',
 	'ERROR_BANNED_USER' => 'Der gewählte Benutzername wurde vom Administrator gesperrt oder ist bereits belegt.',
+	
+	'SQL_ERROR_EXPLAIN' => 'SQL Error %1s: %2s<br /><br />In Datei %3s, Zeile %4s',
 ));
 
 /**
