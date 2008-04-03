@@ -1,0 +1,29 @@
+Change Log
+===============================================================================
+Please note: This change log may not be accurate
+$Id$
+
+Legend:
++ = Added
+- = Removed
+# = Bugfix
+! = Update/Change
+? = To-Do
+
+=========================== Release 0.2.4 =====================================
+
+? Beiträge/Kommentare bearbeiten
+# Kommentare werden nicht in die DB eingetragen
+# Funktion generate_quote(): Fehler behoben, wenn ID nicht in der Datenbank vorhanden
+# Sicherheitslücke beim Zitieren gefixt
+! Nach dem automatisch generierten Zitat-Code wird nun ein Zeilenumbruch eingefügt
++ Wiederaufbau des Formulars mit Fehlermeldung, wenn etwas "falsch war" (z. B. "Email enspricht nicht der Norm!")
+# Fixed words_cut(): Zeilenumbrüche wurden nicht als Zwischenzeichen gezählt. Somit wurde teilweise zu Unrecht gekürzt.
+# Fixed RSS Feed: Funktioniert wieder; Template neu geschrieben, jetzt auch valid.
+* HTMLMimmeMail5 aktualisiert
+! StringParser_BBCode aktualisiert
+# Mögliche XXS Sicherheitslücke in bbcode_image() behoben
+* XHTML Anpassungen (overall_header.html)
++ Smilies bearbeiten
+
+===============================================================================
