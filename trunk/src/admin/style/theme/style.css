@@ -151,6 +151,16 @@ h1 {
 	color : #000000;
 }
 
+h1, h2, h2:hover, h1:hover, h2:link, h1:link {
+	text-align: center;
+	color: #000;
+	text-decoration: none;
+}
+
+img, img:hover {
+	border: none;
+}
+
 /* In der Beitragsansicht, wenn die Beiträge auf mehrere Seiten verteilt werden,
  * werden die Links mit dieser Klasse formatiert */
 .nav {

@@ -164,7 +164,7 @@ function costum_phpinfo()
 
 	$output = $output[1][0];
 	$output = preg_replace('#<tr class="v"><td>(.*?<a[^>]*><img[^>]*></a>)(.*?)</td></tr>#s', '<tr class="row1"><td><table class="type2"><tr><td>\2</td><td>\1</td></tr></table></td></tr>', $output);
-	$output = preg_replace('#<table[^>]+>#i', '<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">', $output);
+	$output = preg_replace('#<table[^>]+>#i', '<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline" style="background-color: #efefef;">', $output);
 	$output = preg_replace('#<img border="0"#i', '<img', $output);
 	$output = str_replace(array('class="e"', 'class="v"', 'class="h"', '<hr />', '<font', '</font>'), array('class="row1"', 'class="row2"', '', '', '<span', '</span>'), $output);
 
@@ -184,6 +184,21 @@ function parse_language($language)
 	$filename = "{$root_dir}includes/language/{$language}/info.txt";
 	$content = file_get_contents($filename);
 	return $content;
+}
+
+function update_available()
+{
+	global $config;
+	$url = 'http://localhost/info.php';
+	if (!$content = file_get_contents($url)) {
+		return false;
+	}
+	unserialize($content);
+	if (str_replace('.', '', $config->get('version')) < $info['version']) {
+		return $info['version'];
+	} else {
+		return false;
+	}
 }
 
 ?>

@@ -48,11 +48,11 @@ page_title('PHP Info');
 include_once $root_dir . "includes/header.php";
 
 $template->set_filenames(array(
-	'body' => 'phpinfo.html',
+	'body' => 'phpinfo_body.html',
 ));
 
 $template->assign_vars(array(
-	'PHP_INFO' => phpinfo(),
+	'PHP_INFO' => costum_phpinfo(),
 ));
 
 $template->pparse('body');
