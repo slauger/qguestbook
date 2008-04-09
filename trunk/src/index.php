@@ -38,7 +38,7 @@ page_header($lang['GUESTBOOK_ENTRY']);
 // Sind überhaupt Einträge vorhanden?
 $sql = 'SELECT COUNT(`posts_id`)
 		FROM ' . POSTS_TABLE . '
-	WHERE posts_active = ' . POST_ACTIVE;
+	WHERE posts_active = ' . $db->sql_escape(POST_ACTIVE);
 $result = $db->sql_query($sql);
 
 $max = $db->sql_result($result, 0);
@@ -51,9 +51,10 @@ if (!$max || $max == 0) {
 // Variablen gesetzt?
 $start = ($globals->get('start')) ? $globals->get('start') : 0;
 $limit = ($globals->get('limit')) ? $globals->get('limit') : $config->get('posts_site');
+$limit = ($limit > $max) ? $max : $config->get('posts_site');
 
 // Überprüfen der Variablen
-if ($limit <= 0 || !is_numeric($limit)) $limit = $config->get('posts_site'); // Limit ungülitg? Standard setzen.
+if ($limit <= 0 || !is_numeric($limit)) $limit = $config->get('posts_site'); // Limit ungülitg? Standard setzen
 if ($start >= $max) $start = $max - $limit; // Start zu gross? Setze ihn auf grösstmöglichstes Resultat.
 if ($start <= 0 || !is_numeric($start)) $start = 0; // Start = 1 falls falsch.
 if ($start + $limit > $max) $start = $max - $limit; // Limit zu gross? Setze ihn auf grösstmöglichstes Resultat.
