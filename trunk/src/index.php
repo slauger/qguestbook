@@ -51,6 +51,7 @@ if (!$max || $max == 0) {
 // Variablen gesetzt?
 $start = ($globals->get('start')) ? $globals->get('start') : 0;
 $limit = ($globals->get('limit')) ? $globals->get('limit') : $config->get('posts_site');
+$limit = ($config->get('posts_site') == 0) ? $max : $limit;
 $limit = ($limit > $max) ? $max : $config->get('posts_site');
 
 // Überprüfen der Variablen
@@ -86,7 +87,25 @@ $result = $db->sql_query($sql);
 
 // Zur Sicherheit überprüfen wir nochmals...
 if (!$posts = $db->sql_numrows($result)) {
-	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
+	if ($max || $max > 0) {
+		$limit = ($config->get('limit') > $max) ? $max : $config->get('posts_site');
+		$limit = ($limit == 0) ? $max : $limit;
+		$start = 0;
+
+		$sql = 'SELECT p.*, c.*, u.user_name
+			FROM ' . POSTS_TABLE . ' p
+				LEFT JOIN ' . COMMENTS_TABLE . ' AS c
+				ON c.comment_post = p.posts_id
+				LEFT JOIN ' . USERS_TABLE . ' AS u
+				ON u.user_id = c.comment_user
+					WHERE p.posts_active = ' . $db->sql_escape(POST_ACTIVE) . '
+				ORDER BY p.posts_id ' . strtoupper($postorder) . '
+			LIMIT ' . $db->sql_escape($start) . ', ' . $db->sql_escape($limit);
+			
+		$result = $db->sql_query($sql);
+	} else {
+		message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
+	}
 }
 
 // Navigation und Designmumpitz
