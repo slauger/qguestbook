@@ -48,16 +48,6 @@ if (!$max || $max == 0) {
 	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 }
 
-/**
- * $start -> nicht niedriger als 1 (bzw 0)
- * 	  -> muss nummeric sein
- * $limit -> nicht größer als $max - $limit
- * 	  -> muss nummeric sein
- *
- * 
- *
- */
-
 // Variable gesetzt? Ansonsten Standart.
 $start = ($globals->get('start')) ? $globals->get('start') : 0;
 
@@ -90,7 +80,10 @@ if (!$globals->get('limit')) {
 	}
 }
 
-// Überprüfen der Variablen
+// Gesetzt? Ansonsten Standart.
+$start = ($globals->get('start')) ? $globals->get('start') : 0;
+
+// Überprüfen, ob alles passt
 if ($start >= $max) $start = $max - $limit; // Start zu gross? Setze ihn auf grösstmöglichstes Resultat.
 if ($start <= 0 || !is_numeric($start)) $start = 0; // Start = 1 falls falsch.
 if ($start + $limit > $max) $start = $max - $limit; // Limit zu gross? Setze ihn auf grösstmöglichstes Resultat.
