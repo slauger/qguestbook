@@ -48,17 +48,53 @@ if (!$max || $max == 0) {
 	message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 }
 
-// Variablen gesetzt?
+/**
+ * $start -> nicht niedriger als 1 (bzw 0)
+ * 	  -> muss nummeric sein
+ * $limit -> nicht größer als $max - $limit
+ * 	  -> muss nummeric sein
+ *
+ * 
+ *
+ */
+
+// Variable gesetzt? Ansonsten Standart.
 $start = ($globals->get('start')) ? $globals->get('start') : 0;
-$limit = ($globals->get('limit')) ? $globals->get('limit') : $config->get('posts_site');
-$limit = ($config->get('posts_site') == 0) ? $max : $limit;
-$limit = ($limit > $max) ? $max : $config->get('posts_site');
+
+// Etwas Hardcoded, aber nötig.
+if (!$globals->get('limit')) {
+	if ($config->get('posts_site') == 0) {
+		$limit = $max;
+	} else {
+		if ($config->get('posts_site') > $max) {
+			$limit = $max;
+		} else {
+			$limit = $config->get('posts_site');
+		}
+	}
+} else {
+	if ($globals->get('limit') > $max) {
+		$limit = $max - $limit;
+	} elseif ($globals->get('limit') == 0) {
+		$limit = $max;
+	} else {
+		if ($globals->get('limit') <= 0 || !is_numeric($globals->get('limit'))) {
+			if ($config->get('posts_site') > $max) {
+				$limit = $max;
+			} else {
+				$limit = $config->get('posts_site');
+			}
+		} else {
+			$limit = $globals->get('limit');
+		}
+	}
+}
 
 // Überprüfen der Variablen
-if ($limit <= 0 || !is_numeric($limit)) $limit = $config->get('posts_site'); // Limit ungülitg? Standard setzen
 if ($start >= $max) $start = $max - $limit; // Start zu gross? Setze ihn auf grösstmöglichstes Resultat.
 if ($start <= 0 || !is_numeric($start)) $start = 0; // Start = 1 falls falsch.
 if ($start + $limit > $max) $start = $max - $limit; // Limit zu gross? Setze ihn auf grösstmöglichstes Resultat.
+
 
 // Wie wird sortiert?
 $postorder = ($globals->get('postorder')) ? $globals->get('postorder') : $config->get('postorder');
@@ -88,9 +124,9 @@ $result = $db->sql_query($sql);
 // Zur Sicherheit überprüfen wir nochmals...
 if (!$posts = $db->sql_numrows($result)) {
 	if ($max || $max > 0) {
+		$start = 0;
 		$limit = ($config->get('limit') > $max) ? $max : $config->get('posts_site');
 		$limit = ($limit == 0) ? $max : $limit;
-		$start = 0;
 
 		$sql = 'SELECT p.*, c.*, u.user_name
 			FROM ' . POSTS_TABLE . ' p
@@ -101,26 +137,30 @@ if (!$posts = $db->sql_numrows($result)) {
 					WHERE p.posts_active = ' . $db->sql_escape(POST_ACTIVE) . '
 				ORDER BY p.posts_id ' . strtoupper($postorder) . '
 			LIMIT ' . $db->sql_escape($start) . ', ' . $db->sql_escape($limit);
-			
+		
+		if (!$posts = $db->sql_numrows($result)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
+		}
+		
 		$result = $db->sql_query($sql);
 	} else {
 		message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 	}
 }
 
-// Navigation und Designmumpitz
-// Muss nochmal überarbeitet werden...
-$page_next = $start + $limit;
-$page_last = $start - $limit;
-$post_limit = ($start + $limit) - 1;
-if ($page_next > $max) $page_next = $max - $limit;
-if ($page_last <= 0) $page_last = $page_last = 0;
-
+// Schönere Seiten
+$start = (!$start || $start < 0) ? 0 : $start;
+$next  = ($start + $limit > $max) ? $max - $limit : $start + $limit;
+$last  = ($start - $limit >= 0) ? $start - $limit : 0;
 
 // Template wird geladen
 $template->set_filenames(array(
 	'index' => 'index_body.html',
 ));
+
+// $posts Einträge werden angezeigt
+// von $start bis $limit
+// nächste Seite $limit+$limit;
 
 // Wichtige Variablen
 $template->assign_vars(array(
@@ -132,10 +172,10 @@ $template->assign_vars(array(
 	'L_SITES' => $lang['PAGES'],
 	'L_VIEW_POSTS' => $lang['GUESTBOOK_ENTRY'],
 	'POSTS_GUESTBOOK' => sprintf($lang['POSTS_COUNT'], $max),
-	'POSTS_STATISTIC' => sprintf($lang['SHOW_FROM_TO'], $posts, $start + 1, $post_limit + 1, $max),
+	'POSTS_STATISTIC' => sprintf($lang['SHOW_FROM_TO'], $posts, $start + 1, $limit, $max),
 	
-	'U_PAGE_LAST' => PAGE_INDEX . "?start={$page_last}&amp;limit={$limit}&amp;postorder={$postorder}",
-	'U_PAGE_NEXT' => PAGE_INDEX . "?start={$page_next}&amp;limit={$limit}&amp;postorder={$postorder}",
+	'U_PAGE_LAST' => PAGE_INDEX . "?start={$last}&amp;limit={$limit}&amp;postorder={$postorder}",
+	'U_PAGE_NEXT' => PAGE_INDEX . "?start={$next}&amp;limit={$limit}&amp;postorder={$postorder}",
 
 ));
 

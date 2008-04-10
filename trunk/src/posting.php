@@ -66,13 +66,15 @@ switch ($mode) {
 		//
 		// In späteren Versionen wird es auch möglich sein, zwichen Textbasierten
 		// und einem grafischen Captcha zu wechseln.
-		if (!$globals->post('captcha_sum') || !$globals->post('captcha_checksum')) {
-			$valdiate_error = 'captcha';
-			break;
-		} else {
-			if ($globals->post('captcha_checksum') != md5($globals->post('captcha_sum'))) {
+		if ($config->get('enable_captcha')) {
+			if (!$globals->post('captcha_sum') || !$globals->post('captcha_checksum')) {
 				$valdiate_error = 'captcha';
 				break;
+			} else {
+				if ($globals->post('captcha_checksum') != md5($globals->post('captcha_sum'))) {
+					$valdiate_error = 'captcha';
+					break;
+				}
 			}
 		}
 		
@@ -209,6 +211,10 @@ if (isset($reply_text) && !empty($reply_text)) {
 	$textarea = $encode->encode_html($globals->post('textarea'));
 } else {
 	$textarea = '';
+}
+
+if ($config->get('enable_captcha')) {
+	$template->assign_block_vars('captcha_enabled', array());
 }
 
 // Captcha
