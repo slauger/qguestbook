@@ -43,13 +43,37 @@ Ist es möglich den Fehler während der Laufzeit zu beheben, so wird qEscape die
 
 Dies ist z. B. der Fall, wenn die Konfiguration aus irgendeinem Grund nicht gelesen werden kann. In diesem Fall wird auf eine Cache Version zugegriffen.
 
-==4. SQL Standarts==
+==4. Modul API von qGuestbook==
+
+qGuestbook hat eine integrierte Modul API, die mit "Actions" arbeitet. An jeder Stelle im Code können so genannte "Actions" definiert werden. Teilweise sind standardmäßige schon einige implementiert. Actions rufen Methoden in Modulen auf, die wiederrum direkt in den Content von qGB eingreifen könen. Hier ein Beispiel:
+
+  // die Methode hallo_welt(), hallo.php
+  
+  public function hallo_welt() {
+   
+    global $meine_variable;
+  
+    $meine_variable = "<h2>Hallo Welt!</h2>";
+  
+  }
+
+  // index.php
+
+  $meine_variable = "Hallo Welt";
+  
+  $module->action('hallo_welt');
+  
+  echo $meine_variable; // gibt "<h2>Hallo Welt!</h2>" aus
+
+Eine genaue und ausführliche Dokumentation folgt.
+
+==5. SQL Standarts==
 
 Um sicherzustellen, dass die Querys auch mit allen Datenbanksystem funktionieren sind einige Standarts einzuhalten.
 
 Dazu gehört z. B. "<>" statt "!=" zu verwenden. MSSQL hat hiermit seine Probleme.
 
-==5. Coding Standarts==
+==6. Coding Standarts==
 
 Es sind die PEAR Coding Standarts einzuhalten.
 
@@ -59,8 +83,8 @@ Die PEAR Codings Standards gelten für Quellcode der Bestandteil der offiziellen
 
 Die Codings Standards werden meist kurz als CS bezeichnet. Ihr Ziel ist es, den Quellcode konsistent zu halten und somit es allen Beteiligten zu erleichtern den Quellcode zu lesen und zu betreuen. 
 
-==6. Quelltext Dokumentation ==
+==7. Quelltext Dokumentation ==
 
-Erstellt mit phpDocumentor. ;)
+Erstellt mit phpDocumentor, aber nicht immer auf dem neusten Stand. ;)
 
 http://www.simlau.net/doc
