@@ -63,6 +63,7 @@ require_once $root_dir . 'includes/common/globals.php';
 require_once $root_dir . 'includes/common/language.php';
 require_once $root_dir . 'includes/common/db_select.php';
 require_once $root_dir . 'includes/common/template.php';
+require_once $root_dir . 'includes/common/module.php';
 
 // Befinden wir uns unter PHP4?
 // Wenn ja brauchen wir noch einige Sachen...
@@ -135,5 +136,7 @@ if (user_logged_in()) {
 } else {
 	$template->assign_block_vars('switch_logged_out', array());
 }
+
+$module = new qModule();
 
 ?>

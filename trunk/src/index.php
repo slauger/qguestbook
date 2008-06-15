@@ -172,19 +172,37 @@ $template->assign_vars(array(
 
 ));
 
+$module->load('bbcode');
+
 // Schnösel an qTemplate weitergeben!
 while ($row = $db->sql_fetchrow($result)) {
+
+	// Den Modulen soll vorher noch die Möglichkeit gegeben werden,
+	// alles zu ändern, was geändert werden darf und kann.
+	$module->action('index_before_vars');	
+	$row['post_id'] = $encode->encode_html($row['posts_id'], false);
+	$row['posts_name'] = $encode->encode_html($row['posts_name']);
+	$row['posts_text'] = $encode->encode_html($row['posts_text'], false);
+	$row['posts_date'] = format_date($row['posts_date']);
+	$row['posts_icq'] = icq_url($row['posts_icq']);
+	$row['posts_www'] = $encode->encode_html($row['posts_www']);
+	$row['posts_email'] = $encode->encode_html($row['posts_email']);
+	$row['comment_text'] = $encode->encode_html($row['comment_text']);
+	$row['user_name'] = $encode->encode_html($row['user_name']);
+	$row['comment_date'] = format_date($row['comment_date']);
+	$module->action('index_after_vars');
+	
 	$template->assign_block_vars('posts', array(
-		'ID' => $encode->encode_html($row['posts_id'], false),
-		'USERNAME' => $encode->encode_html($row['posts_name']),
-		'MESSAGE' => bbcode($encode->encode_html($row['posts_text'], false)),
-		'DATE_FORMAT' => format_date($row['posts_date']),
-		'U_ICQ' => icq_url($row['posts_icq']),
-		'U_WWW' => $encode->encode_html($row['posts_www']),
-		'U_EMAIL' => $encode->encode_html($row['posts_email']),
-		'COMMENT_TEXT' => bbcode($row['comment_text']),
-		'COMMENT_USERNAME' => $encode->encode_html($row['user_name']),
-		'COMMENT_DATE' => format_date($row['comment_date']),
+		'ID' => $row['post_id'],
+		'USERNAME' => $row['posts_name'],
+		'MESSAGE' => $row['posts_text'],
+		'DATE_FORMAT' => $row['posts_date'],
+		'U_ICQ' => $row['posts_icq'],
+		'U_WWW' => $row['posts_www'],
+		'U_EMAIL' => $row['posts_email'],
+		'COMMENT_TEXT' => $row['comment_text'],
+		'COMMENT_USERNAME' => $row['user_name'],
+		'COMMENT_DATE' => $row['comment_date'],
 	));
 	
 	// Valide ICQ UIN? Dann anzeigen.
