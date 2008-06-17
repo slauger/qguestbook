@@ -172,38 +172,54 @@ $template->assign_vars(array(
 
 ));
 
+// Wird noch über die DB abgearbeitet, vorerst hier
 $module->load('bbcode');
 
-// Schnösel an qTemplate weitergeben!
+// Die Ausgabe- bzw. Weiterleitungsschleife
+// Diese wurde seit Version 0.2.4 für qModule optimiert
+// So können Module nun sowohl das $row[] Array direkt ändern,
+// als auch Template Block Vars über das Array $block_vars_module
+// hinzufügen. Für weitere Informationen bitte die Doku lesen.
 while ($row = $db->sql_fetchrow($result)) {
-
-	// Den Modulen soll vorher noch die Möglichkeit gegeben werden,
-	// alles zu ändern, was geändert werden darf und kann.
-	$module->action('index_before_vars');	
-	$row['post_id'] = $encode->encode_html($row['posts_id'], false);
-	$row['posts_name'] = $encode->encode_html($row['posts_name']);
-	$row['posts_text'] = $encode->encode_html($row['posts_text'], false);
-	$row['posts_date'] = format_date($row['posts_date']);
-	$row['posts_icq'] = icq_url($row['posts_icq']);
-	$row['posts_www'] = $encode->encode_html($row['posts_www']);
-	$row['posts_email'] = $encode->encode_html($row['posts_email']);
-	$row['comment_text'] = $encode->encode_html($row['comment_text']);
-	$row['user_name'] = $encode->encode_html($row['user_name']);
-	$row['comment_date'] = format_date($row['comment_date']);
-	$module->action('index_after_vars');
 	
-	$template->assign_block_vars('posts', array(
-		'ID' => $row['post_id'],
-		'USERNAME' => $row['posts_name'],
-		'MESSAGE' => $row['posts_text'],
-		'DATE_FORMAT' => $row['posts_date'],
-		'U_ICQ' => $row['posts_icq'],
-		'U_WWW' => $row['posts_www'],
-		'U_EMAIL' => $row['posts_email'],
-		'COMMENT_TEXT' => $row['comment_text'],
-		'COMMENT_USERNAME' => $row['user_name'],
-		'COMMENT_DATE' => $row['comment_date'],
-	));
+	// Call Module Action I
+	$module->action('on_viewposts_first');	
+
+	// Security for ze varz!
+	$row['post_id']		= $encode->encode_html($row['posts_id'], false);
+	$row['posts_name']	= $encode->encode_html($row['posts_name']);
+	$row['posts_text']	= $encode->encode_html($row['posts_text'], false);
+	$row['posts_date']	= format_date($row['posts_date']);
+	$row['posts_icq']	= icq_url($row['posts_icq']);
+	$row['posts_www']	= $encode->encode_html($row['posts_www']);
+	$row['posts_email']	= $encode->encode_html($row['posts_email']);
+	$row['comment_text']	= $encode->encode_html($row['comment_text']);
+	$row['user_name']	= $encode->encode_html($row['user_name']);
+	$row['comment_date']	= format_date($row['comment_date']);
+	
+	// Call Module Action II
+	$module->action('on_viewposts_second');
+	
+	$block_vars = array(
+		'ID'			=> $row['post_id'],
+		'USERNAME'		=> $row['posts_name'],
+		'MESSAGE'		=> $row['posts_text'],
+		'DATE_FORMAT'		=> $row['posts_date'],
+		'U_ICQ'			=> $row['posts_icq'],
+		'U_WWW'			=> $row['posts_www'],
+		'U_EMAIL'		=> $row['posts_email'],
+		'COMMENT_TEXT'		=> $row['comment_text'],
+		'COMMENT_USERNAME'	=> $row['user_name'],
+		'COMMENT_DATE'		=> $row['comment_date'],
+	);
+	
+	// Will ein Modul noch etwas hinzufügen?
+	if (is_array($block_vars_module)) {
+		$block_vars = array_merge($block_vars, $block_vars_module);
+	}
+	
+	// Nun zu qTemplate weiterschicken
+	$template->assign_block_vars('posts', $block_vars);
 	
 	// Valide ICQ UIN? Dann anzeigen.
 	if (valdiate_icq($row['posts_icq'])) {
@@ -220,6 +236,10 @@ while ($row = $db->sql_fetchrow($result)) {
 	// Auch noch nicht die beste Lösung...
 	if (!empty($row['comment_id'])) {
 		$template->assign_block_vars('posts.switch_comment', array());
+	}
+	// Hat ein Modul rumgespielt? Dann wieder zurücksetzen.
+	if (isset($block_vars_module)) {
+		unset($block_vars_module);
 	}
 }
 
