@@ -157,18 +157,17 @@ $template->set_filenames(array(
 
 // Wichtige Variablen
 $template->assign_vars(array(
-	'LIMIT' => $limit,
-	'L_AUTHOR' => $lang['AUTHOR'],
-	'L_POST' => $lang['MESSAGE'],
-	'L_POSTED' => $lang['POSTED'],
-	'L_NEW_POST' => $lang['WRITE_NEW'],
-	'L_SITES' => $lang['PAGES'],
-	'L_VIEW_POSTS' => $lang['GUESTBOOK_ENTRY'],
-	'POSTS_GUESTBOOK' => sprintf($lang['POSTS_COUNT'], $max),
-	'POSTS_STATISTIC' => sprintf($lang['SHOW_FROM_TO'], $posts, $start + 1, $limit, $max),
-	
-	'U_PAGE_LAST' => PAGE_INDEX . "?start={$last}&amp;limit={$limit}&amp;postorder={$postorder}",
-	'U_PAGE_NEXT' => PAGE_INDEX . "?start={$next}&amp;limit={$limit}&amp;postorder={$postorder}",
+	'LIMIT'			=> $limit,
+	'L_AUTHOR'		=> $lang['AUTHOR'],
+	'L_POST'		=> $lang['MESSAGE'],
+	'L_POSTED'		=> $lang['POSTED'],
+	'L_NEW_POST'		=> $lang['WRITE_NEW'],
+	'L_SITES'		=> $lang['PAGES'],
+	'L_VIEW_POSTS'		=> $lang['GUESTBOOK_ENTRY'],
+	'POSTS_GUESTBOOK'	=> sprintf($lang['POSTS_COUNT'], $max),
+	'POSTS_STATISTIC'	=> sprintf($lang['SHOW_FROM_TO'], $posts, $start + 1, $limit, $max),
+	'U_PAGE_LAST'		=> PAGE_INDEX . "?start={$last}&amp;limit={$limit}&amp;postorder={$postorder}",
+	'U_PAGE_NEXT'		=> PAGE_INDEX . "?start={$next}&amp;limit={$limit}&amp;postorder={$postorder}",
 
 ));
 
