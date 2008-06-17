@@ -174,32 +174,41 @@ $template->assign_vars(array(
 // Wird noch über die DB abgearbeitet, vorerst hier
 $module->load('bbcode');
 
-// Die Ausgabe- bzw. Weiterleitungsschleife
+// Die Ausgabe- bzw. Weiterleitungsschleife,
 // Diese wurde seit Version 0.2.4 für qModule optimiert
-// So können Module nun sowohl das $row[] Array direkt ändern,
+// So können Module nun sowohl das $row Array direkt ändern,
 // als auch Template Block Vars über das Array $block_vars_module
 // hinzufügen. Für weitere Informationen bitte die Doku lesen.
 while ($row = $db->sql_fetchrow($result)) {
 	
 	// Call Module Action I
-	$module->action('on_viewposts_first');	
-
+	$module->action('on_viewposts_first');
+	
+	// ACHTUNG: Wir sollten hier NICHT davon ausgehen, dass alles schon richtig
+	// in der Datenbank steht (ICQ Nr, Website)! Überprüfung wäre angebracht!
+	// Ggf. eine Sicherheitslücke, bei falcher Benutzung. :(
+	
 	// Security for ze varz!
-	$row['post_id']		= $encode->encode_html($row['posts_id'], false);
-	$row['posts_name']	= $encode->encode_html($row['posts_name']);
-	$row['posts_text']	= $encode->encode_html($row['posts_text'], false);
-	$row['posts_date']	= format_date($row['posts_date']);
 	$row['posts_icq']	= icq_url($row['posts_icq']);
-	$row['posts_www']	= $encode->encode_html($row['posts_www']);
-	$row['posts_email']	= $encode->encode_html($row['posts_email']);
-	$row['comment_text']	= $encode->encode_html($row['comment_text']);
-	$row['user_name']	= $encode->encode_html($row['user_name']);
+	$row['posts_date']	= format_date($row['posts_date']);
 	$row['comment_date']	= format_date($row['comment_date']);
+	$row['post_id']		= $encode->encode_html($row['posts_id'], false);
+	$row['posts_text']	= $encode->encode_html($row['posts_text'], false);
+	$row['posts_name']	= $encode->encode_html($row['posts_name']);
+	$row['posts_email']	= $encode->encode_html($row['posts_email']);
+	$row['posts_www']	= $encode->encode_html($row['posts_www']);
+	$row['user_name']	= $encode->encode_html($row['user_name']);
+	$row['comment_text']	= $encode->encode_html($row['comment_text']);
 	
 	// Call Module Action II
 	$module->action('on_viewposts_second');
 	
-	$block_vars = array(
+	// Hat ein Modul schon etwas hinzugefügt?
+	if (empty($block_vars) || !is_array($block_vars)) {
+		$block_vars = array();
+	}
+
+	$block_vars = array_merge($block_vars, array(
 		'ID'			=> $row['post_id'],
 		'USERNAME'		=> $row['posts_name'],
 		'MESSAGE'		=> $row['posts_text'],
@@ -210,12 +219,7 @@ while ($row = $db->sql_fetchrow($result)) {
 		'COMMENT_TEXT'		=> $row['comment_text'],
 		'COMMENT_USERNAME'	=> $row['user_name'],
 		'COMMENT_DATE'		=> $row['comment_date'],
-	);
-	
-	// Will ein Modul noch etwas hinzufügen?
-	if (is_array($block_vars_module)) {
-		$block_vars = array_merge($block_vars, $block_vars_module);
-	}
+	));
 	
 	// Nun zu qTemplate weiterschicken
 	$template->assign_block_vars('posts', $block_vars);
