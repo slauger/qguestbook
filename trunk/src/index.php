@@ -171,9 +171,6 @@ $template->assign_vars(array(
 
 ));
 
-// Wird noch über die DB abgearbeitet, vorerst hier
-$module->load('bbcode');
-
 // Die Ausgabe- bzw. Weiterleitungsschleife,
 // Diese wurde seit Version 0.2.4 für qModule optimiert
 // So können Module nun sowohl das $row Array direkt ändern,
@@ -240,7 +237,7 @@ while ($row = $db->sql_fetchrow($result)) {
 	if (!empty($row['comment_id'])) {
 		$template->assign_block_vars('posts.switch_comment', array());
 	}
-	// Hat ein Modul rumgespielt? Dann wieder zurücksetzen.
+	// $block_vars zurücksetzen
 	if (isset($block_vars_module)) {
 		unset($block_vars_module);
 	}

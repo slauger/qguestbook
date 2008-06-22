@@ -46,10 +46,6 @@ include_once $root_dir . 'includes/functions/functions_valdiate.php';
 include_once $root_dir . 'includes/functions/functions_display.php';
 include_once $root_dir . 'includes/functions/functions_sessions.php';
 
-// bbcode
-require_once $root_dir . 'includes/bbcode/stringparser.class.php';
-require_once $root_dir . 'includes/bbcode/stringparser_bbcode.class.php';
-
 // email
 include_once $root_dir . 'includes/functions/functions_email.php';
 require_once $root_dir . 'includes/email/mimePart.php';
@@ -91,10 +87,6 @@ $db = new $database_class($dbhost, $dbuser, $dbpasswd, $dbname);
 // Export als $config_table
 // Wieder mal die Rückswärtskompatibilität
 $config = new qConfig('config_table');
-
-// Nun kann auch die BBCode Klasse gestartet werden
-// Diese braucht ein paar qConfig Variablen...
-include_once $root_dir . 'includes/bbcode/bbcode.php';
 
 // PHP Debug Informationen anzeigen?
 if ($config->get('show_warnings')) {
