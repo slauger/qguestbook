@@ -30,6 +30,8 @@
 * @link       http://www.simlau.net/
 */
 
+die("Die Arbeit an einem Portage fuer PHP4 wurde abgebrochen, da dies aufgrund einger fehlender Funktionen und Moeglichkeiten im Gebiet OOP nicht moeglich ist und ansonsten die Entwicklung nur verlangsamen wuerde.\nWir bitten um ihr Verstaendniss, das qGuestbook Entwicklerteam.");
+
 if (!function_exists('file_put_contents')) {
 	function file_put_contents($filename, $data) {
         	if (is_array($data)) {

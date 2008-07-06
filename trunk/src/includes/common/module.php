@@ -11,6 +11,7 @@ Class qModule
 		$this->load(array(
 			'bbcode',
 			'cut_words',
+			'smilies',
 		));
 	}
 	
