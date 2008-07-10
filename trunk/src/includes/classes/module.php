@@ -10,7 +10,7 @@ Class qModule
 		$this->active_modules = array();
 		$this->load(array(
 			'bbcode',
-			'cut_words',
+			'textLimiter',
 			'smilies',
 		));
 	}

@@ -34,6 +34,16 @@ if (!defined('GUESTBOOK')) {
 	exit;
 }
 
+// Befinden wir uns unter PHP4?
+// Seit Version 0.2.4 wurde die Arbeit an einem Backport
+// eingestellt. Falls doch noch interesse besteht und 
+// jemand Lust hat, alles zu portenn, der kann sich bei mir melden.
+if (substr(phpversion(), 0, 1) == 4) {
+	// Backports für die Klassen existieren nocht nicht...
+	trigger_error('PHP 5.0 or higher required', E_USER_ERROR);
+	//include_once $root_dir . 'includes/functions/functions_php4.php';
+}
+
 // config
 include_once $root_dir . 'includes/config/config.php';
 
@@ -52,21 +62,14 @@ require_once $root_dir . 'includes/email/mimePart.php';
 require_once $root_dir . 'includes/email/htmlMimeMail5.php';
 
 // classes
-require_once $root_dir . 'includes/common/config.php';
-require_once $root_dir . 'includes/common/encode.php';
-require_once $root_dir . 'includes/common/styles.php';
-require_once $root_dir . 'includes/common/globals.php';
-require_once $root_dir . 'includes/common/language.php';
-require_once $root_dir . 'includes/common/db_select.php';
-require_once $root_dir . 'includes/common/template.php';
-require_once $root_dir . 'includes/common/module.php';
-
-// Befinden wir uns unter PHP4?
-// Wenn ja brauchen wir noch einige Sachen...
-if (substr(phpversion(), 0, 1) == 4) {
-	// Backports für die Klassen existieren nocht nicht...
-	include_once $root_dir . 'includes/functions/functions_php4.php';
-}
+require_once $root_dir . 'includes/classes/config.php';
+require_once $root_dir . 'includes/classes/encode.php';
+require_once $root_dir . 'includes/classes/styles.php';
+require_once $root_dir . 'includes/classes/globals.php';
+require_once $root_dir . 'includes/classes/language.php';
+require_once $root_dir . 'includes/classes/db_select.php';
+require_once $root_dir . 'includes/classes/template.php';
+require_once $root_dir . 'includes/classes/module.php';
 
 // Schon installiert?
 if (!defined('INSTALLED')) {
