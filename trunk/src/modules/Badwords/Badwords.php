@@ -61,6 +61,7 @@ class Badwords
 	public function on_viewposts_second()
 	{
 		global $row;
+		
 		if (isset($row['posts_text']) && !empty($row['posts_text'])) {
 			$row['posts_text'] = $this->remove_badwords($row['posts_text']);
 		}
