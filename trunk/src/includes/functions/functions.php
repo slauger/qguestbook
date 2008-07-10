@@ -175,20 +175,6 @@ function decode_html($string)
 	return $encode->encode_html($string);
 }
 
-function smilies($text)
-{
-	global $config_table, $root_dir, $db;
-	$sql = 'SELECT smilies_id, smilies_code, smilies_url, smilies_name
-		FROM ' . SMILIES_TABLE;
-	$result = $db->sql_query($sql);
-	while ($row = $db->sql_fetchrow($result))
-	{
-		$replace = "<img src=\"" . real_path() . $config_table['smilies_path'] . $row['smilies_url'] . "\" alt=\"" . $row['smilies_name'] . "\" border=\"0\" />";
-        	$text = str_replace($row['smilies_code'], $replace, $text);
-	}
-	return $text;
-}
-
 function update_config_table($field, $value)
 {
 	global $db, $config_table;
@@ -224,6 +210,8 @@ function generate_quote($post_id)
 	return $quote_text;
 }
 
+// Wird nicht mehr verwandt!
+// Bitte das Modul BBCode verwenden
 function bbcode($string)
 {
 	global $bbcode, $config_table;
@@ -240,48 +228,6 @@ function real_path()
 	$url .= $_SERVER['HTTP_HOST'] . '/';
 	$url .= $config->get('script_path');
 	return $url;
-}
-
-//
-// Etwas Hardcore, aber funktioniert :D
-// Fixed in 0.2.4: "\n"s wurden nicht mit einbezogen;
-// Dies führte dazu, dass zu unrecht gekürzt wurde. ;)
-//
-function words_cut($text)
-{
-	global $config;
-	if ($config->get('max_lenght') && $config->get('max_lenght') > 0)
-	{
-		if (preg_match_all('#(\b\w{'.$config->get('max_lenght').',}\b)#', $text, $matches))
-		{
-			foreach ($matches[0] as $cut_word)
-			{
-				$text = str_replace($cut_word, substr($cut_word, 0, -(strlen($cut_word) - $config->get('max_lenght'))) . '... ', $text);
-			}
-		}
-	}
-	return $text;
-}
-
-function badwords($text)
-{
-	global $db, $config;
-	if ($config->get('censor_words') == '1')
-	{
-		$sql = 'SELECT words_id, words_name, words_replacement
-				FROM ' . WORDS_TABLE;
-		$result = $db->sql_query($sql);
-
-		$badwords = array();
-
-		while ($row = $db->sql_fetchrow($result))
-		{
-			$badwords['word'][] = $row['words_name'];
-			$badwords['replacement'][] = $row['words_replacement'];
-		}
-		$text = str_replace($badwords['word'], $badwords['replacement'], $text);
-	}
-	return $text;
 }
 
 function banned_email($user_email)
