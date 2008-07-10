@@ -61,7 +61,7 @@
 *
 * @category   Mail
 * @author  Richard Heyes <richard@phpguru.org>
-* @version $Revision: 1.3 $
+* @version $Revision$
 * @package htmlMimmeMail5
 * @link    http://www.phpguru.org/static/htmlMimeMail5.html
 */
