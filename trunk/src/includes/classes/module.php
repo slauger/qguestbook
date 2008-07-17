@@ -48,10 +48,10 @@ Class qModule
 		}
 		
 		// Hat das Modul eine Klasse?
-		if (file_exists($root_dir . 'modules/' . $module . '/' . $module . '.php')) {
-			include_once $root_dir . 'modules/' . $module . '/' . $module . '.php';
+		if (file_exists($root_dir . 'modules/' . $module . '/class.php')) {
+			include_once $root_dir . 'modules/' . $module . '/class.php';
 		} else {
-			trigger_error("$module: module file ($module.php) doesnt exists", E_USER_NOTICE);
+			trigger_error("$module: module file (class.php) doesnt exists", E_USER_NOTICE);
 		}
 		
 		if (class_exists($module)) {
