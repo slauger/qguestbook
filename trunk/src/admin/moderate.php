@@ -200,7 +200,7 @@ switch ($mode)
 			$template->assign_block_vars('moderate_posts', array(
 				'POST_ID' => $encode->encode_html($row['posts_id']),
 				'POST_NAME' => $encode->encode_html($row['posts_name']),
-				'POST_TEXT' => bbcode($row['posts_text']),
+				'POST_TEXT' => nl2br($encode->encode_html($row['posts_text'])),
 				'POST_EMAIL' => $encode->encode_html($row['posts_email']),
 				'POST_ICQ' => $encode->encode_html($row['posts_icq']),
 				'POST_WWW' => $encode->encode_html($row['posts_www']),
@@ -208,7 +208,7 @@ switch ($mode)
 				'POST_DATE' => format_date($row['posts_date']),
 				'POST_IP_URL' => sprintf($whois_url, decode_ip($row['posts_ip'])),
 				'COMMENT_USER' => $encode->encode_html($row['user_name']),
-				'COMMENT_TEXT' => bbcode($row['comment_text']),
+				'COMMENT_TEXT' => nl2br($encode->encode_html($row['comment_text'])),
 				'COMMENT_DATE' => format_date($row['comment_date']),
 				'URL_APPEND' => $url_append,
 			));

@@ -30,6 +30,7 @@
 * @link       http://www.simlau.net/
 */
 
+// Erweitert in 0.2.4... um export(), list() und import()
 class smilies
 {
 	private $smilies;
@@ -55,7 +56,7 @@ class smilies
 		{
 			$this->smilies[$row['smilies_id']] = array(
 				'smilies_code' => $row['smilies_code'],
-				'smilies_url' => $row['smilies_url'],
+				'smilies_url'  => $row['smilies_url'],
 				'smilies_name' => $row['smilies_name'],
 			);
 		}
@@ -74,6 +75,44 @@ class smilies
 		global $row;
 		if (isset($row['posts_text']) && !empty($row['posts_text'])) {
 			$row['posts_text'] = $this->make_smilies($row['posts_text']);
+		}
+	}
+	
+	public function export($filename)
+	{
+		global $db;
+		foreach ($this->smilies as $key => $value) {
+			$smilie_pack .= $this->smilies[$key]['smilies_url'] . "=+" . $this->smilies[$key]['smilies_code'] . "=+" . $this->smilies[$key]['smilies_name'] . "\n";
+		}
+		file_put_contents($filename, $smilie_pack);
+	}
+	
+	public function export_array()
+	{
+		return $this->smilies;
+	}
+	
+	public function import($filename)
+	{
+		global $db;
+		$smilie_pack = file($filename);
+	
+		foreach ($smilie_pack as $line) {
+			$smilie = explode('=+', $line);
+			$smilies[] = array(
+				'code'  => $smilie[1],
+				'url'   => $smilie[0],
+				'name'  => str_replace("\n", "", $smilie[2]),
+			);
+		}
+		
+		$db->sql_query('TRUNCATE TABLE ' . SMILIES_TABLE);
+		
+		foreach ($smilies as $key => $value) {
+			$sql = 'INSERT INTO ' . SMILIES_TABLE . '
+				(smilies_id, smilies_code, smilies_url, smilies_name)
+				VALUES (\'\', ' . $db->sql_escape($smilies[$key]['code']) . ', ' . $db->sql_escape($smilies[$key]['url']) . ', ' . $db->sql_escape($smilies[$key]['name']) . ')';
+			$db->sql_query($sql);
 		}
 	}
 }

@@ -29,17 +29,17 @@
 * @version    CVS: $Id$
 * @link       http://www.simlau.net/
 */
-//
-// Konstanten
-//
-define('GUESTBOOK', true);
-define('ADMIN_PAGE', true);
+
+if (!defined('GUESTBOOK')) {
+	die('Access denied!');
+}
+
 define('REQUIRED_AUTH_LEVEL', 2);
 
 //
 // Dateien includieren
 //
-$root_dir = '../';
+echo basename(__FILE__);
 include_once $root_dir . "includes/common.php";
 
 page_header('Smilie Verwaltung');

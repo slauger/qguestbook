@@ -42,10 +42,9 @@ define('REQUIRED_AUTH_LEVEL', 2);
 //
 $root_dir = '../';
 include_once $root_dir . 'includes/common.php';
-include_once $root_dir . 'includes/header.php';
 include_once $root_dir . 'includes/email/htmlMimeMail5.php';
-require_once $root_dir . 'includes/bbcode/stringparser_bbcode.class.php';
-include_once $root_dir . 'includes/bbcode/bbcode.php';
+
+page_header('E-Mail Versand');
 
 $mode = (isset($_GET['mode'])) ? $_GET['mode'] : '';
 
@@ -98,6 +97,6 @@ $template->assign_vars(array(
 
 $template->pparse('index');
 
-include_once $root_dir . 'includes/footer.php';
+page_footer();
 
 ?>
