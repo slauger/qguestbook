@@ -103,6 +103,7 @@ $safe_mode = (ini_get('safe_mode') == '1') ? "<font color=\"#00CA0F\">" . $lang[
 $magic_quotes_gpc = (ini_get('magic_quotes_gpc') == '1') ? "<font color=\"#00CA0F\">" . $lang['switchted_on'] . "</font>" : "<font color=\"#CA3200\">" . $lang['switchted_off'] . "</font>";
 $wait_list_count = ($wait_list_count > 0) ? $wait_list_count . ' Einträge' : 'Keine Eintraege';
 $posts_count = ($posts_count > 0) ? $posts_count . ' Einträge' : 'Keine Eintraege';
+$install_dir_exists = (is_dir($root_dir.'install')) ? "<br /><font color=\"#CA3200\"><b>Achtung: Das Installationverzeichniss wurde noch nicht geloescht!</b></font>" : "";
 
 $template->assign_vars(array(
 	'VERSION' => $config_table['version'],
@@ -130,6 +131,7 @@ $template->assign_vars(array(
 	'USERS_ONLINE_EXPLAIN' => $user_names,
 	'SQL_SERVER' => $db->sql_server_info(),
 	'USERS_COUNT' => "$users_count registrierte Benutzer gesamt",
+	'INSTALL_DIR' => $install_dir_exists,
 ));
 
 $template->pparse('index');
