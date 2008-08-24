@@ -1,8 +1,8 @@
 <?php
 /**
-* qGuestbook
+* qDatabase_MySQL
 *
-* An advanced Guestbook written in PHP5.
+* The MySQL Interface for qDatabase.
 *
 * PHP version 5
 *
@@ -22,7 +22,7 @@
 *
 * @category   Guestbook
 * @package    qGuestbook
-* @subpackage common
+* @subpackage database
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
@@ -39,14 +39,12 @@ Class qDatabase_MySQL
 
 	public function __construct($server, $username, $password, $database, $persistency = false)
 	{
-		if (!$this->connection_id = $this->sql_connect($server, $username, $password, $persistency))
-		{
+		if (!$this->connection_id = $this->sql_connect($server, $username, $password, $persistency)) {
 			$error = $this->sql_error();
 			die('MySQL Error ' . $error['code'] . ': ' . $error['error']);
 		}
 
-		if (!$this->sql_select($database))
-		{
+		if (!$this->sql_select($database)) {
 			$error = $this->sql_error();
 			die('MySQL Error ' . $error['code'] . ': ' . $error['error']);
 		}
@@ -65,8 +63,7 @@ Class qDatabase_MySQL
 
 	public function sql_array_type($type)
 	{
-		switch ($type)
-		{
+		switch ($type) {
 			case 'BOTH':
 				$type = MYSQL_BOTH;
 			break;
@@ -85,8 +82,7 @@ Class qDatabase_MySQL
 
 	public function sql_connect($server, $username, $password, $persistency = false)
 	{
-		if (isset($persistency) && $persistency == true)
-		{
+		if (isset($persistency) && $persistency == true) {
 			return @mysql_pconnect($server, $username, $password);
 		}
 		return @mysql_connect($server, $username, $password);
@@ -115,22 +111,19 @@ Class qDatabase_MySQL
 	{
 		unset($this->query_result);
 		unset($this->latest_query);
-		if(!empty($sql))
-		{
+		if(!empty($sql)) {
 			$this->latest_query = $sql;
 			$this->num_queries++;
 			$query_result = @mysql_query($sql, $this->connection_id);
 		}
-		if(isset($query_result) && $query_result)
-		{
+		if(isset($query_result) && $query_result) {
 			return $query_result;
 		}
 	}
 
 	public function sql_fetchrow($sql, $type = 'BOTH')
 	{
-		if (!$this->sql_numrows($sql))
-		{
+		if (!$this->sql_numrows($sql)) {
 			return false;
 		}
 		$type = $this->sql_array_type($type);
@@ -144,8 +137,7 @@ Class qDatabase_MySQL
 
 	public function sql_result($sql, $row = 0, $field = '')
 	{
-		if (!empty($field))
-		{
+		if (!empty($field)) {
 			return @mysql_result($sql, $row, $field);
 		}
 		return @mysql_result($sql, $row);
@@ -158,29 +150,31 @@ Class qDatabase_MySQL
 
 	public function sql_escape($string)
 	{
-		if (@get_magic_quotes_gpc())
-		{
+		if (@get_magic_quotes_gpc()) {
 			$string = stripslashes($string);
 		}
-		if (!is_numeric($string))
-		{
+		if (!is_numeric($string)) {
 			$string = '\'' . mysql_real_escape_string($string) . '\'';
 		}
 		return $string;
 	}
 
-	function sql_split_dump($file)
+	public function sql_split_dump($file)
 	{
-		foreach ($file as $line) {
-			$check = explode(' ', trim($line));
-			if ($check[0] != "--") {
-				$lines[] = $line;
-			}
+		if (!file_exists($file) || !is_readable($file)) {
+			return false;
 		}
 		
-		$sql_dump = implode("\n", $lines);
-		$sql = explode(";\n", $sql_dump);
-		return $sql;
+		// Keywords die vorkommen müssen
+		$keywords = array('ALTER', 'CREATE', 'DELETE', 'DROP', 'INSERT', 'REPLACE', 'SELECT', 'SET', 'TRUNCATE', 'UPDATE', 'USE');
+		
+		$file = array_filter(file($file), create_function('$line', 'return strpos(ltrim($line), "--") !== 0;'));
+		$regexp = sprintf('/\s*;\s*(?=(%s)\b)/s', implode('|', $keywords));
+		$splitter = preg_split($regexp, implode("\r\n", $file));
+		$splitter = array_map(create_function('$line', 'return preg_replace("/[\s;]*$/", "", $line);'), $splitter);
+		$return = array_filter($splitter, create_function('$line', 'return !empty($line);'));
+
+		return $return;
 	}
 }
 

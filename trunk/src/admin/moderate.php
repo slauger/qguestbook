@@ -40,8 +40,9 @@ include_once $root_dir . 'includes/common.php';
 page_header('Beitragsmoderation');
 
 $mode = (!isset($_GET['mode']) || empty($_GET['mode'])) ? '' : $_GET['mode'];
-$view = (isset($_GET['view'])) ? $_GET['view'] : '';
 $id = (isset($_GET['id'])) ? $_GET['id'] : '';
+$view = (isset($_GET['view'])) ? $_GET['view'] : '';
+$view = ($view == 'all' || $view == 'waitlist') ? $view : 'all';
 $url_append = '';
 
 switch ($mode)
@@ -124,7 +125,7 @@ switch ($mode)
 			LIMIT 1';
 		$db->sql_query($sql);
 
-		message_die('Eintrag wurde gelöscht', 'Der gewählte Eintrag wurde erfolgreich gelöscht<br /><a href="moderate.php?view='.htmlspecialchars($_GET['view']).'">hier</a> gehts zurück');
+		message_die('Eintrag wurde gelöscht', 'Der gewählte Eintrag wurde erfolgreich gelöscht<br /><a href="moderate.php?view='.$view.'">hier</a> gehts zurück');
 	break;
 	case 'disable':
 		$value = 0;
