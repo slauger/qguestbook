@@ -10,6 +10,17 @@ Legend:
 ! = Update/Change
 ? = To-Do
 
+=========================== Release 0.2.5 =====================================
+
++ Neue Modul API (qModule), dazu etliche Anpassungen
++ Smilies, BBCodes und textLimiter in externe Module ausgelagert
+! Demnach nun auch alle Funktionen in die Klassen verschoben
++ Module können eine admin.php zur Administration besitzen
+! MySQL Class: Kann nun SQL Dumps zerlegen, neuer Parameter bei sql_escape()
+- Datei db_select.php wird nicht länger genutzt
++ Installationsroutine mit automatischen schreiben der Konfigurationsdatei
++ Warnung bei bestehendem Installationsverzeichniss im ACP/MCP
+
 =========================== Release 0.2.4 =====================================
 
 ? Beiträge/Kommentare bearbeiten

@@ -1,2 +1,30 @@
 qGuestbook Installation Instructions
 =====================================
+
+=====================================
+ I. Deutsch
+=====================================
+
+1. Laden sie alle Dateien aus dem Verzeichniss "src/" via FTP auf ihren Webserver.
+   Bitte hierbei die Verzeichnisstruktur beibehalten!
+
+2. Rufen sie im Browser die folgende Adresse auf:
+
+     http://ihreseite.com/pfad/zu/qGuestbook/install/install.php
+   
+   Natürlich angepasst auf ihre Installation.
+
+3. Folgen sie den Anweißungen auf dem Bildschirm und geben sie dementsprechend
+   ihre Daten ein. Klicken sie anschließend auf "Installation starten".
+
+4. Prüfen sie ihre Installation, indem sie das Gästebuch nun direkt aufrufen
+
+5. Löschen sie das Verzeichniss "install" von ihrem Server.
+
+6. Fertig!
+
+=====================================
+ I. English
+=====================================
+
+Sorry, qGB doesen't have a english translation at this time!
