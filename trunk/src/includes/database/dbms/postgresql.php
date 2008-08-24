@@ -1,8 +1,8 @@
 <?php
 /**
-* qGuestbook
+* qDatabase_PostgreSQL
 *
-* An advanced Guestbook written in PHP5.
+* The PostgreSQL Interface for qGuestbook.
 *
 * PHP version 5
 *
@@ -22,7 +22,7 @@
 *
 * @category   Guestbook
 * @package    qGuestbook
-* @subpackage common
+* @subpackage database
 * @author     Simon Lauger <admin@simlau.net>
 * @copyright  2007-2008 Simon Lauger
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0

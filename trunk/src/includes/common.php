@@ -67,7 +67,6 @@ require_once $root_dir . 'includes/classes/encode.php';
 require_once $root_dir . 'includes/classes/styles.php';
 require_once $root_dir . 'includes/classes/globals.php';
 require_once $root_dir . 'includes/classes/language.php';
-require_once $root_dir . 'includes/classes/db_select.php';
 require_once $root_dir . 'includes/classes/template.php';
 require_once $root_dir . 'includes/classes/module.php';
 
@@ -82,6 +81,9 @@ $globals = new qGlobals();
 // Zerlegen der IP Adresse
 $client_ip = ( !empty($HTTP_SERVER_VARS['REMOTE_ADDR']) ) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : ( ( !empty($HTTP_ENV_VARS['REMOTE_ADDR']) ) ? $HTTP_ENV_VARS['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
 $user_ip = encode_ip($client_ip);
+
+// Datenbank Klasse holen
+require_once "{$root_dir}includes/database/dbms/{$dbtype}.php";
 
 // Zur Datenbank verbinden
 $db = new $database_class($dbhost, $dbuser, $dbpasswd, $dbname);

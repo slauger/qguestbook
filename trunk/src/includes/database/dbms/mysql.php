@@ -2,7 +2,7 @@
 /**
 * qDatabase_MySQL
 *
-* The MySQL Interface for qDatabase.
+* The MySQL Interface for qGuestbook.
 *
 * PHP version 5
 *
@@ -148,12 +148,12 @@ Class qDatabase_MySQL
 		return @mysql_free_result($sql);
 	}
 
-	public function sql_escape($string)
+	public function sql_escape($string, $quotes = true)
 	{
 		if (@get_magic_quotes_gpc()) {
 			$string = stripslashes($string);
 		}
-		if (!is_numeric($string)) {
+		if (!is_numeric($string) && $quotes) {
 			$string = '\'' . mysql_real_escape_string($string) . '\'';
 		}
 		return $string;
@@ -165,7 +165,7 @@ Class qDatabase_MySQL
 			return false;
 		}
 		
-		// Keywords die vorkommen müssen
+		// Keywords die vorkommen muessen
 		$keywords = array('ALTER', 'CREATE', 'DELETE', 'DROP', 'INSERT', 'REPLACE', 'SELECT', 'SET', 'TRUNCATE', 'UPDATE', 'USE');
 		
 		$file = array_filter(file($file), create_function('$line', 'return strpos(ltrim($line), "--") !== 0;'));

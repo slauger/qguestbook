@@ -28,6 +28,7 @@
 * @license    http://www.gnu.org/licenses/gpl.html GNU GPL 3.0
 * @version    CVS: $Id$
 * @link       http://www.simlau.net/
+* @deprecated File deprecated in Release 0.2.5
 */
 
 if (!defined('GUESTBOOK')) {
