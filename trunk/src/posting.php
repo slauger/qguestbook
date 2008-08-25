@@ -116,7 +116,9 @@ switch ($mode) {
 			FROM ' . POSTS_TABLE . '
 				WHERE posts_ip = ' . $db->sql_escape($user_ip) . '
 				AND (' . time() . ' - posts_date) < ' . $config->get('flood_timeout');
-		$result = $db->sql_query($sql);
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
 		
 		if ($db->sql_numrows($result)) {
 			// Ja, also Fehlermeldung anzeigen
@@ -194,8 +196,8 @@ if ($config->get('enable_www')) {
 }
 
 // Smilie und BBCode Status anzeigen
-$bbcodes_status = (!$config->get('bbcode')) ? $lang['inactive'] : $lang['active'];
-$smilies_status = (!$config->get('smilies')) ? $lang['smilies'] : $lang['active'];
+$bbcodes_status = (!$config->get('bbcode')) ? $lang['INACTIVE'] : $lang['ACTIVE'];
+$smilies_status = (!$config->get('smilies')) ? $lang['INACTIVE'] : $lang['ACTIVE'];
 
 // Fehler beim valdieren der Userdaten?
 if (!empty($valdiate_error)) {
@@ -224,23 +226,35 @@ $captcha_checksum = md5($captcha_a + $captcha_b);
 
 // Template Vars
 $template->assign_vars(array(
-	'BBCODES_STATUS' => $bbcodes_status,
-	'SMILIES_STATUS' => $smilies_status,
+	'TEXTAREA'		=> $textarea,
+	'NAME'			=> ($globals->post('name')) ? $encode->encode_html($globals->post('name')) : "",
+	'EMAIL'			=> ($globals->post('email')) ? $encode->encode_html($globals->post('email')) : "",
+	'ICQ'			=> ($globals->post('icq')) ? $encode->encode_html($globals->post('icq')) : "",
+	'WWW'			=> ($globals->post('www')) ? $encode->encode_html($globals->post('www')) : "",
+	'HIDE_EMAIL'		=> ($globals->post('hide_email')) ? "checked=\"checked\"" : "",
+	'ERROR_MESSAGE'		=> (isset($error_message) && !empty($error_message)) ? $error_message : "",
+
+	'CAPTCHA_CHECKSUM'	=> $captcha_checksum,
+	'CAPTCHA_QUESTION'	=> sprintf($lang['CAPTCHA_QUESTION'], $captcha_a, $captcha_b),
+
+	'SMILIES_STATUS'	=> $smilies_status,
+	'BBCODE_STATUS'		=> $bbcodes_status,
 	
-	'TEXTAREA' => $textarea,
-	'HTML_STATUS' => $lang['inactive'],
-	'NAME' => ($globals->post('name')) ? $encode->encode_html($globals->post('name')) : "",
-	'EMAIL' => ($globals->post('email')) ? $encode->encode_html($globals->post('email')) : "",
-	'ICQ' => ($globals->post('icq')) ? $encode->encode_html($globals->post('icq')) : "",
-	'WWW' => ($globals->post('www')) ? $encode->encode_html($globals->post('www')) : "",
-	'HIDE_EMAIL' => ($globals->post('hide_email')) ? "checked=\"checked\"" : "",
-	
-	'ERROR_TITLE' => $lang['ERROR_MAIN'],
-	'ERROR_MESSAGE' => (isset($error_message) && !empty($error_message)) ? $error_message : "",
-	
-	'CAPTCHA_A' => $captcha_a,
-	'CAPTCHA_B' => $captcha_b,
-	'CAPTCHA_CHECKSUM' => $captcha_checksum,
+	'ERROR_TITLE'		=> $lang['ERROR_MAIN'],
+	'CAPTCHA_TITLE'		=> $lang['CAPTCHA_TITLE'],
+	'HTML_STATUS'		=> $lang['INACTIVE'],
+	'L_HTML'		=> $lang['HTML'],
+	'L_BBCODE'		=> $lang['BBCODE'],
+	'L_SMILIES'		=> $lang['SMILIES'],
+	'L_WWW'			=> $lang['WWW'],
+	'L_ICQ'			=> $lang['ICQ'],
+	'L_EMAIL'		=> $lang['EMAIL'],
+	'L_NAME'		=> $lang['NAME'],
+	'L_MESSAGE'		=> $lang['MESSAGE'],
+	'L_WRITE_NEW'		=> $lang['POSTING_WRITE_NEW'],
+	'L_HIDE_EMAIL'		=> $lang['POSTING_HIDE_EMAIL'],
+	'L_HIDE_EMAIL_YES'	=> $lang['POSTING_HIDE_EMAIL_YES'],
+	'L_BACK_GUESTBOOK'	=> $lang['BACK_TO_GUESTBOOK'],
 ));
 
 $template->pparse('index');

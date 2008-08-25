@@ -53,27 +53,42 @@ $template->set_filenames(array(
 // Eintraege gesamt
 $sql = 'SELECT COUNT(`posts_id`)
 	FROM ' . POSTS_TABLE;
-$result = $db->sql_query($sql);
+
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
+
 $posts_count = $db->sql_result($result, 0);
 
 // Eintraege in der Warteschlange
 $sql = 'SELECT posts_id
 	FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . POST_WAIT_LIST;
-$result = $db->sql_query($sql);
+
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
+
 $wait_list_count = $db->sql_result($result, 0);
 
 // Count Users
 $sql = 'SELECT COUNT(`user_id`)
 	FROM ' . USERS_TABLE;
-$result = $db->sql_query($sql);
+
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
+
 $users_count = $db->sql_result($result, 0);
 
 // Users Online
 $sql = 'SELECT user_id, user_name
 	FROM ' . USERS_TABLE . '
 		WHERE user_session <> ' . $db->sql_escape('');
-$result = $db->sql_query($sql);
+
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
 
 $user_online = array();
 while ($row = $db->sql_fetchrow($result)) {

@@ -19,19 +19,19 @@
 	<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
 		<tr>
 			<th class="thHead" colspan="2">
-				<b>Neuen Eintrag schreiben</b>
+				<b>{L_WRITE_NEW}</b>
 			</th>
 		</tr>
 	<tr>
 		<td class="row1" valign="top" colspan="2">
 			<span class="gensmall" style="text-align: left;">
-				<a href="./index.php">Zurück zum Gästebuch</a>
+				<a href="./index.php">{L_BACK_GUESTBOOK}</a>
 			</span>
 		</td>
 	</tr>
 		<tr>
 			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
-				<b>Name:</b>
+				<b>{L_NAME}:</b>
 			</td>
 			<td class="row2" valign="top" style="vertical-align: middle;">
 				<input type="text" name="name" value="{NAME}" maxlength="255" size="40" />
@@ -39,7 +39,7 @@
 		</tr>
 		<tr>
 			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
-				<b>E-Mail:</b>
+				<b>{L_EMAIL}:</b>
 			</td>
 			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="text" name="email" value="{EMAIL}" maxlength="255" size="40"  />
@@ -47,16 +47,16 @@
 		</tr>
 		<tr>
 			<td class="row2" valign="top" width="22%" height="28" style="vertical-align: middle;">
-				<b>E-Mail verstecken:</b>
+				<b>{L_HIDE_EMAIL}:</b>
 			</td>
 			<td class="row2" valign="top" style="vertical-align: middle;">
-				<input type="checkbox" name="hide_email" value="1" checked="checked" /> Meine E-Mail Adresse verstecken
+				<input type="checkbox" name="hide_email" value="1" checked="checked" /> {L_HIDE_EMAIL_YES}
 			</td>
 		</tr>
 		<!-- BEGIN icq_enabled -->
 		<tr>
 			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
-				<b>ICQ-Nummer:</b>
+				<b>{L_ICQ}:</b>
 			</td>
 			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="text" name="icq" value="{ICQ}" maxlength="255" size="40" />
@@ -66,7 +66,7 @@
 		<!-- BEGIN www_enabled -->
 		<tr>
 			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
-				<b>Homepage:</b>
+				<b>{L_WWW}:</b>
 			</td>
 			<td class="row2" valign="top" style="vertical-align: middle;">
 				<input type="text" name="www" value="{WWW}" maxlength="255" size="40"  />
@@ -76,19 +76,7 @@
 		<!-- BEGIN switch_dissabled -->
 		<tr>
 			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
-				<b>Benotung:</b>
-			</td>
-			<td class="row1" valign="top" style="vertical-align: middle;">
-				<select  style="width:400px;">
-				<!-- BEGIN votes -->
-					<option value="{votes.ID}">(Vote {votes.ID}) {votes.NAME}</option>
-				<!-- END votes -->
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td class="row1" valign="top" width="22%" style="vertical-align: middle;">
-				<b>BBCodes</b>
+				<b>{L_BBCODE}</b>
 			</td>
 			<td class="row1" valign="top" style="vertical-align: middle;">
 				<input type="button" value="Fett" onClick="insert('[b]', '[/b]')" />
@@ -99,11 +87,11 @@
 		<!-- END switch_dissabled -->
 		<tr>
 			<td class="row1" valign="top" style="width: 20%;">
-				<b>Nachricht:</b><br /><br />
+				<b>{L_MESSAGE}:</b><br /><br />
 					<ul type="square">
-						<li><a href="popup.php?mode=smilies" onclick="window.open('popup.php?mode=smilies', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>Smilies</b></a>: {SMILIES_STATUS}</li>
-						<li><a href="popup.php?mode=bbcodes" onclick="window.open('popup.php?mode=bbcodes', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>BBCodes</b></a>: {BBCODES_STATUS}</li>
-						<li><b>HTML</b>: {HTML_STATUS}</li>
+						<li><a href="popup.php?mode=smilies" onclick="window.open('popup.php?mode=smilies', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>{L_SMILIES}</b></a>: {SMILIES_STATUS}</li>
+						<li><a href="popup.php?mode=bbcodes" onclick="window.open('popup.php?mode=bbcodes', '_smilies', 'HEIGHT=280,resizable=yes,scrollbars=yes,WIDTH=350');return false;"><b>{L_BBCODE}</b></a>: {BBCODE_STATUS}</li>
+						<li><b>{L_HTML}</b>: {HTML_STATUS}</li>
 					</ul>
 			<br />
 			</td>
@@ -114,10 +102,10 @@
 		<!-- BEGIN captcha_enabled -->
 		<tr>
 			<td class="row2" valign="top" width="22%" style="vertical-align: middle;">
-				<b>Spamschutz:</b>
+				<b>{CAPTCHA_TITLE}:</b>
 			</td>
 			<td class="row2" valign="top" style="vertical-align: middle;">
-				Was ergibt {CAPTCHA_A} und {CAPTCHA_B}?&nbsp;&nbsp;
+				{CAPTCHA_QUESTION}:&nbsp;&nbsp;
 				<input type="hidden" value="{CAPTCHA_CHECKSUM}" name="captcha_checksum" />
 				<input type="text" value="" name="captcha_sum" maxlength="5" size="5"  />
 			</td>

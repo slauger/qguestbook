@@ -20,6 +20,10 @@ Legend:
 - Datei db_select.php wird nicht länger genutzt
 + Installationsroutine mit automatischen schreiben der Konfigurationsdatei
 + Warnung bei bestehendem Installationsverzeichniss im ACP/MCP
+! Viele Teile des Codes sind nun wieder auf Mehrsprachigkeit ausgelegt
+
+Noch zu tun:
+- Antibruteforce (Admin Login)
 
 =========================== Release 0.2.4 =====================================
 

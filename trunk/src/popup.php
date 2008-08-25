@@ -41,7 +41,10 @@ switch ($mode)
 
 		$sql = 'SELECT smilies_id, smilies_code, smilies_url, smilies_name
 			FROM ' . SMILIES_TABLE;
-		$result = $db->sql_query($sql);
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
+
 
 		$template->set_filenames(array(
 			'index' => 'smilies_body.html',

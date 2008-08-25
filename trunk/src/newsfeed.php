@@ -47,7 +47,10 @@ $sql = 'SELECT posts_id, posts_name, posts_email, posts_ip, posts_www, posts_icq
 		WHERE posts_active = ' . $db->sql_escape(POST_ACTIVE) . '
 			ORDER BY posts_id ' . strtoupper($config->get('postorder')) . '
 	LIMIT ' . $db->sql_escape($config->get('rss_limit'));
-$result = $db->sql_query($sql);
+
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
 
 $template->set_filenames(array(
 	'body' => 'newsfeed_main.html',
@@ -64,7 +67,7 @@ $template->assign_vars(array(
 
 while ($row = $db->sql_fetchrow($result)) {
 	$template->assign_block_vars('switch_newsfeed', array(
-		'ITEM_TITLE' => sprintf('Gästebucheintrag von %s', $encode->encode_html($row['posts_name'])),
+		'ITEM_TITLE' => sprintf($lang['RSS_TITLE'], $encode->encode_html($row['posts_name'])),
 		'ITEM_DATE' => date('r', $row['posts_date']),
 		'ITEM_LINK' => real_path() . PAGE_INDEX . '?start=' . ($row['posts_id'] - 1) . '&amp;limit=1&amp;postorder=asc',
 		'ITEM_GUID' => real_path() . PAGE_INDEX . '?start=' . ($row['posts_id'] - 1) . '&amp;limit=1&amp;postorder=asc',

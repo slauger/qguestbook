@@ -39,7 +39,9 @@ page_header($lang['GUESTBOOK_ENTRY']);
 $sql = 'SELECT COUNT(`posts_id`)
 		FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . $db->sql_escape(POST_ACTIVE);
-$result = $db->sql_query($sql);
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
 
 $max = $db->sql_result($result, 0);
 
@@ -112,7 +114,9 @@ $sql = 'SELECT p.*, c.*, u.user_name
 		ORDER BY p.posts_id ' . strtoupper($postorder) . '
 	LIMIT ' . $db->sql_escape($start) . ', ' . $db->sql_escape($limit);
 
-$result = $db->sql_query($sql);
+if (!$result = $db->sql_query($sql)) {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+}
 
 // Zur Sicherheit überprüfen wir nochmals...
 if (!$posts = $db->sql_numrows($result)) {
@@ -135,7 +139,9 @@ if (!$posts = $db->sql_numrows($result)) {
 			message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 		}
 		
-		$result = $db->sql_query($sql);
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
 	} else {
 		message_die($lang['ERROR_MAIN'], sprintf($lang['GUESTBOOK_EMPTY'], '<a href="' . PAGE_POSTING . '">', '</a>'));
 	}
