@@ -52,10 +52,11 @@ class Badwords
 	
 	public function remove_badwords($text)
 	{
-		foreach ($this->badwords as $key => $value) {
-			$text = str_replace($this->badwords['words'][$key], $this->badwords['replacements'][$key], $text);
-		}
-		return $text;
+		return str_replace(
+			$this->badwords['words'], 
+			$this->badwords['replacements'],
+			$text
+		);
 	}
 	
 	public function on_viewposts_second()

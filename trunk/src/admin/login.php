@@ -30,63 +30,55 @@
 * @link       http://www.simlau.net/
 */
 
-//
 // Konstanten
-//
 define('GUESTBOOK', true);
 define('LOGIN_PAGE', true);
 define('REQUIRED_AUTH_LEVEL', 0);
 
-//
 // Dateien includieren
-//
 $root_dir = '../';
 include_once $root_dir . 'includes/common.php';
-page_title('Login');
 
-if (isset($_GET['logout']))
-{
-	if (user_logged_in())
-	{
+// Will der User sich ausloggen?
+if ($globals->post('logout')) {
+	if (user_logged_in()) {
 		user_logout();
 		message_die($lang['logout_success'], sprintf('Erfolgreich ausgeloggt'));
 	}
 }
 
-if (user_logged_in(get_sid()))
-{
+if (user_logged_in(get_sid())) {
 	header('Location: ' . PAGE_ADMIN_INDEX);
 	exit;
 }
 
-//
 // Sind Daten da?
-//
-if (!isset($_POST['user_name']) || !isset($_POST['user_pass']))
-{
-	include_once $root_dir . 'includes/header.php';
+if (!$globals->post('user_name') || !$globals->post('user_pass')) {
+
+	page_header('Login');
 
 	$template->set_filenames(array(
 		'index'=> 'login_body.html',
 	));
+	
+	$template->assign_vars(array(
+		'L_LOGIN'		=> $lang['LOGIN_TITLE'],
+		'L_LOGIN_DESC'		=> $lang['LOGIN_DESC'],
+		'L_USERNAME'		=> $lang['USERNAME'],
+		'L_PASSWORD'		=> $lang['PASSWORD'],
+	));
 
 	$template->pparse('index');
 
-	include_once $root_dir . 'includes/footer.php';
+	page_footer();
 }
 
-//
 // Ok, Daten sind vorhanden, aber sind sie auch richtig?
-//
-if ($user_id = user_exists($_POST['user_name'], $_POST['user_pass']))
-{
-	$session_sid = generate_sid();
-	user_login($user_id, $session_sid);
-	message_die($lang['login_success'], sprintf($lang['login_success_desc'], '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>', '<a href="' . PAGE_INDEX . '">', '</a>'));
-}
-else
-{
-	message_die($lang['guestbook_error'], sprintf($lang['login_failed'], '<a href="' . PAGE_ADMIN_LOGIN . '">', '</a>', '<a href="' . PAGE_INDEX . '">', '</a>'));
+if ($user_id = user_exists($globals->post('user_name'), $globals->post('user_pass'))) {
+	user_login($user_id, generate_sid());
+	message_die($lang['LOGIN_MESSAGE_SUCCESS'], sprintf($lang['LOGIN_MESSAGE_SUCCESS_DESC'], '<a href="' . PAGE_ADMIN_INDEX . '">', '</a>', '<a href="' . PAGE_INDEX . '">', '</a>'));
+} else {
+	message_die($lang['ERROR_MAIN'], sprintf($lang['LOGIN_ERROR_DATA'], '<a href="' . PAGE_ADMIN_LOGIN . '">', '</a>', '<a href="' . PAGE_INDEX . '">', '</a>'));
 }
 
 ?>

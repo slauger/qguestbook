@@ -1,7 +1,7 @@
 <?php
 /**
  * Zuständig für Benutzersystem und Sessions
- *
+ * Wird erst später in den Einsatz kommen
  */
 
 Class qSessions
@@ -82,7 +82,9 @@ Class qUsers
 				header('Location: ' . PAGE_ADMIN_LOGIN);
 				exit;
 			}
-			if (!$sessions->session_user_level
+			if (!$sessions->session_user_level) {
+				return false;
+			}
 		}
 	}
 }

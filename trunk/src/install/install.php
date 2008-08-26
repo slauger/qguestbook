@@ -368,6 +368,10 @@ echo "<h2>qGuestbook Installation</h2>";
 if (!isset($_POST['install'])) {
 	echo "<p>Dieses Script installiert qGuestbook auf ihrem Server. Bitte stellen sie sicher, dass sie der Datei config.php im Verzeichniss includes/config Schreibrechte (Chmod 777) gegeben haben.<br />Ist dies nicht moeglich, muessen sie die Datei von Hand anpassen.</p>";
 
+	if (defined('INSTALLED')) {
+		echo "<p><font color=\"red\"><b>Achtung:</b> Es sieht so aus als wurde qGuestbook bereits installiert! Es existiert bereits eine Konfigurationsdatei!<br />Falls du eine aeltere Version von qGuestbook benutzt und ein Update durchfuehren moechtest, fuehre bitte die Datei install/update.php aus! Diese Datei ist nicht zum Update gedacht!</font></p>";
+	}
+
 	echo "<h3>Pruefe Server Vorraussetzungen</h3>";
 	echo "<ul>";
 	echo "  <li>PHP Version: <b>Ok</b> (" . phpversion() . ")</li>";

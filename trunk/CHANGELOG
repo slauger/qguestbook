@@ -13,7 +13,7 @@ Legend:
 =========================== Release 0.2.5 =====================================
 
 + Neue Modul API (qModule), dazu etliche Anpassungen
-+ Smilies, BBCodes und textLimiter in externe Module ausgelagert
+! Smilies, BBCodes und textLimiter in externe Module ausgelagert
 ! Demnach nun auch alle Funktionen in die Klassen verschoben
 + Module können eine admin.php zur Administration besitzen
 ! MySQL Class: Kann nun SQL Dumps zerlegen, neuer Parameter bei sql_escape()
@@ -21,13 +21,27 @@ Legend:
 + Installationsroutine mit automatischen schreiben der Konfigurationsdatei
 + Warnung bei bestehendem Installationsverzeichniss im ACP/MCP
 ! Viele Teile des Codes sind nun wieder auf Mehrsprachigkeit ausgelegt
-
-Noch zu tun:
-- Antibruteforce (Admin Login)
+- Alte Sprachpacks (in lowercase) entfernt
+! Warnung bei Installations, wenn bereits eine beschriebene Konfiguration
+  besteht. "Wenn du Updaten willst, bitte benutze..."
+# Fixed Module Badwords (Denkfehler)
+! Module sind nun in die Datenbank eingetragen und werden von dort auch
+  richtig ausgelesen. Somit nicht länger manuell in die Variable 
+  $active_modules eintragen, sondern direkt in die Datenbank. Installer folgt.
+- Removed SQL Tables (prefix_disallow, prefix_vote usw.)
+! Login.php nun vollständig für Mehrsprachigkeit ausgelegt, weitere folgen.
+- Removed includes/captcha from SVN Repo
+- Removed includes/ftp from SVN Repo
+? Antibruteforce (Admin Login)
+? Viele Dateien in admin/ (u. a. login.php) haben noch alte Codesysteme.
+  Das heißt: keine PEAR Standarts, $_POST statt $globals usw.
+? Mehrsprachigkeit wieder integrieren (Code anpassen)
+? qUsers und qSessions fertigstellen und die alten Funktionen ersetzen
+? Passwörter nicht mehr im Klartext hasen (Salz für Passwörter!)
 
 =========================== Release 0.2.4 =====================================
 
-? Beiträge/Kommentare bearbeiten
++ Beiträge/Kommentare bearbeiten
 # Kommentare werden nicht in die DB eingetragen
 # Funktion generate_quote(): Fehler behoben, wenn ID nicht in der Datenbank vorhanden
 # Sicherheitslücke beim Zitieren gefixt

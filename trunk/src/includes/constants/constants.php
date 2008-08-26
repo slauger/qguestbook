@@ -61,9 +61,7 @@ define('COLOR_ADMINISTRATOR', '#b22222');
 // SQL-Tabellen
 //
 define('CONFIG_TABLE', $table_prefix.'config');
-define('LANGUAGE_TABLE', $table_prefix.'lang');
 define('STYLES_TABLE', $table_prefix.'styles');
-define('DISSALOW_TABLE', $table_prefix.'dissalow');
 define('BANLIST_TABLE', $table_prefix.'banlist');
 define('POSTS_TABLE', $table_prefix.'posts');
 define('USERS_TABLE', $table_prefix.'user');
@@ -72,6 +70,7 @@ define('SMILIES_TABLE', $table_prefix.'smilies');
 define('META_TABLE', $table_prefix.'meta');
 define('WORDS_TABLE', $table_prefix.'words');
 define('COMMENTS_TABLE', $table_prefix.'comments');
+define('ADDONS_TABLE', $table_prefix.'addons');
 
 //
 // Administrations Seiten

@@ -7,12 +7,19 @@ Class qModule
 	
 	public function __construct()
 	{
+		global $db;
 		$this->active_modules = array();
-		$this->load(array(
-			'bbcode',
-			'textLimiter',
-			'smilies',
-		));
+		
+		$sql = 'SELECT directory, name
+				FROM ' . ADDONS_TABLE . '
+			WHERE active = ' . $db->sql_escape(1);
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
+		
+		while ($row = $db->sql_fetchrow($result)) {
+			$this->load($row['directory']);
+		}
 	}
 	
 	public function action($action, $module = 'all')

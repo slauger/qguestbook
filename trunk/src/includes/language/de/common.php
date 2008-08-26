@@ -43,7 +43,7 @@ if (empty($lang) || !is_array($lang)) {
 }
 
 $lang = array_merge($lang, array(
-	// Wichtige Standartsacgeb
+	// Wichtige Standartsachen
 	'USER_LANG' => 'de',
 	'DIRECTION' => 'ltr',
 	'CHARSET' => 'utf-8',
@@ -56,6 +56,7 @@ $lang = array_merge($lang, array(
 	'POSTED' => 'Verfasst am',
 	'MESSAGE' => 'Nachricht',
 	'NAME' => 'Name',
+	'USERNAME' => 'Benutzername',
 	'AUTHOR' => 'Autor',
 	'WWW' => 'Webseite',
 	'ICQ' => 'ICQ Nummer',
@@ -97,7 +98,12 @@ $lang = array_merge($lang, array(
 	'ERROR_BANNED_USER' => 'Der gewählte Benutzername wurde vom Administrator gesperrt oder ist bereits belegt.',
 
 	// Login
-	'LOGIN_ERROR_USERNAME' => 'Du hast einen fehlerhaften Benutzernamen angegeben. Bitte prüfe deinen Benutzernamen und versuche es erneut.',
+	'LOGIN_TITLE' => 'Login für Team Mitglieder',
+	'LOGIN_DESC' => 'Bitte melden Sie sich an, um zur Administration oder Moderation zu gelangen.',
+	'LOGIN_ERROR_DATA' => 'Du hast einen fehlerhaften Benutzernamen oder ein falsches Passwort angegeben. Bitte prüfe deinen Eingaben und versuche es erneut.',
+	'LOGIN_ERROR_TIMEOUT' => 'Du hast zu oft hintereinander versucht dich einzuloggen.<br /><br />Deine IP ist nun fuer %1s Minuten gesperrt.<br /><br />Vielen Dank fuer dein Verstaedniss.',
+	'LOGIN_MESSAGE_SUCCESS' => 'Du wurdest erfolgreich eingeloggt',
+	'LOGIN_MESSAGE_SUCCESS_DESC' => 'Du wurdest erfolgreich eingeloggt.<br /><br />Klicke %1shier%2s, um zum Moderatorenbereich zu gelagen.<br /><br />Klicke %1shier%2s, um zum Gästebuch zurückzukehren.',
 	
 	// RSS Feed
 	'RSS_TITLE' => 'Gästebucheintrag von %s',
