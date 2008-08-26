@@ -45,7 +45,7 @@ function page_title($title)
 
 function page_header($page_title = '')
 {
-	global $template, $config_table, $db;
+	global $template, $config, $db, $module;
 	global $root_dir, $microtime, $lang, $encode;
 
 	// Der Header wurde geparst.
@@ -57,15 +57,13 @@ function page_header($page_title = '')
 		'header' => 'overall_header.html',
 	));
 
-	if (empty($page_title))
-	{
+	if (empty($page_title)) {
 		$page_title = 'Information';
 	}
 
 	page_title($page_title);
 
-	if ($config_table['newsfeed'] == 1)
-	{
+	if ($config->get('newsfeed') == 1) {
 		$template->assign_block_vars('newsfeed', array());
 	}
 	
@@ -82,8 +80,20 @@ function page_header($page_title = '')
 		));
 	}
 
-	if (defined('ADMIN_PAGE'))
-	{
+	if (defined('ADMIN_PAGE')) {
+		// Module automatisch ins ACP adden
+		if (is_object($module)) {
+			$adjustable_modules = $module->adjustable_modules();
+			/*if (count($adjustable_modules) <= 1) {
+				$template->assign_block_vars('adjustable_modules', array());
+			}*/
+			foreach ($adjustable_modules as $name => $directory) {
+				$template->assign_block_vars('switch_logged_in.list', array(
+					'LINK' => "&nbsp;&nbsp;<a href=\"module.php?module=$directory\">$name</a>&nbsp;&nbsp;"
+				));
+			}
+		}
+		
 		$template->assign_vars(array(
 			'U_ADMIN_MODERATE' => PAGE_ADMIN_MODERATE,
 			'U_ADMIN_INDEX' => PAGE_ADMIN_INDEX,
@@ -100,22 +110,22 @@ function page_header($page_title = '')
 	}
 
 	$template->assign_vars(array(
-		'ROOT_DIR' => $root_dir,
+		'ROOT_DIR' 		=> $root_dir,
 
-		'DIRECTION' => $lang['DIRECTION'],
-		'USER_LANG' => $lang['USER_LANG'],
-
-		'CHARSET' => $config_table['charset'],
-		'SITENAME' => $config_table['sitename'],
-		'SITE_DESC' => $config_table['description'],
-		'SCRIPT_URL' => real_path(),
-
-		'L_PAGE_ADMIN_INDEX' => 'Moderatoren Bereich',
-
-		'U_PAGE_ADMIN_INDEX' => PAGE_ADMIN_INDEX,
-		'U_NEWSFEED' => PAGE_NEWSFEED,
-		'U_INDEX' => PAGE_INDEX,
-		'U_POSTING' => PAGE_POSTING,
+		'DIRECTION' 		=> $lang['DIRECTION'],
+		'USER_LANG' 		=> $lang['USER_LANG'],
+		
+		'CHARSET' 		=> $config->get('charset'),
+		'SITENAME' 		=> $config->get('sitename'),
+		'SITE_DESC' 		=> $config->get('description'),
+		
+		'SCRIPT_URL' 		=> real_path(),
+		
+		'L_PAGE_ADMIN_INDEX' 	=> 'Moderatoren Bereich',
+		'U_PAGE_ADMIN_INDEX' 	=> PAGE_ADMIN_INDEX,
+		'U_NEWSFEED' 		=> PAGE_NEWSFEED,
+		'U_INDEX'		=> PAGE_INDEX,
+		'U_POSTING' 		=> PAGE_POSTING,
 	));
 
 	$template->pparse('header');
@@ -187,9 +197,7 @@ function page_footer()
 	$db->sql_close();
 
 	// Gut, somit wären wir ja wohl fertig.
-	if (!defined('DEBUG_EXTRA'))
-	{
-		die();
+	if (!defined('DEBUG_EXTRA')) {
 		exit;
 	}
 }

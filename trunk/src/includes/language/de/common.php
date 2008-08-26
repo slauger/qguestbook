@@ -115,6 +115,6 @@ $lang = array_merge($lang, array(
 
 // Include old System...
 // No longer used!
-include_once 'old_system.php';
+include_once 'common_old.php';
 
 ?>

@@ -32,12 +32,15 @@ Legend:
 ! Login.php nun vollständig für Mehrsprachigkeit ausgelegt, weitere folgen.
 - Removed includes/captcha from SVN Repo
 - Removed includes/ftp from SVN Repo
+! Wenn Modul administrierbar, wird es nun automatisch im ACP gelistet
 ? Antibruteforce (Admin Login)
 ? Viele Dateien in admin/ (u. a. login.php) haben noch alte Codesysteme.
   Das heißt: keine PEAR Standarts, $_POST statt $globals usw.
 ? Mehrsprachigkeit wieder integrieren (Code anpassen)
 ? qUsers und qSessions fertigstellen und die alten Funktionen ersetzen
 ? Passwörter nicht mehr im Klartext hasen (Salz für Passwörter!)
+? Useradministration: Wenn nur noch ein User existiert und versucht wird
+  zu löschen Operation blocken.
 
 =========================== Release 0.2.4 =====================================
 

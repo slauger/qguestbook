@@ -173,8 +173,13 @@ Class qDatabase_MySQL
 		$splitter = preg_split($regexp, implode("\r\n", $file));
 		$splitter = array_map(create_function('$line', 'return preg_replace("/[\s;]*$/", "", $line);'), $splitter);
 		$return = array_filter($splitter, create_function('$line', 'return !empty($line);'));
-
+		
 		return $return;
+	}
+	
+	public function __destruct()
+	{
+		$this->sql_close();
 	}
 }
 

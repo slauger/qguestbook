@@ -61,21 +61,23 @@
 			<a href="phpinfo.php">PHP Informationen</a>
 		</td>
 	</tr>
+</table>
+
+
+<br />
+<table border="0" cellpadding="3" cellspacing="1" align="center" width="80%" class="headline">
 	<tr>
-		<th class="thHead" colspan="3">
-			<b>Modul Administration</b>
+		<th class="thHead" colspan="1">
+			<b>Moduleinstellungen</b>
 		</th>
 	</tr>
 	<tr>
 		<td class="row1" valign="top" width="34%" align="center">
-			<a href="module.php?module=badwords">Badwords</a>
-		</td>
-		<td class="row1" valign="top" width="33%" align="center">
-			<a href="module.php?module=smilies">Smilieverwaltung</a>
-		</td>
-		<td class="row1" valign="top" width="33%" align="center">
-			<a href="#">Bannfunktionen</a>
+			<!-- BEGIN list -->
+			{switch_logged_in.list.LINK}
+			<!-- END list -->
 		</td>
 	</tr>
 </table>
+
 <!-- END switch_logged_in -->
