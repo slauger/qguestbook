@@ -39,7 +39,9 @@ page_header($lang['GUESTBOOK_ENTRY']);
 $sql = 'SELECT COUNT(`posts_id`)
 		FROM ' . POSTS_TABLE . '
 	WHERE posts_active = ' . $db->sql_escape(POST_ACTIVE);
+
 if (!$result = $db->sql_query($sql)) {
+	$error = $db->sql_error();
 	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
 }
 
@@ -53,7 +55,7 @@ if (!$max || $max == 0) {
 // Variable gesetzt? Ansonsten Standart.
 $start = ($globals->get('start')) ? $globals->get('start') : 0;
 
-// Etwas Hardcoded, aber nötig.
+// Etwas Hardcoded, aber noch im Rahmen und lesbar
 if (!$globals->get('limit')) {
 	if ($config->get('posts_site') == 0) {
 		$limit = $max;
@@ -96,13 +98,9 @@ $postorder = ($globals->get('postorder')) ? $globals->get('postorder') : $config
 $postorder = ($postorder == 'asc' || $postorder == 'desc') ? $postorder : $config->get('postorder');
 
 //
-// Der ultimative SQL-Query.
+// Der tolle LEFT JOIN SQL-Query.
 // Verbindet die Beitrags Tabelle mit der, der Kommentare und
-// diese wiederrum mit der, der Userdaten.
-//
-// Natürlich ermöglicht dieser Query auch, dass die Beiträge
-// an sich, öfter als einmal kommentiert werden können.
-// Das Script ist aber im Moment noch nicht darauf ausgelegt.
+// diese wiederrum mit der, der Userdaten (wg. Username bei Comments).
 //
 $sql = 'SELECT p.*, c.*, u.user_name
 	FROM ' . POSTS_TABLE . ' p
@@ -115,6 +113,7 @@ $sql = 'SELECT p.*, c.*, u.user_name
 	LIMIT ' . $db->sql_escape($start) . ', ' . $db->sql_escape($limit);
 
 if (!$result = $db->sql_query($sql)) {
+	$error = $db->sql_error();
 	message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
 }
 
@@ -140,6 +139,7 @@ if (!$posts = $db->sql_numrows($result)) {
 		}
 		
 		if (!$result = $db->sql_query($sql)) {
+			$error = $db->sql_error();
 			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
 		}
 	} else {
@@ -186,10 +186,38 @@ while ($row = $db->sql_fetchrow($result)) {
 	
 	// Call Module Action I
 	$module->action('on_viewposts_first');
+
+	if (!empty($row['posts_icq']) && valdiate_icq($row['posts_icq']) != "") {
+		$show_icq = true;
+	}
 	
-	// ACHTUNG: Wir sollten hier NICHT davon ausgehen, dass alles schon richtig
-	// in der Datenbank steht (ICQ Nr, Website)! Überprüfung wäre angebracht!
-	// Ggf. eine Sicherheitslücke, bei falcher Benutzung. :(
+	// Workaround Webseiten Valdierung
+	while (true) {
+		// Können wir uns das auch sparen?
+		if ($row['posts_hide_email'] == 1) {
+			break;
+		}
+		
+		// Leider nicht, also los... Webseite valdieren
+		if (!empty($row['posts_www']) && valdiate_website($row['posts_www']) != "") {
+			$show_www = true;
+			break;
+		} else {
+			// Lässt sich der Fehler beheben?
+			if (empty($row['posts_www']) || isset($fix_error)) {
+				unset($fix_error);
+				break;
+			}
+			$fix_error = true;
+			$row['posts_www'] = 'http://' . $row['posts_www'];
+		}
+	}
+	
+	if (!empty($row['posts_email']) && valdiate_email($row['posts_email']) != "") {
+		if ($row['posts_hide_email'] != 1) {
+			$show_email = true;
+		}
+	}
 	
 	// Security for ze varz!
 	$row['posts_icq']	= icq_url($row['posts_icq']);
@@ -206,11 +234,24 @@ while ($row = $db->sql_fetchrow($result)) {
 	// Call Module Action II
 	$module->action('on_viewposts_second');
 	
+	if (!isset($template_class_1) || $template_class_1 == 3) {
+		$template_class_1 = 1;
+		$template_class_2 = 2;
+	} else {
+		$template_class_1 = 3;
+		$template_class_2 = 4;
+	}
+
 	// Hat ein Modul schon etwas hinzugefügt?
 	if (empty($block_vars) || !is_array($block_vars)) {
 		$block_vars = array();
 	}
 
+	$block_vars = array_merge($block_vars, array(
+		'TEMPLATE_CLASS_1'	=> $template_class_1,
+		'TEMPLATE_CLASS_2'	=> $template_class_2,
+	));
+	
 	$block_vars = array_merge($block_vars, array(
 		'ID'			=> $row['post_id'],
 		'USERNAME'		=> $row['posts_name'],
@@ -226,27 +267,31 @@ while ($row = $db->sql_fetchrow($result)) {
 	
 	// Nun zu qTemplate weiterschicken
 	$template->assign_block_vars('posts', $block_vars);
-	
+
 	// Valide ICQ UIN? Dann anzeigen.
-	if (valdiate_icq($row['posts_icq'])) {
+	if (isset($show_icq)) {
 		$template->assign_block_vars('posts.switch_icq', array());
 	}
 	// Valide Webseite? Dann ebenfalls anzeigen.
-	if (valdiate_website($row['posts_www'])) {
-		$template->assign_block_vars('posts.switch_homepage', array());
+	if (isset($show_www)) {
+		$template->assign_block_vars('posts.switch_www', array());
 	}
 	// Soll die Email versteckt werden?
-	if ($row['posts_hide_email'] != 1) {
+	if (isset($show_email)) {
 		$template->assign_block_vars('posts.switch_email', array());
 	}
 	// Auch noch nicht die beste Lösung...
 	if (!empty($row['comment_id'])) {
 		$template->assign_block_vars('posts.switch_comment', array());
 	}
+	
 	// $block_vars zurücksetzen
 	if (isset($block_vars_module)) {
 		unset($block_vars_module);
 	}
+	
+	// Ebenfalls zurücksetzen
+	unset($show_icq, $show_www, $show_email);
 }
 
 // Yay, it's done!

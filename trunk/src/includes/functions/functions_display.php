@@ -134,7 +134,7 @@ function page_header($page_title = '')
 
 function page_footer()
 {
-	global $template, $config_table, $db;
+	global $template, $config, $db;
 	global $root_dir, $microtime, $lang;
 
 	$template->set_filenames(array(
@@ -143,9 +143,8 @@ function page_footer()
 
 
 	// Speicherauslastung des Scripts
-	if (function_exists('memory_get_usage'))
-	{
-		if (isset($config_table['debug_info']) && $config_table['debug_info'] == 1) {
+	if (function_exists('memory_get_usage')) {
+		if ($config->get('debug_info')) {
 			$memory_usage = @memory_get_usage();
 			switch ($memory_usage)
 			{
@@ -160,18 +159,16 @@ function page_footer()
 				break;
 			}
 		}
-		else
-		{
+		else {
 			$memory_usage = '';
 		}
 	}
-	else
-	{
+	else {
 		$memory_usage = '';
 	}
 
 	// Soll der Link zur Administration angezeigt werden?
-	$admin_link = ($config_table['admin_link']) ? sprintf("<a href=\"%s\">%s</a><br />", PAGE_ADMIN_INDEX, 'Moderatoren Bereich') : "";
+	$admin_link = ($config->get('admin_link')) ? sprintf("<br /><a href=\"%s\">%s</a>", PAGE_ADMIN_INDEX, 'Moderatoren Bereich') : "";
 
 	// Mikrozeit ausrechnen
 	$microtime = site_microtime_calc($microtime, site_microtime());
@@ -179,14 +176,13 @@ function page_footer()
 	// Die komplette Debug Information
 	$debug_info = '[ Time: '.$microtime.' Sec | ' . $db->sql_num_queries() . ' Queries ' . $memory_usage . ' ]';
 
-	if ($config_table['debug_info'] == 1)
-	{
+	if ($config->get('debug_info')) {
 		$template->assign_block_vars('debug_info', array());
 	}
 
 	$template->assign_vars(array(
 		'DEBUG_INFO' => $debug_info,
-		'VERSION' => $config_table['version'],
+		'VERSION' => $config->get('version'),
 		'ADMIN_LINK' => $admin_link,
 		'MEMORY_USAGE' => $memory_usage,
 	));

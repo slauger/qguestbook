@@ -278,9 +278,10 @@ function valdiate_error($error)
 			return 'Bitte gib einen Text zu deinem Gästebucheintrag an!';
 		case 'icq':
 			return 'Deine angegebene ICQ UIN ensrpicht nicht den allgemeinen Standarts!';
-		break;
 		case 'flood':
 			return 'Du kannst nicht so schnell hintereinander Beiträge schreiben!';
+		case 'confirmation':
+			return 'Du hast die Spamschutz-Frage nicht beantwortet, diese wird benoetigt um sicherzustellen damit dies keine automatische Anfrage ist, sondern von einen Menschen stammt! Vielen Dank fuer dein Verstaendniss. Bitte pruefe deine Eingaben!';
 		default:
 			return 'Unbekannter Fehler ist aufgetreten, bitte überprüfe deine Eingaben!';
 	}

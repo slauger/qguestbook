@@ -118,11 +118,6 @@ function valdiate_website($website)
 {
 	if (!empty($website))
 	{
-		if (!preg_match('#^http[s]?:\/\/#i', $website))
-		{
-			$website = 'http://' . $website;
-		}
-
 		if (!preg_match('#^http[s]?\\:\\/\\/[a-z0-9\-]+\.([a-z0-9\-]+\.)?[a-z]+#i', $website))
 		{
 			$website = '';

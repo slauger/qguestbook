@@ -68,11 +68,11 @@ switch ($mode) {
 		// und einem grafischen Captcha zu wechseln.
 		if ($config->get('enable_captcha')) {
 			if (!$globals->post('captcha_sum') || !$globals->post('captcha_checksum')) {
-				$valdiate_error = 'captcha';
+				$valdiate_error = 'confirmation';
 				break;
 			} else {
 				if ($globals->post('captcha_checksum') != md5($globals->post('captcha_sum'))) {
-					$valdiate_error = 'captcha';
+					$valdiate_error = 'confirmation';
 					break;
 				}
 			}
@@ -92,9 +92,12 @@ switch ($mode) {
 				$icq = '';
 			}
 			// Ja, aber ist sie valid?
-			elseif (!valdiate_icq($icq)) 	{
-				$valdiate_error = 'icq';
-				break;
+			elseif (!empty($icq)) {
+				$valdiate_icq = valdiate_icq($icq);
+				if (empty($icq)) {
+					$valdiate_error = 'icq';
+					break;
+				}
 			}
 		}
 		
@@ -105,9 +108,12 @@ switch ($mode) {
 				$www = '';
 			}
 			// Ja, aber ist sie valid?
-			elseif (!valdiate_website($www)) {
-				$valdiate_error = 'www';
-				break;
+			elseif (!empty($www)) {
+				$valdiate_www = valdiate_website($www);
+				if (empty($valdiate_www)) {
+					$valdiate_error = 'www';
+					break;
+				}
 			}
 		}
 		

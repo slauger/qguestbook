@@ -39,76 +39,89 @@ include_once $root_dir . 'includes/common.php';
 
 page_header('Beitragsmoderation');
 
-$mode = (!isset($_GET['mode']) || empty($_GET['mode'])) ? '' : $_GET['mode'];
-$id = (isset($_GET['id'])) ? $_GET['id'] : '';
-$view = (isset($_GET['view'])) ? $_GET['view'] : '';
-$view = ($view == 'all' || $view == 'waitlist') ? $view : 'all';
-$url_append = '';
+//
+// WIRD FUER 0.2.5 UEBERARBEITET!
+// Im Moment: case comment
 
-switch ($mode)
-{
+$url_append = '';
+$mode = (!$globals->get('mode')) ? '' : $globals->get('mode');
+$id   = (!$globals->get('id'))   ? '' : $globals->get('id');
+$view = (!$globals->get('view')) ? '' : $globals->get('view');
+$view = ($view == 'all' || $view == 'waitlist') ? $view : 'all';
+
+switch ($mode) {
+	/**
+	 * Kommentar hinzufügen und/oder bearbeiten
+	 * Updated: 29.08.2008 by kwhark
+	 */
 	case 'comment':
+		// Soll das Kommentar geloescht werden?
+		if ($globals->post('delete') && $globals->post('comment_id')) {
+			$sql = 'DELETE FROM ' . COMMENTS_TABLE . '
+					WHERE comment_id = ' . $db->sql_escape($globals->post('comment_id')) . '
+				LIMIT 1';
+			if (!$result = $db->sql_query($sql)) {
+				$error = $db->sql_error();
+				message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+			}
+			message_die('Das Kommentar wurde geloescht', 'Das Kommentar wurde erfolgreich geloescht!');
+		}
+		
 		// Kommentar in die DB eintragen
-		if (isset($_POST['textarea']) && isset($_POST['post_id']))
-		{
-			if (empty($_POST['textarea']))  die('no comment');
-			if (empty($_POST['post_id'])) die('no comment');
-			
+		if ($globals->post('textarea') && $globals->post('post_id')) {
 			$sql = 'INSERT INTO ' . COMMENTS_TABLE . '
 				(`comment_id`, `comment_post`, `comment_user`, `comment_text`, `comment_date`)
-				VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($_POST['post_id']) . ', ' . $db->sql_escape($_SESSION['user_id']) . ', ' . $db->sql_escape($_POST['textarea']) . ', ' . $db->sql_escape(time()) . ')';
+				VALUES (' . $db->sql_escape('') . ', ' . $db->sql_escape($globals->post('post_id')) . ', ' . $db->sql_escape($_SESSION['user_id']) . ', ' . $db->sql_escape($globals->post('textarea')) . ', ' . $db->sql_escape(time()) . ')';
 			
-			$db->sql_query($sql);
-
+			if (!$result = $db->sql_query($sql)) {
+				message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+			}
 			message_die($lang['guestbook_error'], 'Kommentar wurde hinzugefuegt!');
 		}
 		
-		// So, Formular anzeigen.
-		if (!isset($_GET['id']) || empty($_GET['id']))
-		{
-			message_die($lang['guestbook_error'], 'Du hast keinen Beitrag ausgewählt, den du kommentieren willst.');
+		if (!$globals->get('id')) {
+			message_die($lang['ERROR_MAIN'], 'Du hast keinen Beitrag ausgewählt, den du kommentieren willst.');
 		}
-
-		$template->set_filenames(array(
-			'body' => 'comment_body.html',
-		));
-
+		
 		// Kommentare vorhanden?
 		$sql = 'SELECT COUNT(`comment_id`)
 				FROM ' . COMMENTS_TABLE . '
-			WHERE comment_post = ' . $db->sql_escape($_GET['id']);
-		$result = $db->sql_query($sql);
-
+			WHERE comment_post = ' . $db->sql_escape($globals->get('id'));
+		
+		if (!$result = $db->sql_query($sql)) {
+			message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+		}
+		
 		$comments = $db->sql_result($result, 0);
+		
+		$template->set_filenames(array(
+			'body' => 'comment_body.html',
+		));
+		
+		if ($comments && $comments == 1) {
+			$sql = 'SELECT comment_id, comment_text
+					FROM ' . COMMENTS_TABLE . '
+					WHERE comment_post = ' . $db->sql_escape($globals->get('id')) . '
+				LIMIT 1';
 
-		// Auflisten ;)
-		if ($comments >= 1)
-		{
-			$sql = 'SELECT c.*, u.user_name
-				FROM ' . COMMENTS_TABLE . ' c
-					LEFT JOIN ' . USERS_TABLE . ' AS u
-					ON u.user_id = c.comment_user
-						WHERE c.comment_id = ' . $db->sql_escape($_GET['id']) . '
-				ORDER BY c.comment_post DESC';
-
-			$result = $db->sql_query($sql);
-
-			while ($row = $db->sql_fetchrow($result))
-			{
-				$template->assign_block_vars('comments', array(
-					'COMMENT_ID' => $row['comment_id'],
-					'COMMENT_USER' => $row['user_name'],
-					'COMMENT_TEXT' => $row['comment_text'],
-					'COMMENT_DATE' => $row['comment_date'],
+			if (!$result = $db->sql_query($sql)) {
+				$error = $db->sql_error();
+				message_die($lang['ERROR_MAIN'], sprintf($lang['SQL_ERROR_EXPLAIN'], $error['code'], $error['error'], __FILE__, __LINE__));
+			}
+			
+			$template->assign_block_vars('comment_exists', array());
+			while ($row = $db->sql_fetchrow($result)) {
+				$template->assign_vars(array(
+					'COMMENT_ID'	=> $encode->encode_html($row['comment_id']),
+					'COMMENT_TEXT'	=> $encode->encode_html($row['comment_text']),
 				));
 			}
 		}
-
+		
 		$template->assign_vars(array(
-			'POST_ID' => decode_html($_GET['id']),
-			'COMMENTS_EXIST' => $comments,
+			'POST_ID'	=> $encode->encode_html($globals->get('id')),
 		));
-
+		
 		$template->pparse('body');
 	break;
 	case 'edit':
@@ -121,7 +134,7 @@ switch ($mode)
 		}
 
 		$sql = 'DELETE FROM ' . POSTS_TABLE . '
-			WHERE posts_id = ' . $db->sql_escape($_GET['id']) . '
+				WHERE posts_id = ' . $db->sql_escape($_GET['id']) . '
 			LIMIT 1';
 		$db->sql_query($sql);
 

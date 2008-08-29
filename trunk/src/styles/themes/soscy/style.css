@@ -1,43 +1,26 @@
-/**
-  SoScy qGuestbook Theme
-
-  Dies ist eine Portierung des "Soscy"
-  Templates für phpMyGuestbook.
-  Angepasst für qGuestbook mit einigen
-  grafischen Verbesserungen, vorallem für
-  Mozilla Browser
-
-  @version: CVS $Id$
-*/
-
-/* Allgemeine Konfiguration */
-body
-{
+body {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size:12px;
-	background-color: #F8F8F8;
+	font-size:14px;
+	background-color: #f2f3f4;
+}
+h1 {
+	text-align: center;
 }
 
-/* alle Links, die nicht anderweitig festgelegt wurden */
-a
-{
+a {
 	color: #043698;
 	text-decoration: none;
 }
-a:hover
-{
+a:hover {
 	color: #A00000;
 	text-decoration: underline;
 }
-
-/* Text für Hinweise, etc. */
 .gensmall {
- 	font-size: 10px;
+ 	font-size: 12px;
 	color: #000000;
 	/* background-color:#000000; */
 }
-a.gensmall
-{
+a.gensmall {
 	color: #043698;
 	text-decoration: none;
 }
@@ -54,222 +37,71 @@ a.gensmall:hover {
 	text-decoration: underline;
 }
 
-/* Quote & Code blocks */
-.code {
-	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
-	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
-	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+th {
+	color: #fff;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	text-decoration: bold;
+	background-color: #006699;
+}
+.t1 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	background-color: #000;
 }
 
-.quote {
-	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
-	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
-	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+.tr1 {
+
+}
+.td1 {
+	width: 20%;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	vertical-align: top;
+	background-color: #D9E2E7;
+}
+.td2 {
+	width: 80%;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-bottom: 5px;
+	vertical-align: top;
+	background-color: #D9E2E7;
 }
 
-/*
-Der Schrott hier wird nicht gebraucht...
+.tr2 {
 
-/*input,textarea, select {
-    color : #000000;
-    font-family : Verdana, Arial, Helvetica, sans-serif;
-    font-size : 11px;
-    font-weight : normal;
 }
-
-input.post, textarea.post, select {
-    background-color : #E9EEF7;
+.td3 {
+	width: 20%;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	vertical-align: top;
+	vertical-align: top;
+	background-color: #F4F8FB;
 }
-*/
-
-/*
-  Die Definition für den Copyright Hinweis im Footer
-  Bitte möglichst lesbar lassen ;)
-*/
-.copyright
-{
+.td4 {
+	width: 80%;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	vertical-align: top;
+	background-color: #F4F8FB;
+}
+#copyright {
+	padding-top: 10px;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #444444;
+	text-align: center;
 	font-size: 11px;
-	letter-spacing: -1px;
 }
-a.copyright {
+#copyright a {
 	color: #333333;
 	text-decoration: none;
 }
-a.copyright:hover {
-	color: #000000;
-	text-decoration: underline;
-}
-
-/* Tabellen und ihre Besonderheiten */
-TD {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-}
-TH, TD.th {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	background-color: #7E98CB;
-	height: 25px;
-	font-size: 11px;
-	font-weight: bold;
-color: #FFFF00;
-}
-TD.row1 {
- 	border-bottom: 1px #021A4A solid;
-	border-top: 1px #021A4A solid;
-	
-	background-color: #F8F8F8;
-	width: 7%;
-	/*vertical-align: middle;*/
-}
-
-TD.row2 {
-	background-color: #F0F0F0;
-	/*vertical-align: middle;*/
-}
-
-/* Fr den Tabellen Tag, allgemeine Tabllen Einstellungen */
-.headline {
-	border: 4px #021A4A solid;
-	/*vertical-align: middle;*/
-	margin-left: auto;
-	margin-right: auto;
-	-moz-border-radius: 11px;
-}
-
-.mainline
-{
-	border: 2px #021A4A solid;
-
-}
-
-/* Die Überschriften Zeile fr Tabellen */
-TH.thHead {
-	font-weight: bold;
-	font-size: 12px;
-	height: 25px;
-	background-image: url('images/cell1l.jpg');
-
-}
-
-/* Der Seitentitel */
-h1 {
-	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	font-weight: bold;
-	text-decoration: none;
-	line-height: 120%;
-	color : #000000;
-}
-
-/* In der Beitragsansicht, wenn die Beiträge auf mehrere Seiten verteilt werden,
- * werden die Links mit dieser Klasse formatiert */
-.nav {
-	font-size: 11px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #000000;
-}
-a.nav {
-	text-decoration: none;
-	color: #043698;
-}
-a.nav:visited {
-	text-decoration: none; color: #003090;
-}
-a.nav:active {
-	text-decoration: underline; color: #FF0000;
-}
-a.nav:hover {
-	text-decoration: underline;
-	color: #A00000;
-}
-
-/* Fr die Links Titel <> Neuen Eintrag schreiben ...
-   Wurde in Version Alpha 1 benutzt, kann weq eigentlich
-*/
-.nav_bar
-{
-    font-weight:bold;
-}
-a.nav_bar
-{
-    color: #043698;
-	text-decoration: none;
-}
-a.nav_bar:hover
-{
-    color: #A00000;
-	text-decoration: underline;
-}
-
-/* Fr Kommentare in der Beitragsansicht */
-.comment
-{
-	font-size: 10px;
-	text-decoration: none;
-	color: #001030;
-}
-
-/* Form elements */
-input,textarea, select
-{
-	color : #000000;
-	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
-	border-color : #000000;
-}
-
-/* The text input fields background colour */
-input.post, textarea.post, select
-{
-	background-color : #FFFFFF;
-}
-
-input {
-	text-indent : 2px;
- }
-
-/* The buttons used for bbCode styling in message post */
-input.button
-{
-	background-color : #EFEFEF;
-	color : #000000;
-	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
-}
-
-/* The main submit button option */
-input.mainoption
-{
-	background-color : #FAFAFA;
-	font-weight : bold;
-}
-
-/* None-bold submit button */
-input.liteoption
-{
-	background-color : #FAFAFA;
-	font-weight : normal;
-}
-
-/* Grafiken haben bei uns keinen Rand :P */
-.image
-{
-	border: 0px none #000000;
-}
-
-input
-{
-	color: #000000;
-	background-color: #ffffff;
-	border: 1px solid #000000;
-	-moz-border-radius:10px;
-}
-
-textarea
-{
-	color: #000000;
-	background-color: #ffffff;
-	border: 1px solid #000000;
-	-moz-border-radius:10px;
+#pagetitle {
+	text-align: center;
 }

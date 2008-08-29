@@ -32,7 +32,9 @@ Legend:
 ! Login.php nun vollständig für Mehrsprachigkeit ausgelegt, weitere folgen.
 - Removed includes/captcha from SVN Repo
 - Removed includes/ftp from SVN Repo
+! Beitrags Moderationsinterface in großen Teilen neu geschrieben
 ! Wenn Modul administrierbar, wird es nun automatisch im ACP gelistet
+! Neues Template für Main-Gästebuch Bereich (removed soscy)
 ? Antibruteforce (Admin Login)
 ? Viele Dateien in admin/ (u. a. login.php) haben noch alte Codesysteme.
   Das heißt: keine PEAR Standarts, $_POST statt $globals usw.

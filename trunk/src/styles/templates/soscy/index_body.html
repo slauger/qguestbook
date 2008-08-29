@@ -1,103 +1,27 @@
-<table cellpadding="3" cellspacing="1" class="headline" style="margin-left: auto; margin-right: auto; width: 80%;">
+<table class="t1" border="0"  cellpadding="3" cellspacing="1">
 	<tr>
-		<th class="thHead" colspan="2">
-			<b>{L_VIEW_POSTS}</b>
-		</th>
+		<th colspan="2">{L_VIEW_POSTS}</th>
 	</tr>
-	<tr>
-		<td class="row1" valign="top" colspan="2">
-			<span class="gensmall" style="text-align: left;">
-				{POSTS_STATISTIC}<br />
-				<a href="{U_PAGE_LAST}">Die letzten {LIMIT} Einträge</a>, <a href="{U_PAGE_NEXT}">Die nächsten {LIMIT} Einträge</a>
-			</span>
-		</td>
-	</tr>
-	<!-- BEGIN posts -->
-	<tr>
-		<td class="row2" valign="top" colspan="2" style="border-top: 1px #000 solid;">
-			<span class="gensmall">
-				<a href="index.php?post={posts.ID}#post-{posts.ID}" id="post-{posts.ID}"><img src="{IMAGE_ICON_POST}" alt="Eintrag {posts.ID}" style="border: none;" /></a> {L_POSTED} {posts.DATE_FORMAT}
-			</span>
-		</td>
-	</tr>
-	<tr>
-		<td class="row1" valign="top" style="width: 20%; border-right: 1px #000 solid;">
-			<b>{L_AUTHOR}:</b>
-		</td>
-		<td class="row1" valign="top" style="width: 80%;">
-			{posts.USERNAME}
-		</td>
-	</tr>
-	<!-- BEGIN switch_rate -->
-	<tr>
-		<td class="row1" valign="top">
-			<b>Bewertung:</b>
-		</td>
-		<td class="row1" valign="top">
-			{posts.RATE}
-		</td>
-	</tr>
-	<!-- END switch_rate -->
-	<tr>
-		<td class="row1" valign="top" style="width: 20%; border-right: 1px #000 solid; border-top: none;">
-			<b>Nachricht:</b>
-		</td>
-		<td class="row1" valign="top" style="width: 80%; border-top: none;">
-			{posts.MESSAGE}
-		</td>
-	</tr>
-	<!-- BEGIN switch_comment -->
-	<tr>
-		<td class="row2" valign="top" style="width: 20%; border-top: 1px #000 solid; border-right: 1px #021A4A solid;">
-			<b>Kommentar von {posts.COMMENT_USERNAME}:</b><br />
-			am {posts.COMMENT_DATE}
-		</td>
-		<td class="row2" valign="top" style="width: 20%; border-top: 1px #000 solid;">
-			{posts.COMMENT_TEXT}
-		</td>
-	</tr>
-	<!-- END switch_comment -->
-	<tr>
-		<td class="row2" colspan="2">
-			&nbsp;<a href="{U_POSTING}?mode=reply&amp;id={posts.ID}"><img src="{IMAGE_QUOTE}" alt="{L_REPLY}" style="border: none;" /></a>&nbsp;
-			<!-- BEGIN switch_icq -->
-			&nbsp;<a href="{posts.U_ICQ}" target="_blank" title="{L_ICQ}"><img src="{IMAGE_ICQ}" alt="{L_ICQ}" style="border: none;" /></a>&nbsp;
-			<!-- END switch_icq -->
+<!-- BEGIN posts -->
+	<tr class="tr1">
+		<td class="td{posts.TEMPLATE_CLASS_1}"><b>{posts.USERNAME}</b><br />{posts.DATE_FORMAT}<br /><br />
 			<!-- BEGIN switch_email -->
-			&nbsp;<a href="mailto:{posts.U_EMAIL}" title="{L_EMAIL}"><img src="{IMAGE_EMAIL}" alt="{L_EMAIL}"  style="border: none;" /></a>&nbsp;
+			<a href="mailto:{posts.U_EMAIL}" target="_blank"><img src="styles/imagesets/soscy/email.png" alt="E-Mail Adresse" border="0" /></a>
 			<!-- END switch_email -->
-			<!-- BEGIN switch_homepage -->
-			&nbsp;<a href="{posts.U_WWW}" target="_blank"><img src="{IMAGE_WWW}" alt="{L_WWW}"  style="border: none;" /></a>&nbsp;
-			<!-- END switch_homepage -->
+			<!-- BEGIN switch_icq -->
+			&nbsp;<a href="{posts.U_ICQ}" target="_blank"><img src="styles/imagesets/soscy/icq.png" alt="ICQ Nummer" border="0" /></a>
+			<!-- END switch_icq -->
+			<!-- BEGIN switch_www -->
+			&nbsp;<a href="{posts.U_WWW}" target="_blank"><img src="styles/imagesets/soscy/www.png" alt="Webseite" border="0" /></a>
+			<!-- END switch_www -->
+		</td>
+		<td class="td{posts.TEMPLATE_CLASS_2}">
+			{posts.MESSAGE}
+			<!-- BEGIN switch_comment -->
+			<br /><br /><b>Kommentar von {posts.COMMENT_USERNAME}:</b><br />
+			{posts.COMMENT_TEXT}
+			<!-- END switch_comment -->
 		</td>
 	</tr>
-	<!-- END posts -->
-	<tr>
-		<td class="row1" valign="top" colspan="2">
-			<div style="text-align: right;">
-				<a href="{U_POSTING}"><img src="{IMAGE_NEW_POST}" alt="{L_NEW_POST}" class="image"/></a>
-			</div>
-			<!-- BEGIN switch_sort_form -->
-			<form action="./index.php" method="get">
-				<select name="limit" size="1">
-					<!-- BEGIN switch_limit -->
-					<option value="{switch_limit.VALUE}">{switch_limit.TEXT}</option>
-					<!-- END switch_limit -->
-				</select>
-				<select name="start" size="1">
-					<!-- BEGIN switch_start -->
-					<option value="{switch_start.VALUE}">{switch_start.TEXT}</option>
-					<!-- END switch_start -->
-				</select>
-				<select name="postorder" size="1">
-					<!-- BEGIN switch_postorder -->
-					<option value="desc">Neuere zuerst</option>
-					<option value="asc">Ältere zuerst</option>
-					<!-- END switch_postorder -->
-				</select>
-				<input type="submit" value="Absenden" />
-			</form>
-			<!-- END switch_sort_form -->
-		</td>
-	</tr>
+<!-- END posts -->
 </table>
